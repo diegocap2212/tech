@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Célere — Processos, Automação e Tecnologia para PMEs</title>
+  <meta name="description" content="Artigos práticos sobre gestão de processos, automação e tecnologia para PMEs." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+  
+  <!-- GLOBAL STYLES -->
+  <link rel="stylesheet" href="../css/style.css" />
+  
+  <style>
+    .hero { background: var(--navy); padding: 120px 24px 64px; text-align: center; }
+    .hero__label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+    .hero h1 { font-size: clamp(32px,4vw,52px); font-weight: 900; color: #fff; line-height: 1.15; margin-bottom: 16px; }
+    .hero p { font-size: 17px; color: rgba(255,255,255,0.6); max-width: 560px; margin: 0 auto; line-height: 1.7; }
+
+    .posts { padding: 72px 0; }
+    .posts__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 28px; }
+
+    .card { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: block; background: #fff; }
+    .card:hover { border-color: var(--orange); box-shadow: var(--shadow); }
+    .card__cat { background: var(--navy); padding: 12px 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); }
+    .card__body { padding: 28px; }
+    .card__title { font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.35; margin-bottom: 12px; }
+    .card__excerpt { font-size: 14px; color: var(--slate-light); line-height: 1.65; margin-bottom: 20px; }
+    .card__meta { display: flex; align-items: center; justify-content: space-between; }
+    .card__read { font-size: 13px; color: var(--orange); font-weight: 600; }
+
+    .cta-strip { background: var(--navy); padding: 80px 24px; text-align: center; color: #fff; }
+    .cta-strip h2 { font-size: 32px; font-weight: 700; margin-bottom: 16px; }
+    .cta-strip p { color: rgba(255,255,255,0.6); margin-bottom: 32px; }
+  </style>
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<div class="hero">
+  <p class="hero__label reveal">Blog Célere</p>
+  <h1 class="reveal">Processos que funcionam.<br/>Conteúdo que ensina.</h1>
+  <p class="reveal">Artigos práticos sobre gestão de processos, automação e tecnologia para PMEs.</p>
+</div>
+
+<section class="posts">
+  <div class="container">
+    <div class="posts__grid">
+
+      <a href="como-organizar-processos-de-rh-em-pequenas-empresas.html" class="card reveal">
+        <div class="card__cat">RH & Recrutamento</div>
+        <div class="card__body">
+          <h2 class="card__title">Como organizar processos de RH em pequenas empresas sem gastar com SaaS caro</h2>
+          <p class="card__excerpt">78% das PMEs conduzem recrutamento via WhatsApp. O resultado: candidatos perdidos e processos sem rastreabilidade.</p>
+          <div class="card__meta">
+            <span class="card__read">Ler artigo →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="excel-vs-sistema-de-gestao-quando-migrar.html" class="card reveal">
+        <div class="card__cat">Gestão & Processos</div>
+        <div class="card__body">
+          <h2 class="card__title">Excel vs sistema de gestão: quando é hora de migrar</h2>
+          <p class="card__excerpt">O Excel funciona — até o dia que não funciona mais. Identifique os 5 sinais que indicam que sua empresa ultrapassou o limite.</p>
+          <div class="card__meta">
+            <span class="card__read">Ler artigo →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="automacao-de-processos-para-pmes-por-onde-comecar.html" class="card reveal">
+        <div class="card__cat">Automação</div>
+        <div class="card__body">
+          <h2 class="card__title">Automação de processos para PMEs: por onde começar</h2>
+          <p class="card__excerpt">Automação não é para grandes empresas. É para qualquer empresa que repete os mesmos passos manuais todo dia.</p>
+          <div class="card__meta">
+            <span class="card__read">Ler artigo →</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <div class="container">
+    <h2 class="reveal">Quer aplicar isso na sua empresa?</h2>
+    <p class="reveal">O diagnóstico é gratuito. 30 minutos que mostram onde está o gargalo.</p>
+    <a href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20meu%20diagn%C3%B3stico%20gratuito" target="_blank" class="btn btn--primary">Agendar diagnóstico gratuito →</a>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+
+<!-- GLOBAL SCRIPTS -->
+<script src="../js/main.js"></script>
+
+</body>
+</html>

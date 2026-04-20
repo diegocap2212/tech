@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ─── SEO PRIMÁRIO ──────────────────────────────── -->
+  <title>Célere | Processos e Software para Pequenas Empresas</title>
+  <meta name="description" content="Software e processos sob medida para pequenas empresas. Diagnóstico gratuito em 30 min. Método de Dafiti, Lojas Renner e Sodexo — para a sua empresa." />
+  <meta name="keywords" content="consultoria processos pequena empresa, software gestão PME, organizar processos empresa, automação pequenas empresas, sistema gestão personalizado, consultoria RH PME, Diego Caporusso, Tiago Massaro, Célere consultoria" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Diego Caporusso, Tiago Massaro — Célere" />
+  <link rel="canonical" href="https://celere.com.br/" />
+
+  <!-- ─── OPEN GRAPH ── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://celere.com.br/" />
+  <meta property="og:title" content="Célere | Processos e Software para Pequenas Empresas" />
+  <meta property="og:description" content="Transformamos processos caóticos em sistemas que funcionam — com software feito para o seu negócio." />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Célere" />
+
+  <!-- ─── SCHEMA MARKUP ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Célere",
+    "description": "Consultoria em processos e tecnologia para pequenas e médias empresas brasileiras.",
+    "url": "https://celere.com.br",
+    "email": "diegocaporusso@gmail.com",
+    "areaServed": "BR",
+    "inLanguage": "pt-BR"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+  
+  <!-- GLOBAL STYLES -->
+  <link rel="stylesheet" href="css/style.css" />
+  
+  <style>
+    /* Hero specific tweaks (still internal for now to keep hero section unique) */
+    #hero {
+      background: var(--navy);
+      padding: 160px 0 100px;
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: ''; position: absolute; top: 0; right: -200px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(234,88,12,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    h1.hero__title { font-size: clamp(40px, 5vw, 66px); font-weight: 900; color: #fff; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 24px; }
+    h1.hero__title em { font-style: normal; color: var(--orange); }
+    .hero__sub { font-size: 18px; color: rgba(255,255,255,0.65); line-height: 1.75; margin-bottom: 40px; max-width: 520px; }
+    .hero__actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+    
+    .hero__visual { display: flex; flex-direction: column; gap: 16px; }
+    .hero__card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px 28px; display: flex; align-items: flex-start; gap: 16px; }
+    .hero__card-icon { width: 44px; height: 44px; border-radius: 8px; background: rgba(234,88,12,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 20px; }
+    .hero__card-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .hero__card-text { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+    .hero__card--highlight { border-color: rgba(234,88,12,0.3); background: rgba(234,88,12,0.05); }
+
+    /* Custom specific section styles from old file */
+    #logos { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.06); padding: 48px 0; }
+    .logos__row { display: flex; align-items: center; justify-content: center; gap: 52px; flex-wrap: wrap; }
+    .logos__img { height: 28px; width: auto; filter: brightness(0) invert(1); opacity: 0.28; transition: opacity 0.2s; }
+    .logos__img:hover { opacity: 0.65; }
+    .logos__word { font-size: 14px; font-weight: 800; color: rgba(255,255,255,0.28); text-transform: uppercase; font-style: italic; }
+
+    .dor__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-top: 48px; }
+    .dor__item { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 24px; display: flex; gap: 16px; align-items: flex-start; }
+    .dor__footer { margin-top: 48px; padding: 28px 32px; background: var(--navy); border-radius: 12px; display: flex; align-items: center; gap: 24px; }
+    .dor__footer-text { font-size: 17px; color: rgba(255,255,255,0.85); font-weight: 500; }
+    .dor__footer-text strong { color: var(--orange); }
+
+    .solucao__steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; margin-top: 48px; }
+    .step { background: var(--off-white); border-radius: 12px; padding: 36px 28px; }
+    .step__num { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background: var(--navy); color: var(--orange); font-size: 20px; font-weight: 900; margin-bottom: 20px; }
+    .step__title { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+
+    .stats__grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; margin: 48px 0 64px; }
+    .stat { text-align: center; padding: 32px 16px; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; background: rgba(255,255,255,0.03); }
+    .stat__num { font-size: 48px; font-weight: 900; color: var(--orange); line-height: 1; margin-bottom: 8px; }
+
+    .spec__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
+    .spec__card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 40px; }
+    .spec__top { display: flex; align-items: center; gap: 24px; margin-bottom: 24px; }
+    .spec__avatar { width: 80px; height: 80px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 900; color: var(--orange); }
+
+    .case__grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 48px; }
+    .case__col { border-radius: 12px; padding: 32px; }
+    .case__col--before { background: #FEF2F2; border: 1px solid #FECACA; }
+    .case__col--action { background: var(--navy); }
+    .case__col--after  { background: #F0FDF4; border: 1px solid #BBF7D0; }
+    .case__list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+    .comp__table { width: 100%; border-collapse: collapse; margin-top: 48px; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
+    .comp__table thead tr { background: var(--navy); }
+    .comp__table thead th { padding: 18px 20px; font-size: 14px; color: rgba(255,255,255,0.7); text-align: left; }
+    .comp__table tbody tr { background: #fff; border-bottom: 1px solid var(--border); }
+    .comp__table tbody td { padding: 16px 20px; font-size: 15px; }
+    .celere-col { font-weight: 700; color: var(--orange); }
+
+    #cta-final { background: var(--navy); padding: 100px 0; text-align: center; position: relative; overflow: hidden; }
+    #cta-final::before { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(234,88,12,0.1) 0%, transparent 60%); pointer-events: none; }
+    .cta-final__title { font-size: clamp(32px,4vw,52px); font-weight: 900; color: #fff; line-height: 1.15; margin-bottom: 20px; }
+    .cta-final__title em { font-style: normal; color: var(--orange); }
+
+    @media (max-width: 900px) {
+      .hero__inner { grid-template-columns: 1fr; }
+      .hero__visual { display: none; }
+      .stats__grid { grid-template-columns: repeat(2,1fr); }
+      .spec__grid { grid-template-columns: 1fr; }
+      .case__grid { grid-template-columns: 1fr; }
+      .solucao__steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<main>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__content reveal">
+          <h1 class="hero__title">
+            Sua empresa cresce.<br/>
+            A operação ainda<br/>
+            não <em>acompanhou.</em>
+          </h1>
+          <p class="hero__sub">
+            A Célere organiza o caos operacional de pequenas e médias empresas com software feito para o seu processo — e o método que aplicamos nas maiores empresas do Brasil.
+          </p>
+          <div class="hero__actions">
+            <a href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20meu%20diagn%C3%B3stico%20gratuito"
+               target="_blank" class="btn btn--primary btn--lg">
+              Quero meu diagnóstico gratuito →
+            </a>
+          </div>
+        </div>
+
+        <div class="hero__visual reveal">
+          <div class="hero__card hero__card--highlight">
+            <div class="hero__card-icon">⚡</div>
+            <div>
+              <div class="hero__card-title">Primeiros resultados em semanas</div>
+              <div class="hero__card-text">Diagnóstico, construção e entrega em ciclos curtos.</div>
+            </div>
+          </div>
+          <div class="hero__card">
+            <div class="hero__card-icon">🎯</div>
+            <div>
+              <div class="hero__card-title">Feito para o SEU processo</div>
+              <div class="hero__card-text">Não é SaaS genérico. É a sua operação virando software.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGOS -->
+  <section id="logos">
+    <div class="container">
+      <div class="logos__row reveal">
+        <img class="logos__img" src="https://upload.wikimedia.org/wikipedia/commons/9/90/Sodexo_logo.svg" alt="Sodexo" />
+        <img class="logos__img" src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Logotipo_das_Lojas_Renner.svg" alt="Lojas Renner" />
+        <span class="logos__word">Dafiti</span>
+        <img class="logos__img" src="https://upload.wikimedia.org/wikipedia/commons/6/65/Pluxee_Logo_2023.svg" alt="Pluxee" />
+      </div>
+    </div>
+  </section>
+
+  <!-- DOR -->
+  <section id="dor" class="section section--light">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="label label--orange">Você reconhece isso?</span>
+      </div>
+      <h2 class="section-title reveal">Sua operação travou.<br/>O problema tem nome.</h2>
+      
+      <div class="dor__grid">
+        <div class="dor__item">
+          <p class="dor__text">Dados da empresa espalhados em 3 planilhas, 2 grupos de WhatsApp e um e-mail que ninguém lê.</p>
+        </div>
+        <div class="dor__item">
+          <p class="dor__text">Um processo que funciona enquanto tem uma pessoa específica — e para quando ela sai.</p>
+        </div>
+        <div class="dor__item">
+          <p class="dor__text">Pagando mensalidade de ferramentas que a equipe usa 5% das funcionalidades.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUÇÃO -->
+  <section id="solucao" class="section">
+    <div class="container">
+      <h2 class="section-title reveal">Não é consultoria. Não é SaaS.<br/>É o seu processo virando software.</h2>
+      <div class="solucao__steps">
+        <div class="step">
+          <div class="step__num">01</div>
+          <div class="step__title">Diagnóstico</div>
+          <p class="step__text">Mapeamos seu processo atual e identificamos gargalos reais.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">02</div>
+          <div class="step__title">Construção</div>
+          <p class="step__text">Desenvolvemos a solução sob medida para a sua operação.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">03</div>
+          <div class="step__title">Evolução</div>
+          <p class="step__text">Você começa a usar em semanas e nós evoluímos com você.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section section--light">
+    <div class="container">
+      <h2 class="section-title reveal">Perguntas Frequentes</h2>
+      <div class="faq__list">
+        <div class="faq__item">
+          <button class="faq__q" onclick="toggleFaq(this)">
+            Quanto tempo leva? <span class="faq__icon">+</span>
+          </button>
+          <div class="faq__a">
+            <div class="faq__a-inner">Os primeiros resultados aparecem em 2 a 4 semanas.</div>
+          </div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" onclick="toggleFaq(this)">
+            É muito caro? <span class="faq__icon">+</span>
+          </button>
+          <div class="faq__a">
+            <div class="faq__a-inner">O diagnóstico é gratuito e a solução se paga com a redução de desperdícios.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section id="cta-final">
+    <div class="container reveal">
+      <h2 class="cta-final__title">Comece com um diagnóstico<br/><em>gratuito de 30 minutos.</em></h2>
+      <a href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20meu%20diagn%C3%B3stico%20gratuito"
+         target="_blank" class="btn btn--primary btn--lg">
+        Quero meu diagnóstico gratuito →
+      </a>
+    </div>
+  </section>
+</main>
+
+<div id="footer-placeholder"></div>
+
+<!-- GLOBAL SCRIPTS -->
+<script src="js/main.js"></script>
+
+</body>
+</html>

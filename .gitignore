@@ -1,0 +1,12 @@
+# Office files
+*.docx
+*.pdf
+*.pptx
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Gemini/Antigravity folders
+.gemini/
+.antigravity/
