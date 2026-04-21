@@ -39,6 +39,7 @@ h2.section-title {
   margin-bottom: 20px;
 }
 .section--dark h2.section-title { color: var(--white); }
+h2.section-title em { font-style: normal; color: var(--orange); }
 .section-sub {
   font-size: 18px; color: var(--slate-light);
   max-width: 620px; line-height: 1.7;
@@ -116,9 +117,8 @@ h1.hero__title em { font-style: normal; color: var(--orange); }
 
 /* Logos */
 #logos { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.06); padding: 48px 0; }
+.logos__label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); text-align: center; margin-bottom: 20px; }
 .logos__row { display: flex; align-items: center; justify-content: center; gap: 52px; flex-wrap: wrap; }
-.logos__img { height: 28px; width: auto; filter: brightness(0) invert(1); opacity: 0.28; transition: opacity 0.2s; }
-.logos__img:hover { opacity: 0.65; }
 .logos__word { font-size: 14px; font-weight: 800; color: rgba(255,255,255,0.28); text-transform: uppercase; font-style: italic; }
 
 /* Dor */
@@ -141,7 +141,8 @@ h1.hero__title em { font-style: normal; color: var(--orange); }
 .spec__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
 .spec__card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 40px; }
 .spec__top { display: flex; align-items: center; gap: 24px; margin-bottom: 24px; }
-.spec__avatar { width: 80px; height: 80px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 900; color: var(--orange); }
+.spec__avatar { width: 80px; height: 80px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 900; color: var(--orange); flex-shrink: 0; }
+.spec__avatar--photo { object-fit: cover; object-position: center top; width: 120px; height: 120px; }
 .spec__name { font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
 .spec__bio { font-size: 15px; color: var(--slate-light); line-height: 1.6; }
 

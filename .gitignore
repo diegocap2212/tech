@@ -10,3 +10,11 @@ Thumbs.db
 # Gemini/Antigravity folders
 .gemini/
 .antigravity/
+
+# Editor
+.vscode/
+.cursorrules
+
+# Local files
+docs/
+*.exe
