@@ -116,9 +116,10 @@ h1.hero__title em { font-style: normal; color: var(--orange); }
 .hero__photo-wrap { border-radius: 20px; overflow: hidden; position: relative; border: 1px solid rgba(234,88,12,0.25); box-shadow: 0 0 60px rgba(234,88,12,0.12), 0 24px 64px rgba(0,0,0,0.4); }
 .hero__photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center 18%; display: block; }
 .hero__photo-badge { position: absolute; bottom: 0; left: 0; right: 0; padding: 40px 20px 22px; background: linear-gradient(0deg, rgba(10,22,40,0.97) 40%, transparent 100%); }
-.hero__badge-label { font-size: 10px; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 10px; }
-.hero__badge-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.hero__badge-tags span { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); padding: 4px 10px; border-radius: 20px; }
+.hero__badge-label { font-size: 10px; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px; }
+.hero__badge-logos { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.hero__badge-logos img { height: 18px; width: auto; filter: brightness(0) invert(1); opacity: 0.75; }
+.hero__badge-text { font-size: 12px; font-weight: 800; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.06em; }
 
 /* Foto Institucional */
 .section--foto { overflow: hidden; }
