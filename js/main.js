@@ -49,7 +49,7 @@ function injectNavbar() {
         </a>
         <div style="display:flex;align-items:center;gap:20px;">
           <a href="${rootPath}${blogPath}index.html" style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.55);letter-spacing:0.02em;">Blog</a>
-          <a href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20meu%20diagn%C3%B3stico%20gratuito"
+          <a href="https://api.whatsapp.com/send/?phone=5511991476160&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20C%C3%A9lere%20e%20gostaria%20de%20agendar%20meu%20diagn%C3%B3stico%20gratuito&type=phone_number&app_absent=0"
              target="_blank" class="btn btn--primary navbar__cta">
             Diagnóstico Gratuito
           </a>
@@ -63,33 +63,7 @@ function injectNavbar() {
  * Injects the global Footer into elements with id="footer-placeholder"
  */
 function injectFooter() {
-  const placeholder = document.getElementById('footer-placeholder');
-  if (!placeholder) return;
-
-  placeholder.innerHTML = `
-    <footer>
-      <div class="container">
-        <div class="footer__logo">
-          <span class="logo-mark">
-            <svg width="38" height="38" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="34" height="34" rx="8" fill="rgba(255,255,255,0.05)"/>
-              <path d="M9 10 L18 17 L9 24" stroke="#EA580C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M17 10 L26 17 L17 24" stroke="#EA580C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/>
-            </svg>
-          </span>
-          <div>
-            <span class="logo-wordmark" style="font-size:22px;">CÉL<em>E</em>RE</span>
-            <span class="logo-tagline">Processos & Tecnologia</span>
-          </div>
-        </div>
-        <p class="footer__text">
-          Diego Caporusso & Tiago Massaro — Consultoria em Processos e Tecnologia para PMEs<br/>
-          <a href="mailto:diegocaporusso@gmail.com">diegocaporusso@gmail.com</a>
-          &nbsp;·&nbsp; © 2026 Célere
-        </p>
-      </div>
-    </footer>
-  `;
+  // Footer temporariamente removido — aguardando dados da empresa
 }
 
 /**
