@@ -113,6 +113,8 @@ h1.hero__title em { font-style: normal; color: var(--orange); }
 .hero__card-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
 .hero__card-text { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.5; }
 .hero__card--highlight { border-color: rgba(234,88,12,0.3); background: rgba(234,88,12,0.05); }
+.hero__photo-wrap { border-radius: 20px; overflow: hidden; border: 1px solid rgba(234,88,12,0.25); box-shadow: 0 0 60px rgba(234,88,12,0.12), 0 24px 64px rgba(0,0,0,0.4); }
+.hero__photo { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
 
 /* Foto Institucional */
 .section--foto { overflow: hidden; }
