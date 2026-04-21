@@ -146,11 +146,11 @@ h1.hero__title em { font-style: normal; color: var(--orange); }
 }
 
 /* Logos */
-#logos { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.06); padding: 48px 0; }
+#logos { background: var(--off-white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 44px 0; }
+.logos__label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate-light); text-align: center; margin-bottom: 28px; }
 .logos__row { display: flex; align-items: center; justify-content: center; gap: 52px; flex-wrap: wrap; }
-.logos__img { height: 28px; width: auto; filter: brightness(0) invert(1); opacity: 0.28; transition: opacity 0.2s; }
-.logos__img:hover { opacity: 0.65; }
-.logos__word { font-size: 14px; font-weight: 800; color: rgba(255,255,255,0.28); text-transform: uppercase; font-style: italic; }
+.logos__img { height: 40px; width: auto; filter: grayscale(1); opacity: 0.45; transition: filter 0.25s ease, opacity 0.25s ease; }
+.logos__img:hover { filter: none; opacity: 1; }
 
 /* Dor */
 .dor__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-top: 48px; }
