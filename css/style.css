@@ -187,6 +187,20 @@ h1.hero__title em { font-style: normal; color: var(--orange); }
 .spec__role { font-size: 12px; font-weight: 600; color: var(--orange); text-transform: uppercase; letter-spacing: 0.08em; }
 .spec__bio { font-size: 15px; color: var(--slate-light); line-height: 1.7; }
 
+/* Diferencial */
+.section--diferencial { background: var(--navy); color: var(--white); border-top: 3px solid var(--orange); }
+.section--diferencial .section-title { color: var(--white); }
+.section--diferencial .section-title em { font-style: normal; color: var(--orange); }
+.dif__header { max-width: 760px; margin-bottom: 56px; }
+.dif__intro { font-size: 17px; color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 16px; }
+.dif__intro strong { color: var(--white); font-weight: 700; }
+.dif__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.dif__card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-top: 3px solid var(--orange); border-radius: 0 0 16px 16px; padding: 36px 28px; }
+.dif__icon { font-size: 28px; margin-bottom: 16px; }
+.dif__title { font-size: 19px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+.dif__text { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.75; }
+@media (max-width: 900px) { .dif__grid { grid-template-columns: 1fr; } }
+
 /* Cases */
 .case__grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 48px; }
 .case__col { border-radius: 12px; padding: 32px; }
