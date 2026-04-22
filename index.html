@@ -101,9 +101,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
-  
+
   <!-- GLOBAL STYLES -->
-  <link rel="stylesheet" href="css/style.css?v=3" />
+  <link rel="stylesheet" href="css/style.css?v=4" />
+
+  <!-- ─── GOOGLE ADS PIXEL ──────────────────────────── -->
+  <!-- IMPORTANTE: substitua AW-XXXXXXXXXX pelo seu ID de conversão do Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-XXXXXXXXXX');
+  </script>
 </head>
 <body>
 
@@ -116,26 +126,44 @@
       <div class="hero__inner">
         <div class="hero__content reveal">
           <h1 class="hero__title">
-            Sua empresa cresce. A operação ainda não <em>acompanhou.</em>
+            Sua empresa cresceu mas os processos não <em>acompanharam?</em>
           </h1>
           <p class="hero__sub">
-            A Célere organiza o caos operacional de pequenas e médias empresas com software feito para o seu processo — e o método que aplicamos nas maiores empresas do Brasil.
+            Não adaptamos sua empresa ao software. Criamos o software para a sua empresa — com o método que aplicamos nas maiores empresas do Brasil.
           </p>
-          <div class="hero__actions">
-            <a href="https://api.whatsapp.com/send/?phone=5511991476160&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20C%C3%A9lere%20e%20gostaria%20de%20agendar%20meu%20diagn%C3%B3stico%20gratuito&type=phone_number&app_absent=0"
-               target="_blank" class="btn btn--primary btn--lg">
-              Quero meu diagnóstico gratuito →
-            </a>
-          </div>
+          <ul class="hero__bullets">
+            <li><span class="hero__bullet-check">✓</span> Diagnóstico gratuito de 30 minutos, sem compromisso</li>
+            <li><span class="hero__bullet-check">✓</span> Primeiros resultados em 2 a 4 semanas</li>
+            <li><span class="hero__bullet-check">✓</span> Software que se adapta ao seu processo, não ao contrário</li>
+          </ul>
         </div>
 
         <div class="hero__visual reveal">
-          <div class="hero__photo-wrap">
-            <img src="images/diego.png" alt="Diego Caporusso — Founder e CEO da Célere, especialista em consultoria de processos para PMEs" class="hero__photo" />
-            <div class="hero__photo-badge">
-              <p class="hero__badge-label">Empresas que nosso modelo foi testado e validado!</p>
-              <div class="hero__badge-logos">
-                <img src="images/renner.png" alt="Lojas Renner" style="height: 15px;" />
+          <div class="hero__form-card" id="lead-form-wrap">
+            <h3 class="hero__form-title">Agende seu diagnóstico gratuito</h3>
+            <p class="hero__form-sub">30 minutos. Sem compromisso. Você sai com clareza — pagando ou não.</p>
+            <form id="lead-form" class="lead-form" novalidate>
+              <div class="lead-form__field">
+                <input type="text" name="nome" placeholder="Seu nome completo" required autocomplete="name" />
+              </div>
+              <div class="lead-form__field">
+                <input type="text" name="empresa" placeholder="Nome da empresa" required autocomplete="organization" />
+              </div>
+              <div class="lead-form__field">
+                <input type="tel" name="telefone" placeholder="(11) 99999-9999" required autocomplete="tel" />
+              </div>
+              <div class="lead-form__field">
+                <input type="text" name="cargo" placeholder="Seu cargo (ex: CEO, Diretor, Gerente)" required />
+              </div>
+              <button type="submit" class="btn btn--primary lead-form__submit">
+                Quero meu diagnóstico gratuito →
+              </button>
+            </form>
+            <p class="lead-form__privacy">Seus dados são protegidos. Sem spam, jamais.</p>
+            <div class="lead-form__logos">
+              <p class="lead-form__logos-label">Método validado em:</p>
+              <div class="lead-form__logos-strip">
+                <img src="images/renner.png" alt="Lojas Renner" style="height:15px;" />
                 <img src="images/dafiti.png" alt="Dafiti" />
                 <img src="images/pluxee.png" alt="Pluxee" />
                 <img src="images/raia-drogasil.png" alt="Raia Drogasil" />
@@ -147,10 +175,26 @@
     </div>
   </section>
 
+  <!-- MANIFESTO -->
+  <section id="manifesto" class="section--manifesto">
+    <div class="container">
+      <div class="manifesto__inner reveal">
+        <p class="manifesto__label">Nosso posicionamento</p>
+        <blockquote class="manifesto__quote">
+          "Não adaptamos sua empresa ao software.<br/>
+          <strong>Criamos o software para a sua empresa.</strong>"
+        </blockquote>
+        <p class="manifesto__body">
+          A maioria das PMEs compra ERP ou CRM genérico, tenta se adaptar à ferramenta, falha na adoção e volta para o Excel. Nós fazemos o caminho inverso: primeiro mapeamos e organizamos o processo, depois construímos — ou recomendamos — a ferramenta exata para esse processo.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- FOTO INSTITUCIONAL -->
   <section id="apresentacao" class="section--foto">
     <div class="foto__bg">
-      <img src="images/diego.stage.png" alt="Diego Caporusso palestrando sobre automação de processos e metodologia ágil para empresas" class="foto__img" />
+      <img src="images/diego.stage.png" alt="Diego Caporusso palestrando sobre automação de processos e metodologia ágil para empresas" class="foto__img" loading="lazy" width="1920" height="1080" />
       <div class="foto__overlay"></div>
       <div class="foto__content container reveal">
         <p class="foto__quote">Grandes empresas funcionam porque têm processo.<br/>Pequenas empresas crescem quando descobrem isso.</p>
@@ -420,7 +464,7 @@
         <div class="spec__card reveal">
           <div class="spec__top">
             <div class="spec__avatar spec__avatar--photo">
-              <img src="images/diego.png" alt="Diego Caporusso — Founder e CEO, especialista em mapeamento de processos e consultoria operacional" />
+              <img src="images/diego.png" alt="Diego Caporusso — Founder e CEO, especialista em mapeamento de processos e consultoria operacional" loading="lazy" />
             </div>
             <div class="spec__info">
               <h3 class="spec__name">Diego Caporusso</h3>
@@ -432,7 +476,7 @@
         <div class="spec__card reveal">
           <div class="spec__top">
             <div class="spec__avatar spec__avatar--photo">
-              <img src="images/tiago.png" alt="Tiago Massaro — Co-Founder e CTO, arquiteto de software sob medida para automação de processos empresariais" />
+              <img src="images/tiago.png" alt="Tiago Massaro — Co-Founder e CTO, arquiteto de software sob medida para automação de processos empresariais" loading="lazy" />
             </div>
             <div class="spec__info">
               <h3 class="spec__name">Tiago Massaro</h3>
@@ -522,10 +566,29 @@
   <section id="cta-final">
     <div class="container reveal">
       <h2 class="cta-final__title">Comece com um diagnóstico<br/><em>gratuito de 30 minutos.</em></h2>
-      <a href="https://api.whatsapp.com/send/?phone=5511991476160&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20C%C3%A9lere%20e%20gostaria%20de%20agendar%20meu%20diagn%C3%B3stico%20gratuito&type=phone_number&app_absent=0"
-         target="_blank" class="btn btn--primary btn--lg">
-        Quero meu diagnóstico gratuito →
-      </a>
+      <p class="cta-final__sub">Preencha o formulário e entraremos em contato em até 1 hora útil.</p>
+      <div class="cta-final__form-wrap">
+        <form id="lead-form-bottom" class="lead-form lead-form--inline" novalidate>
+          <div class="lead-form__row">
+            <div class="lead-form__field">
+              <input type="text" name="nome" placeholder="Seu nome" required autocomplete="name" />
+            </div>
+            <div class="lead-form__field">
+              <input type="text" name="empresa" placeholder="Nome da empresa" required autocomplete="organization" />
+            </div>
+            <div class="lead-form__field">
+              <input type="tel" name="telefone" placeholder="(11) 99999-9999" required autocomplete="tel" />
+            </div>
+            <div class="lead-form__field">
+              <input type="text" name="cargo" placeholder="Seu cargo" required />
+            </div>
+          </div>
+          <button type="submit" class="btn btn--primary btn--lg lead-form__submit">
+            Quero meu diagnóstico gratuito →
+          </button>
+        </form>
+        <p class="lead-form__privacy lead-form__privacy--light">Seus dados são protegidos. Sem spam, jamais.</p>
+      </div>
     </div>
   </section>
 </main>

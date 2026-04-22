@@ -17,6 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
+  // 4. LEAD FORM HANDLERS
+  initLeadForm('lead-form');
+  initLeadForm('lead-form-bottom');
 });
 
 /**
@@ -26,10 +30,14 @@ function injectNavbar() {
   const placeholder = document.getElementById('navbar-placeholder');
   if (!placeholder) return;
 
-  // Determine if we are in the blog subdirectory to adjust links
   const isBlog = window.location.pathname.includes('/blog/');
   const rootPath = isBlog ? '../' : '';
   const blogPath = isBlog ? '' : 'blog/';
+
+  // On blog pages keep WhatsApp link; on LP scroll to the lead form
+  const ctaHref = isBlog
+    ? 'href="https://api.whatsapp.com/send/?phone=5511991476160&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20C%C3%A9lere%20e%20gostaria%20de%20agendar%20meu%20diagn%C3%B3stico%20gratuito&type=phone_number&app_absent=0" target="_blank"'
+    : 'href="#lead-form-wrap"';
 
   placeholder.innerHTML = `
     <nav class="navbar">
@@ -49,14 +57,55 @@ function injectNavbar() {
         </a>
         <div style="display:flex;align-items:center;gap:20px;">
           <a href="${rootPath}${blogPath}index.html" style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.55);letter-spacing:0.02em;">Blog</a>
-          <a href="https://api.whatsapp.com/send/?phone=5511991476160&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20C%C3%A9lere%20e%20gostaria%20de%20agendar%20meu%20diagn%C3%B3stico%20gratuito&type=phone_number&app_absent=0"
-             target="_blank" class="btn btn--primary navbar__cta">
+          <a ${ctaHref} class="btn btn--primary navbar__cta">
             Diagnóstico Gratuito
           </a>
         </div>
       </div>
     </nav>
   `;
+}
+
+/**
+ * Handles lead form submission: fires Google Ads conversion + opens WhatsApp
+ */
+function initLeadForm(formId) {
+  const form = document.getElementById(formId);
+  if (!form) return;
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const nome     = (form.querySelector('[name="nome"]')?.value     || '').trim();
+    const empresa  = (form.querySelector('[name="empresa"]')?.value  || '').trim();
+    const telefone = (form.querySelector('[name="telefone"]')?.value || '').trim();
+    const cargo    = (form.querySelector('[name="cargo"]')?.value    || '').trim();
+
+    if (!nome || !empresa || !telefone || !cargo) {
+      form.querySelectorAll('input').forEach(input => {
+        if (!input.value.trim()) input.style.borderColor = '#EF4444';
+      });
+      return;
+    }
+
+    // IMPORTANTE: substitua AW-XXXXXXXXXX/YYYYYYYYYY pelo seu ID de conversão do Google Ads
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', { send_to: 'AW-XXXXXXXXXX/YYYYYYYYYY' });
+    }
+
+    const mensagem = encodeURIComponent(
+      `Olá! Gostaria de agendar meu diagnóstico gratuito.\n\nNome: ${nome}\nEmpresa: ${empresa}\nTelefone: ${telefone}\nCargo: ${cargo}`
+    );
+    window.open(`https://api.whatsapp.com/send/?phone=5511991476160&text=${mensagem}`, '_blank');
+
+    // Show success feedback
+    const wrap = form.closest('.hero__form-card') || form.closest('.cta-final__form-wrap') || form.parentElement;
+    const successHTML = `<div class="lead-form__success">
+      <p>Obrigado, ${nome}! Abrindo o WhatsApp para confirmar seu diagnóstico. 🎉</p>
+      <p style="font-size:14px;font-weight:400;color:var(--slate-light);margin-top:8px;">Não abriu? <a href="https://api.whatsapp.com/send/?phone=5511991476160&text=${mensagem}" target="_blank" style="color:var(--orange)">Clique aqui</a></p>
+    </div>`;
+    form.outerHTML = successHTML;
+  });
 }
 
 /**
