@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Dashboard de Métricas</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#F8FAFC;color:#1E293B;font-size:13px;height:750px;overflow:hidden}
+.topbar{background:#fff;border-bottom:1px solid #E2E8F0;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 28px}
+.brand{font-size:17px;font-weight:800;color:#0A1628;letter-spacing:-.01em}
+.brand span{color:#10B981;font-weight:400;font-size:13px;margin-left:8px}
+.filters{display:flex;gap:10px;align-items:center}
+.filter{display:flex;align-items:center;gap:6px;padding:7px 14px;border:1px solid #E2E8F0;border-radius:6px;background:#F8FAFC;font-size:12px;font-weight:500;color:#334155;cursor:default}
+.filter em{color:#64748B;font-style:normal}
+.topbar-right{display:flex;align-items:center;gap:14px}
+.icon-btn{width:34px;height:34px;border-radius:8px;background:#F1F5F9;display:flex;align-items:center;justify-content:center;font-size:15px}
+.avatar{width:36px;height:36px;border-radius:50%;background:#0A1628;color:#EA580C;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+.main{padding:22px 28px}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+.kpi{background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:18px 20px;position:relative;overflow:hidden}
+.kpi::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--c)}
+.kpi-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.kpi-label{font-size:11px;font-weight:600;color:#64748B;text-transform:uppercase;letter-spacing:.07em}
+.kpi-icon{width:34px;height:34px;border-radius:8px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:16px}
+.kpi-value{font-size:38px;font-weight:800;color:#0A1628;line-height:1;letter-spacing:-.02em}
+.kpi-value sup{font-size:18px}
+.kpi-sub{font-size:11px;color:#94A3B8;margin-top:4px}
+.kpi-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;margin-top:6px}
+.badge-green{background:#F0FDF4;color:#16A34A}
+.badge-orange{background:#FFF7ED;color:#EA580C}
+.chart-wrap{background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:22px 24px}
+.chart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.chart-title{font-size:15px;font-weight:700;color:#0A1628}
+.legend{display:flex;gap:18px}
+.leg{display:flex;align-items:center;gap:5px;font-size:11px;color:#64748B}
+.dot{width:8px;height:8px;border-radius:50%}
+.chart-svg{width:100%;height:230px}
+.x-labels{display:flex;justify-content:space-between;padding:0 30px;margin-top:4px}
+.x-labels span{font-size:10px;color:#94A3B8}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div style="display:flex;align-items:center;gap:20px">
+    <div>
+      <div class="brand">Dashboard de Métricas <span>● ATUALIZADO</span></div>
+      <div style="font-size:10px;color:#94A3B8;font-weight:500;letter-spacing:.06em">POWERED BY CÉLERE</div>
+    </div>
+    <div class="filters">
+      <div class="filter">TIME <em>Todas (18) ▾</em></div>
+      <div class="filter">RELEASE <em>Todas (10) ▾</em></div>
+      <div class="filter">PERÍODO <em>Todo o período 📅</em></div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <div class="icon-btn">🔔</div>
+    <div class="avatar">JD</div>
+  </div>
+</div>
+<div class="main">
+  <div class="kpi-row">
+    <div class="kpi" style="--c:#3B82F6;--bg:#EFF6FF">
+      <div class="kpi-top">
+        <div class="kpi-label">Escopo Total</div>
+        <div class="kpi-icon">👥</div>
+      </div>
+      <div class="kpi-value">854</div>
+      <div class="kpi-sub">Itens na release atuante</div>
+    </div>
+    <div class="kpi" style="--c:#10B981;--bg:#F0FDF4">
+      <div class="kpi-top">
+        <div class="kpi-label">Entregas</div>
+        <div class="kpi-icon">✅</div>
+      </div>
+      <div class="kpi-value">723</div>
+      <div class="kpi-sub">Produtividade liquidada</div>
+      <div class="kpi-badge badge-green">↑ 12% vs mês ant.</div>
+    </div>
+    <div class="kpi" style="--c:#F59E0B;--bg:#FFFBEB">
+      <div class="kpi-top">
+        <div class="kpi-label">WIP (A Fazer)</div>
+        <div class="kpi-icon">⚡</div>
+      </div>
+      <div class="kpi-value">131</div>
+      <div class="kpi-sub">Sendo desenvolvidos</div>
+      <div class="kpi-badge badge-orange">3 bloqueados</div>
+    </div>
+    <div class="kpi" style="--c:#8B5CF6;--bg:#FAF5FF">
+      <div class="kpi-top">
+        <div class="kpi-label">Lead Time</div>
+        <div class="kpi-icon">🕐</div>
+      </div>
+      <div class="kpi-value" style="font-size:32px">26.1<span style="font-size:18px;color:#64748B;font-weight:600">d</span></div>
+      <div class="kpi-sub">Tempo médio de ciclo</div>
+    </div>
+  </div>
+  <div class="chart-wrap">
+    <div class="chart-head">
+      <div class="chart-title">Burndown & Projeção do Cone</div>
+      <div class="legend">
+        <div class="leg"><div class="dot" style="background:#3B82F6"></div>Realizado</div>
+        <div class="leg"><div class="dot" style="background:#F59E0B"></div>Tendência</div>
+        <div class="leg"><div class="dot" style="background:#10B981"></div>Melhor Caso</div>
+        <div class="leg"><div class="dot" style="background:#EF4444"></div>Pior Caso</div>
+      </div>
+    </div>
+    <svg class="chart-svg" viewBox="0 0 900 220" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.2"/>
+          <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.02"/>
+        </linearGradient>
+      </defs>
+      <line x1="30" y1="10" x2="30" y2="205" stroke="#F1F5F9" stroke-width="1"/>
+      <line x1="0" y1="55" x2="900" y2="55" stroke="#F1F5F9" stroke-width="1"/>
+      <line x1="0" y1="100" x2="900" y2="100" stroke="#F1F5F9" stroke-width="1"/>
+      <line x1="0" y1="145" x2="900" y2="145" stroke="#F1F5F9" stroke-width="1"/>
+      <line x1="0" y1="190" x2="900" y2="190" stroke="#F1F5F9" stroke-width="1"/>
+      <text x="2" y="57" font-size="9" fill="#CBD5E1">200</text>
+      <text x="2" y="102" font-size="9" fill="#CBD5E1">150</text>
+      <text x="2" y="147" font-size="9" fill="#CBD5E1">100</text>
+      <text x="2" y="192" font-size="9" fill="#CBD5E1">50</text>
+      <path d="M35 192 L100 180 L165 162 L230 140 L300 110 L370 80 L440 52 L510 40 L580 38 L640 44 L700 55 L700 205 L35 205Z" fill="url(#areaGrad)"/>
+      <path d="M35 192 L100 180 L165 162 L230 140 L300 110 L370 80 L440 52 L510 40 L580 38 L640 44 L700 55" fill="none" stroke="#3B82F6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="700" cy="55" r="5" fill="#3B82F6"/>
+      <path d="M700 55 L760 38 L820 20 L870 8" fill="none" stroke="#F59E0B" stroke-width="2" stroke-dasharray="7,4" stroke-linecap="round"/>
+      <path d="M700 55 L760 30 L820 12 L870 3" fill="none" stroke="#10B981" stroke-width="2" stroke-dasharray="7,4" stroke-linecap="round"/>
+      <path d="M700 55 L760 52 L820 42 L870 28 L880 18" fill="none" stroke="#EF4444" stroke-width="2" stroke-dasharray="7,4" stroke-linecap="round"/>
+    </svg>
+    <div class="x-labels">
+      <span>02/12</span><span>10/02</span><span>25/08</span><span>22/09</span><span>06/11</span><span>17/12</span><span>01/12</span><span>23/02</span><span>20/04</span><span>01/06</span><span>27/07</span><span>09/11</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

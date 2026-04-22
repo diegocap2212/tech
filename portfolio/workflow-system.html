@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Ways of Working</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#F8FAFC;color:#1E293B;font-size:13px;height:750px;overflow:hidden;display:flex;flex-direction:column}
+.topbar{background:#0A1628;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;flex-shrink:0}
+.brand-name{font-size:18px;font-weight:800;color:#fff}
+.brand-name em{font-style:normal;color:#EA580C}
+.nav-tabs{display:flex;gap:2px}
+.tab{padding:6px 18px;border-radius:6px;font-size:13px;font-weight:600;color:rgba(255,255,255,.5);cursor:default}
+.tab.active{background:rgba(255,255,255,.12);color:#fff}
+.tab::before{content:'○ ';font-size:10px}
+.tab.active::before{content:'● ';color:#EA580C}
+.topbar-right{display:flex;gap:10px;align-items:center}
+.reports-btn{background:#EA580C;color:#fff;padding:7px 16px;border-radius:6px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px}
+.hero-banner{background:#0A1628;padding:28px 32px;flex-shrink:0;border-bottom:1px solid rgba(255,255,255,.06)}
+.hero-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#EA580C;margin-bottom:8px}
+.hero-title{font-size:28px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:8px}
+.hero-title em{font-style:italic;color:rgba(255,255,255,.6)}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.45);line-height:1.6;max-width:520px}
+.body{display:flex;flex:1;overflow:hidden;gap:0}
+.cycle-area{flex:1;padding:20px 24px;display:flex;flex-direction:column;gap:12px;overflow:hidden}
+.cycle-label{font-size:11px;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.cycle-box{background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px;flex:1;position:relative;overflow:hidden}
+.cycle-title{font-size:13px;font-weight:700;color:#0A1628;margin-bottom:2px}
+.cycle-sub{font-size:11px;color:#94A3B8;margin-bottom:12px}
+/* SVG cycle wheel */
+.cycle-svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+.node-label{font-size:9px;font-weight:700;color:#334155;text-anchor:middle;dominant-baseline:middle}
+.node-sub{font-size:7.5px;fill:#94A3B8;text-anchor:middle;dominant-baseline:middle}
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.role-card{background:#F8FAFC;border:1px solid #E2E8F0;border-radius:6px;padding:8px 10px}
+.role-tag{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#EA580C;margin-bottom:3px}
+.role-name{font-size:11px;font-weight:700;color:#0A1628}
+.role-desc{font-size:10px;color:#64748B;line-height:1.4}
+.cadencias-panel{width:340px;flex-shrink:0;background:#fff;border-left:1px solid #E2E8F0;display:flex;flex-direction:column;overflow:hidden}
+.panel-header{padding:14px 18px;border-bottom:1px solid #E2E8F0}
+.panel-section{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#64748B;padding:10px 18px 4px;background:#F8FAFC;border-bottom:1px solid #E2E8F0}
+.cad-item{display:flex;align-items:center;gap:12px;padding:10px 18px;border-bottom:1px solid #F8FAFC;cursor:default}
+.cad-icon{width:32px;height:32px;border-radius:8px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.cad-info{flex:1}
+.cad-name{font-size:12px;font-weight:600;color:#0A1628}
+.cad-freq{font-size:11px;color:#64748B}
+.cad-bar{width:3px;height:100%;border-radius:2px;background:var(--c);position:absolute;left:0;top:0}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand-name">Ways of Working <em>Venice</em></div>
+  <div class="nav-tabs">
+    <div class="tab active">Framework</div>
+    <div class="tab">Cadências</div>
+    <div class="tab">Papel</div>
+    <div class="tab">Padrões</div>
+  </div>
+  <div class="topbar-right">
+    <div class="reports-btn">📊 Reports</div>
+  </div>
+</div>
+<div class="hero-banner">
+  <div class="hero-label">Framework Operacional</div>
+  <div class="hero-title">Ciclo de <em>Cadência</em></div>
+  <div class="hero-sub">Um report alimenta tudo. O SM preenche uma vez por semana — o sistema distribui para sync, report para a liderança, apresentação e CTO.</div>
+</div>
+<div class="body">
+  <div class="cycle-area">
+    <div class="cycle-label">Engrenagem do Ciclo</div>
+    <div class="cycle-box">
+      <svg class="cycle-svg" width="420" height="320" viewBox="0 0 420 320">
+        <!-- Outer ring -->
+        <circle cx="210" cy="160" r="130" fill="none" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="6,4"/>
+        <circle cx="210" cy="160" r="90" fill="none" stroke="#F1F5F9" stroke-width="1"/>
+        <!-- Center circle -->
+        <circle cx="210" cy="160" r="52" fill="#0A1628"/>
+        <text x="210" y="153" class="node-label" fill="#fff" font-size="12" font-weight="800">SDM</text>
+        <text x="210" y="167" class="node-label" fill="rgba(255,255,255,.4)" font-size="9">CONSOLIDA</text>
+        <text x="210" y="179" class="node-label" fill="rgba(255,255,255,.3)" font-size="8">& DISTRIBUI</text>
+        <!-- Node: Rotina Diária (top) -->
+        <circle cx="210" cy="28" r="28" fill="#fff" stroke="#E2E8F0" stroke-width="1.5"/>
+        <text x="210" y="24" class="node-label" font-size="9.5">📝</text>
+        <text x="210" y="35" class="node-label" fill="#334155" font-size="8">Rotina</text>
+        <text x="210" y="44" class="node-sub">SM · todo dia</text>
+        <!-- Node: Sync Semanal (right) -->
+        <circle cx="338" cy="90" r="28" fill="#fff" stroke="#E2E8F0" stroke-width="1.5"/>
+        <text x="338" y="86" class="node-label" font-size="9.5">🔄</text>
+        <text x="338" y="97" class="node-label" fill="#334155" font-size="8">Sync</text>
+        <text x="338" y="106" class="node-sub">SM · segunda</text>
+        <!-- Node: Check-in (right-bottom) -->
+        <circle cx="338" cy="230" r="28" fill="#fff" stroke="#E2E8F0" stroke-width="1.5"/>
+        <text x="338" y="226" class="node-label" font-size="9.5">💬</text>
+        <text x="338" y="237" class="node-label" fill="#334155" font-size="8">Check-in</text>
+        <text x="338" y="246" class="node-sub">quinzenal</text>
+        <!-- Node: Report (bottom) -->
+        <circle cx="210" cy="292" r="28" fill="#fff" stroke="#E2E8F0" stroke-width="1.5"/>
+        <text x="210" y="288" class="node-label" font-size="9.5">📊</text>
+        <text x="210" y="299" class="node-label" fill="#334155" font-size="8">Report</text>
+        <text x="210" y="308" class="node-sub">quinzenal</text>
+        <!-- Node: Apresentação LM (left-bottom) -->
+        <circle cx="82" cy="230" r="28" fill="#fff" stroke="#E2E8F0" stroke-width="1.5"/>
+        <text x="82" y="226" class="node-label" font-size="9.5">📋</text>
+        <text x="82" y="237" class="node-label" fill="#334155" font-size="8">Apres. LM</text>
+        <text x="82" y="246" class="node-sub">quinzenal</text>
+        <!-- Node: Apres. CTO (left) -->
+        <circle cx="82" cy="90" r="28" fill="#fff" stroke="#E2E8F0" stroke-width="1.5"/>
+        <text x="82" y="86" class="node-label" font-size="9.5">🎯</text>
+        <text x="82" y="97" class="node-label" fill="#334155" font-size="8">Apres. CTO</text>
+        <text x="82" y="106" class="node-sub">mensal</text>
+        <!-- Connecting lines -->
+        <line x1="210" y1="56" x2="210" y2="108" stroke="#EA580C" stroke-width="1.5" stroke-dasharray="4,3" opacity=".6"/>
+        <line x1="236" y1="108" x2="310" y2="90" stroke="#3B82F6" stroke-width="1.5" stroke-dasharray="4,3" opacity=".6"/>
+        <line x1="310" y1="118" x2="262" y2="202" stroke="#8B5CF6" stroke-width="1.5" stroke-dasharray="4,3" opacity=".6"/>
+        <line x1="210" y1="212" x2="210" y2="264" stroke="#10B981" stroke-width="1.5" stroke-dasharray="4,3" opacity=".6"/>
+        <line x1="158" y1="202" x2="110" y2="218" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="4,3" opacity=".6"/>
+        <line x1="110" y1="118" x2="158" y2="108" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="4,3" opacity=".6"/>
+      </svg>
+    </div>
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-tag">SM · Scrum Master</div>
+        <div class="role-name">Preenche 1x/semana</div>
+        <div class="role-desc">Rotina diária e report semanal que alimenta toda a cadência</div>
+      </div>
+      <div class="role-card">
+        <div class="role-tag">LM · Liderança</div>
+        <div class="role-name">Recebe consolidado</div>
+        <div class="role-desc">Relatório pronto, apresentação à diretoria automatizada</div>
+      </div>
+    </div>
+  </div>
+  <div class="cadencias-panel">
+    <div class="panel-header">
+      <div style="font-size:14px;font-weight:700;color:#0A1628">Cadências do Ciclo</div>
+      <div style="font-size:11px;color:#64748B;margin-top:2px">6 rituais estruturados</div>
+    </div>
+    <div class="panel-section">SDM PREENCHE</div>
+    <div class="cad-item" style="position:relative"><div class="cad-bar" style="--c:#EA580C"></div>
+      <div class="cad-icon" style="--bg:#FFF7ED">📝</div>
+      <div class="cad-info"><div class="cad-name">Rotina Diária + Report</div><div class="cad-freq">Todo dia · ~10 min</div></div>
+    </div>
+    <div class="cad-item" style="position:relative"><div class="cad-bar" style="--c:#3B82F6"></div>
+      <div class="cad-icon" style="--bg:#EFF6FF">🔄</div>
+      <div class="cad-info"><div class="cad-name">Sync Semanal</div><div class="cad-freq">Segunda · 30 min</div></div>
+    </div>
+    <div class="cad-item" style="position:relative"><div class="cad-bar" style="--c:#8B5CF6"></div>
+      <div class="cad-icon" style="--bg:#FAF5FF">💬</div>
+      <div class="cad-info"><div class="cad-name">Check-in Individual</div><div class="cad-freq">Quinzenal · 30 min</div></div>
+    </div>
+    <div class="panel-section">SDM CONSOLIDA</div>
+    <div class="cad-item" style="position:relative"><div class="cad-bar" style="--c:#10B981"></div>
+      <div class="cad-icon" style="--bg:#F0FDF4">📊</div>
+      <div class="cad-info"><div class="cad-name">Report para Lucas</div><div class="cad-freq">Quinzenal</div></div>
+    </div>
+    <div class="cad-item" style="position:relative"><div class="cad-bar" style="--c:#F59E0B"></div>
+      <div class="cad-icon" style="--bg:#FFFBEB">📋</div>
+      <div class="cad-info"><div class="cad-name">Apresentação à LM</div><div class="cad-freq">Quinzenal (alterna c/ W Brain)</div></div>
+    </div>
+    <div class="cad-item" style="position:relative"><div class="cad-bar" style="--c:#DC2626"></div>
+      <div class="cad-icon" style="--bg:#FEF2F2">🎯</div>
+      <div class="cad-info"><div class="cad-name">Apresentação para CTO</div><div class="cad-freq">Mensal · 1 página</div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

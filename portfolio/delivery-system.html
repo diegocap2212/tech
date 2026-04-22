@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Sistema de Delivery</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#FFF7ED;color:#1E293B;font-size:13px;height:750px;overflow:hidden}
+.topbar{background:#EA580C;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-icon{width:36px;height:36px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.brand-name{font-size:18px;font-weight:800;color:#fff}
+.brand-sub{font-size:11px;color:rgba(255,255,255,.7);margin-top:1px}
+.store-select{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.2);padding:7px 16px;border-radius:8px;color:#fff;font-size:13px;font-weight:600}
+.topbar-right{display:flex;gap:12px;align-items:center}
+.icon-btn{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff}
+.date-badge{background:rgba(255,255,255,.2);color:#fff;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:16px 20px;background:#fff;border-bottom:1px solid #FED7AA}
+.kpi{background:#FFF7ED;border:1px solid #FED7AA;border-radius:10px;padding:14px 16px;text-align:center}
+.kpi-label{font-size:10px;font-weight:600;color:#92400E;text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.kpi-value{font-size:32px;font-weight:800;color:#EA580C;line-height:1;letter-spacing:-.02em}
+.kpi-sub{font-size:10px;color:#D97706;margin-top:3px}
+.board{display:flex;gap:0;height:calc(750px - 56px - 72px);overflow:hidden}
+.col{flex:1;padding:12px 8px;border-right:1px solid #FED7AA;display:flex;flex-direction:column}
+.col:last-child{border-right:none}
+.col-header{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:8px;margin-bottom:10px;background:var(--bg);border:1px solid var(--border)}
+.col-name{font-size:12px;font-weight:700;color:var(--tc)}
+.col-badge{width:22px;height:22px;border-radius:50%;background:var(--tc);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+.order-card{background:#fff;border:1px solid #FED7AA;border-radius:8px;padding:10px 12px;margin-bottom:7px;border-left:3px solid var(--c)}
+.order-id{font-size:10px;font-weight:700;color:#64748B;margin-bottom:4px}
+.order-name{font-size:12px;font-weight:700;color:#0A1628;margin-bottom:2px}
+.order-items{font-size:11px;color:#64748B;margin-bottom:6px}
+.order-footer{display:flex;justify-content:space-between;align-items:center}
+.order-value{font-size:12px;font-weight:700;color:#EA580C}
+.order-time{font-size:10px;color:#94A3B8;display:flex;align-items:center;gap:3px}
+.time-badge{font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px}
+.time-ok{background:#F0FDF4;color:#16A34A}
+.time-warn{background:#FFFBEB;color:#D97706}
+.time-late{background:#FEF2F2;color:#DC2626}
+.delivered-count{text-align:center;padding:12px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;margin-bottom:8px}
+.delivered-count strong{font-size:28px;font-weight:800;color:#16A34A;display:block}
+.delivered-count span{font-size:10px;color:#64748B}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-icon">🍕</div>
+    <div>
+      <div class="brand-name">Cardápio Online</div>
+      <div class="brand-sub">Sistema de Pedidos em Tempo Real</div>
+    </div>
+  </div>
+  <div class="store-select">🏪 Unidade Centro ▾</div>
+  <div class="topbar-right">
+    <div class="date-badge">📅 Ter, 22 Abr · 19:42</div>
+    <div class="icon-btn">🔔</div>
+    <div class="icon-btn">⚙️</div>
+  </div>
+</div>
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="kpi-label">Pedidos Hoje</div>
+    <div class="kpi-value">147</div>
+    <div class="kpi-sub">↑ 23% vs ontem</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Faturamento</div>
+    <div class="kpi-value" style="font-size:26px">R$8.4k</div>
+    <div class="kpi-sub">Ticket médio: R$57</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Tempo Médio</div>
+    <div class="kpi-value">28<span style="font-size:16px;color:#D97706">min</span></div>
+    <div class="kpi-sub">-4min vs meta</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Avaliação</div>
+    <div class="kpi-value">4.8<span style="font-size:18px">⭐</span></div>
+    <div class="kpi-sub">312 avaliações</div>
+  </div>
+</div>
+<div class="board">
+  <div class="col">
+    <div class="col-header" style="--bg:#FFF7ED;--border:#FED7AA;--tc:#EA580C">
+      <div class="col-name">🆕 Novo Pedido</div>
+      <div class="col-badge" style="background:#EA580C">6</div>
+    </div>
+    <div class="order-card" style="--c:#EA580C">
+      <div class="order-id">#4521 · iFood</div>
+      <div class="order-name">Mesa do Gustavo</div>
+      <div class="order-items">2x Pizza Margherita · 1x Coca-Cola</div>
+      <div class="order-footer"><div class="order-value">R$89,90</div><div class="time-badge time-ok">Agora</div></div>
+    </div>
+    <div class="order-card" style="--c:#EA580C">
+      <div class="order-id">#4522 · WhatsApp</div>
+      <div class="order-name">Ana Lima</div>
+      <div class="order-items">1x Frango Grelhado · 2x Suco</div>
+      <div class="order-footer"><div class="order-value">R$52,00</div><div class="time-badge time-ok">1min</div></div>
+    </div>
+    <div class="order-card" style="--c:#EA580C">
+      <div class="order-id">#4523 · App Próprio</div>
+      <div class="order-name">Pedro Takahashi</div>
+      <div class="order-items">1x Combo Família</div>
+      <div class="order-footer"><div class="order-value">R$124,00</div><div class="time-badge time-ok">2min</div></div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="col-header" style="--bg:#FFFBEB;--border:#FDE68A;--tc:#D97706">
+      <div class="col-name">🔥 Em Preparo</div>
+      <div class="col-badge" style="background:#D97706">8</div>
+    </div>
+    <div class="order-card" style="--c:#D97706">
+      <div class="order-id">#4512 · iFood</div>
+      <div class="order-name">Família Santos</div>
+      <div class="order-items">2x Pizza G · 1x Pudim · 2x Suco</div>
+      <div class="order-footer"><div class="order-value">R$178,50</div><div class="time-badge time-warn">18min</div></div>
+    </div>
+    <div class="order-card" style="--c:#D97706">
+      <div class="order-id">#4515 · App Próprio</div>
+      <div class="order-name">Carla Dias</div>
+      <div class="order-items">1x Risoto · 1x Vinho</div>
+      <div class="order-footer"><div class="order-value">R$98,00</div><div class="time-badge time-warn">22min</div></div>
+    </div>
+    <div class="order-card" style="--c:#D97706">
+      <div class="order-id">#4516 · WhatsApp</div>
+      <div class="order-name">Lucas Ramos</div>
+      <div class="order-items">4x Hambúrguer · 4x Fries</div>
+      <div class="order-footer"><div class="order-value">R$212,00</div><div class="time-badge time-late">31min ⚠</div></div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="col-header" style="--bg:#EFF6FF;--border:#BFDBFE;--tc:#3B82F6">
+      <div class="col-name">🛵 Saiu p/ Entrega</div>
+      <div class="col-badge" style="background:#3B82F6">5</div>
+    </div>
+    <div class="order-card" style="--c:#3B82F6">
+      <div class="order-id">#4507 · iFood</div>
+      <div class="order-name">Roberto Alves</div>
+      <div class="order-items">1x Combo Especial</div>
+      <div class="order-footer"><div class="order-value">R$67,00</div><div class="order-time">🛵 Motoboy: João</div></div>
+    </div>
+    <div class="order-card" style="--c:#3B82F6">
+      <div class="order-id">#4509 · App Próprio</div>
+      <div class="order-name">Marina Peres</div>
+      <div class="order-items">2x Prato do Dia</div>
+      <div class="order-footer"><div class="order-value">R$86,00</div><div class="order-time">🛵 Motoboy: Carlos</div></div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="col-header" style="--bg:#F0FDF4;--border:#BBF7D0;--tc:#16A34A">
+      <div class="col-name">✅ Entregues Hoje</div>
+      <div class="col-badge" style="background:#16A34A">128</div>
+    </div>
+    <div class="delivered-count">
+      <strong>128</strong>
+      <span>pedidos entregues com sucesso</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:6px;padding:8px;text-align:center">
+        <div style="font-size:18px;font-weight:800;color:#16A34A">R$7.3k</div>
+        <div style="font-size:9px;color:#64748B">Faturado</div>
+      </div>
+      <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:6px;padding:8px;text-align:center">
+        <div style="font-size:18px;font-weight:800;color:#16A34A">97%</div>
+        <div style="font-size:9px;color:#64748B">Satisfação</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;font-size:11px;color:#64748B;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:6px;padding:8px">
+      <div style="margin-bottom:4px">🏆 <strong>Top pedidos:</strong></div>
+      <div>1. Pizza Margherita (34x)</div>
+      <div>2. Frango Grelhado (28x)</div>
+      <div>3. Combo Família (21x)</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

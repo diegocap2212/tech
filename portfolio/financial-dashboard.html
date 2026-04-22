@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Dashboard Financeiro</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#F8FAFC;color:#1E293B;font-size:13px;height:750px;overflow:hidden;display:flex;flex-direction:column}
+.topbar{background:#fff;border-bottom:1px solid #E2E8F0;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;flex-shrink:0}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-icon{width:34px;height:34px;background:#064E3B;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.brand-name{font-size:17px;font-weight:800;color:#0A1628}
+.brand-sub{font-size:10px;color:#64748B}
+.period-select{display:flex;gap:4px;background:#F1F5F9;border-radius:6px;padding:3px}
+.period-btn{padding:5px 14px;border-radius:4px;font-size:12px;font-weight:600;color:#64748B;cursor:default}
+.period-btn.active{background:#fff;color:#0A1628;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.topbar-right{display:flex;gap:10px;align-items:center}
+.export-btn{padding:7px 14px;border:1px solid #E2E8F0;border-radius:6px;font-size:12px;font-weight:600;color:#334155}
+.avatar{width:34px;height:34px;border-radius:50%;background:#064E3B;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:#fff;border-bottom:1px solid #E2E8F0;flex-shrink:0}
+.kpi{padding:14px 20px;border-right:1px solid #E2E8F0;position:relative;overflow:hidden}
+.kpi:last-child{border-right:none}
+.kpi::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--c)}
+.kpi-label{font-size:10px;font-weight:600;color:#64748B;text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.kpi-value{font-size:26px;font-weight:800;color:#0A1628;line-height:1;letter-spacing:-.01em}
+.kpi-change{font-size:11px;font-weight:600;margin-top:4px}
+.body{display:flex;flex:1;overflow:hidden;padding:16px;gap:14px}
+.left-col{flex:1.6;display:flex;flex-direction:column;gap:12px}
+.right-col{flex:1;display:flex;flex-direction:column;gap:12px}
+.card{background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:16px}
+.card-title{font-size:13px;font-weight:700;color:#0A1628;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+.card-sub{font-size:11px;color:#94A3B8}
+/* Bar chart */
+.bar-chart{display:flex;align-items:flex-end;gap:8px;height:140px}
+.bar-group{display:flex;flex-direction:column;align-items:center;gap:3px;flex:1}
+.bar-wrap{flex:1;display:flex;align-items:flex-end;justify-content:center;gap:3px;width:100%}
+.bar{width:14px;border-radius:3px 3px 0 0}
+.bar-label{font-size:9px;color:#94A3B8;font-weight:500}
+/* PnL table */
+.pnl-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #F8FAFC;font-size:12px}
+.pnl-row:last-child{border:none;padding-top:8px;font-weight:700;background:#F8FAFC;margin:0 -16px;padding:8px 16px;border-radius:0 0 10px 10px}
+.pnl-label{color:#334155}
+.pnl-value{font-weight:600;color:#0A1628}
+.pnl-green{color:#16A34A}
+.pnl-red{color:#DC2626}
+/* Budget chart */
+.budget-row{margin-bottom:10px}
+.budget-info{display:flex;justify-content:space-between;margin-bottom:4px}
+.budget-name{font-size:12px;font-weight:600;color:#334155}
+.budget-values{font-size:11px;color:#64748B}
+.budget-bar{height:6px;border-radius:3px;background:#F1F5F9;position:relative;overflow:hidden}
+.budget-actual{height:100%;border-radius:3px;background:var(--c);position:absolute;left:0}
+.budget-target{height:100%;border:none;width:1px;background:#334155;position:absolute}
+/* Cash flow mini chart */
+.cashflow{display:flex;align-items:flex-end;gap:4px;height:56px;margin-top:8px}
+.cf-bar{flex:1;border-radius:2px 2px 0 0;min-height:4px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-icon">💰</div>
+    <div>
+      <div class="brand-name">FinancialOS · Dashboard</div>
+      <div class="brand-sub">Visão integrada · Atualizado hoje às 18:42</div>
+    </div>
+  </div>
+  <div class="period-select">
+    <div class="period-btn">Mensal</div>
+    <div class="period-btn active">Trimestral</div>
+    <div class="period-btn">Anual</div>
+  </div>
+  <div class="topbar-right">
+    <div class="export-btn">⬇ Exportar</div>
+    <div class="avatar">FC</div>
+  </div>
+</div>
+<div class="kpi-row">
+  <div class="kpi" style="--c:#16A34A">
+    <div class="kpi-label">Receita Bruta</div>
+    <div class="kpi-value">R$2.4M</div>
+    <div class="kpi-change" style="color:#16A34A">↑ 18% vs trimestre ant.</div>
+  </div>
+  <div class="kpi" style="--c:#DC2626">
+    <div class="kpi-label">Custo Total</div>
+    <div class="kpi-value">R$1.78M</div>
+    <div class="kpi-change" style="color:#DC2626">↑ 12% vs trimestre ant.</div>
+  </div>
+  <div class="kpi" style="--c:#3B82F6">
+    <div class="kpi-label">EBITDA</div>
+    <div class="kpi-value">R$620k</div>
+    <div class="kpi-change" style="color:#16A34A">↑ 31% vs trimestre ant.</div>
+  </div>
+  <div class="kpi" style="--c:#10B981">
+    <div class="kpi-label">Margem EBITDA</div>
+    <div class="kpi-value">25.8%</div>
+    <div class="kpi-change" style="color:#16A34A">↑ 2.4pp vs trimestre ant.</div>
+  </div>
+</div>
+<div class="body">
+  <div class="left-col">
+    <div class="card" style="flex:1.4">
+      <div class="card-title">Receita por Mês (Ano atual vs Anterior) <span class="card-sub">Jan–Dez 2025</span></div>
+      <div class="bar-chart">
+        <div class="bar-group"><div class="bar-wrap"><div class="bar" style="height:52%;background:#10B981"></div><div class="bar" style="height:44%;background:#BBF7D0"></div></div><div class="bar-label">Jan</div></div>
+        <div class="bar-group"><div class="bar-wrap"><div class="bar" style="height:60%;background:#10B981"></div><div class="bar" style="height:50%;background:#BBF7D0"></div></div><div class="bar-label">Fev</div></div>
+        <div class="bar-group"><div class="bar-wrap"><div class="bar" style="height:58%;background:#10B981"></div><div class="bar" style="height:52%;background:#BBF7D0"></div></div><div class="bar-label">Mar</div></div>
+        <div class="bar-group"><div class="bar-wrap"><div class="bar" style="height:72%;background:#10B981"></div><div class="bar" style="height:60%;background:#BBF7D0"></div></div><div class="bar-label">Abr</div></div>
+        <div class="bar-group"><div class="bar-wrap"><div class="bar" style="height:68%;background:#10B981"></div><div class="bar" style="height:58%;background:#BBF7D0"></div></div><div class="bar-label">Mai</div></div>
+        <div class="bar-group"><div class="bar-wrap"><div class="bar" style="height:82%;background:#10B981"></div><div class="bar" style="height:70%;background:#BBF7D0"></div></div><div class="bar-label">Jun</div></div>
+        <div class="bar-group"><div class="bar-wrap"><div class="bar" style="height:78%;background:#10B981"></div><div class="bar" style="height:66%;background:#BBF7D0"></div></div><div class="bar-label">Jul</div></div>
+        <div class="bar-group"><div class="bar-wrap"><div class="bar" style="height:90%;background:#10B981"></div><div class="bar" style="height:74%;background:#BBF7D0"></div></div><div class="bar-label">Ago</div></div>
+        <div class="bar-group"><div class="bar-wrap"><div class="bar" style="height:85%;background:#10B981"></div><div class="bar" style="height:72%;background:#BBF7D0"></div></div><div class="bar-label">Set</div></div>
+        <div class="bar-group"><div class="bar-wrap"><div class="bar" style="height:95%;background:#3B82F6"></div><div class="bar" style="height:78%;background:#BFDBFE"></div></div><div class="bar-label">Out</div></div>
+        <div class="bar-group"><div class="bar-wrap"><div class="bar" style="height:45%;background:#CBD5E1;opacity:.4"></div><div class="bar" style="height:80%;background:#CBD5E1;opacity:.4"></div></div><div class="bar-label">Nov</div></div>
+        <div class="bar-group"><div class="bar-wrap"><div class="bar" style="height:45%;background:#CBD5E1;opacity:.4"></div><div class="bar" style="height:82%;background:#CBD5E1;opacity:.4"></div></div><div class="bar-label">Dez</div></div>
+      </div>
+      <div style="display:flex;gap:12px;margin-top:10px">
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:#64748B"><div style="width:10px;height:10px;background:#10B981;border-radius:2px"></div>2025</div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:#64748B"><div style="width:10px;height:10px;background:#BBF7D0;border-radius:2px"></div>2024</div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:#94A3B8"><div style="width:10px;height:10px;background:#CBD5E1;opacity:.4;border-radius:2px"></div>Projetado</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Budget vs Realizado — Q3 2025</div>
+      <div class="budget-row">
+        <div class="budget-info"><div class="budget-name">Receita</div><div class="budget-values">R$782k / R$750k meta</div></div>
+        <div class="budget-bar"><div class="budget-actual" style="--c:#10B981;width:104%"></div><div class="budget-target" style="left:96%"></div></div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-info"><div class="budget-name">Custo de Produto</div><div class="budget-values">R$298k / R$320k meta</div></div>
+        <div class="budget-bar"><div class="budget-actual" style="--c:#3B82F6;width:93%"></div><div class="budget-target" style="left:100%"></div></div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-info"><div class="budget-name">Despesas Operac.</div><div class="budget-values">R$187k / R$180k meta</div></div>
+        <div class="budget-bar"><div class="budget-actual" style="--c:#F59E0B;width:104%"></div><div class="budget-target" style="left:97%"></div></div>
+      </div>
+      <div class="budget-row" style="margin-bottom:0">
+        <div class="budget-info"><div class="budget-name">Marketing</div><div class="budget-values">R$64k / R$80k meta</div></div>
+        <div class="budget-bar"><div class="budget-actual" style="--c:#10B981;width:80%"></div><div class="budget-target" style="left:100%"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="right-col">
+    <div class="card">
+      <div class="card-title">DRE Resumido — Q3 2025</div>
+      <div class="pnl-row"><div class="pnl-label">Receita Bruta</div><div class="pnl-value pnl-green">R$782.400</div></div>
+      <div class="pnl-row"><div class="pnl-label">(-) Deduções</div><div class="pnl-value pnl-red">(R$78.240)</div></div>
+      <div class="pnl-row" style="font-weight:600;border-bottom:2px solid #E2E8F0"><div class="pnl-label">Receita Líquida</div><div class="pnl-value">R$704.160</div></div>
+      <div class="pnl-row"><div class="pnl-label">(-) CPV</div><div class="pnl-value pnl-red">(R$298.000)</div></div>
+      <div class="pnl-row" style="font-weight:600"><div class="pnl-label">Lucro Bruto</div><div class="pnl-value pnl-green">R$406.160</div></div>
+      <div class="pnl-row"><div class="pnl-label">(-) Despesas Op.</div><div class="pnl-value pnl-red">(R$187.000)</div></div>
+      <div class="pnl-row"><div class="pnl-label">(-) Marketing</div><div class="pnl-value pnl-red">(R$64.000)</div></div>
+      <div class="pnl-row"><div class="pnl-label" style="font-size:13px;font-weight:700">EBITDA</div><div class="pnl-value pnl-green" style="font-size:14px">R$155.160</div></div>
+    </div>
+    <div class="card" style="flex:1">
+      <div class="card-title">Fluxo de Caixa Projetado <span class="card-sub">próx. 6 meses</span></div>
+      <div class="cashflow">
+        <div class="cf-bar" style="height:62%;background:#10B981;border-radius:3px 3px 0 0"></div>
+        <div class="cf-bar" style="height:70%;background:#10B981;border-radius:3px 3px 0 0"></div>
+        <div class="cf-bar" style="height:55%;background:#10B981;border-radius:3px 3px 0 0"></div>
+        <div class="cf-bar" style="height:80%;background:#10B981;border-radius:3px 3px 0 0"></div>
+        <div class="cf-bar" style="height:88%;background:#3B82F6;border-radius:3px 3px 0 0;opacity:.7"></div>
+        <div class="cf-bar" style="height:92%;background:#3B82F6;border-radius:3px 3px 0 0;opacity:.7"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:4px">
+        <span style="font-size:9px;color:#94A3B8">Nov</span>
+        <span style="font-size:9px;color:#94A3B8">Dez</span>
+        <span style="font-size:9px;color:#94A3B8">Jan</span>
+        <span style="font-size:9px;color:#94A3B8">Fev</span>
+        <span style="font-size:9px;color:#94A3B8">Mar</span>
+        <span style="font-size:9px;color:#94A3B8">Abr</span>
+      </div>
+      <div style="margin-top:10px;padding:8px;background:#F0FDF4;border-radius:6px;text-align:center">
+        <div style="font-size:18px;font-weight:800;color:#16A34A">R$1.2M</div>
+        <div style="font-size:10px;color:#64748B">Saldo projetado em Abr/26</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

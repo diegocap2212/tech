@@ -21,7 +21,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. LEAD FORM HANDLERS
   initLeadForm('lead-form');
   initLeadForm('lead-form-bottom');
+
+  // 5. PORTFOLIO IFRAME SCALING
+  scalePortfolioIframes();
+  window.addEventListener('resize', scalePortfolioIframes);
 });
+
+function scalePortfolioIframes() {
+  document.querySelectorAll('.portfolio__preview').forEach(function(preview) {
+    var iframe = preview.querySelector('.portfolio__iframe');
+    if (!iframe) return;
+    var scale = preview.offsetWidth / 1200;
+    iframe.style.transform = 'scale(' + scale + ')';
+    preview.style.height = Math.round(750 * scale) + 'px';
+  });
+}
 
 /**
  * Injects the global Navbar into elements with id="navbar-placeholder"

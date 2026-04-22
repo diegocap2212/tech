@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Governança de TI</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#0F172A;color:#E2E8F0;font-size:13px;height:750px;overflow:hidden;display:flex;flex-direction:column}
+.topbar{background:#1E293B;border-bottom:1px solid rgba(255,255,255,.06);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;flex-shrink:0}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-icon{width:34px;height:34px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.brand-name{font-size:17px;font-weight:800;color:#fff}
+.brand-sub{font-size:10px;color:rgba(255,255,255,.4)}
+.health-pill{display:flex;align-items:center;gap:8px;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.25);color:#34D399;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700}
+.topbar-right{display:flex;gap:10px;align-items:center}
+.period-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);padding:6px 14px;border-radius:6px;font-size:12px;font-weight:500}
+.avatar{width:34px;height:34px;border-radius:50%;background:#3B82F6;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.body{display:flex;flex:1;overflow:hidden;padding:16px;gap:14px}
+.left-col{width:280px;flex-shrink:0;display:flex;flex-direction:column;gap:12px}
+.center-col{flex:1;display:flex;flex-direction:column;gap:12px}
+.right-col{width:280px;flex-shrink:0;display:flex;flex-direction:column;gap:12px}
+.card{background:#1E293B;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:16px}
+.card-title{font-size:12px;font-weight:700;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+/* Health gauge */
+.gauge-wrap{display:flex;flex-direction:column;align-items:center;padding:8px 0}
+.gauge-circle{position:relative;width:120px;height:120px}
+.gauge-svg{width:120px;height:120px}
+.gauge-score{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.gauge-num{font-size:32px;font-weight:800;color:#10B981;line-height:1}
+.gauge-label{font-size:10px;color:rgba(255,255,255,.4);margin-top:2px}
+.health-factors{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.factor-row{display:flex;justify-content:space-between;align-items:center;font-size:11px}
+.factor-label{color:rgba(255,255,255,.5)}
+.factor-bar{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.1);margin:0 8px;overflow:hidden}
+.factor-fill{height:100%;border-radius:2px;background:var(--c)}
+.factor-val{color:rgba(255,255,255,.7);font-weight:600;font-size:10px}
+/* Metrics */
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.metric{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:12px}
+.metric-label{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.metric-value{font-size:24px;font-weight:800;color:#fff;line-height:1}
+.metric-tag{font-size:10px;font-weight:600;margin-top:4px}
+/* Compliance */
+.comp-item{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.comp-item:last-child{border:none}
+.comp-left{display:flex;align-items:center;gap:8px}
+.comp-icon{font-size:14px;width:20px;text-align:center}
+.comp-name{font-size:12px;color:rgba(255,255,255,.7)}
+.comp-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px}
+.badge-ok{background:rgba(16,185,129,.2);color:#34D399}
+.badge-warn{background:rgba(245,158,11,.2);color:#FCD34D}
+.badge-fail{background:rgba(239,68,68,.2);color:#FCA5A5}
+/* Tech debt */
+.debt-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.debt-item:last-child{border:none}
+.debt-sev{font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;flex-shrink:0;margin-top:1px}
+.sev-high{background:rgba(239,68,68,.2);color:#FCA5A5}
+.sev-med{background:rgba(245,158,11,.2);color:#FCD34D}
+.sev-low{background:rgba(100,116,139,.2);color:#94A3B8}
+.debt-text{font-size:11px;color:rgba(255,255,255,.65);line-height:1.4}
+.debt-meta{font-size:10px;color:rgba(255,255,255,.3);margin-top:2px}
+/* Incident timeline */
+.incident-row{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.incident-row:last-child{border:none}
+.inc-dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex-shrink:0;margin-top:4px}
+.inc-text{font-size:11px;color:rgba(255,255,255,.6);line-height:1.4}
+.inc-time{font-size:10px;color:rgba(255,255,255,.3);margin-top:2px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-icon">🛡️</div>
+    <div>
+      <div class="brand-name">TechGov · Governança de TI</div>
+      <div class="brand-sub">Painel de controle de saúde tecnológica</div>
+    </div>
+  </div>
+  <div class="health-pill">🟢 Saúde Geral: 82/100</div>
+  <div class="topbar-right">
+    <div class="period-btn">Q3 2025 ▾</div>
+    <div class="avatar">TM</div>
+  </div>
+</div>
+<div class="body">
+  <div class="left-col">
+    <div class="card">
+      <div class="card-title">Score de Saúde</div>
+      <div class="gauge-wrap">
+        <div class="gauge-circle">
+          <svg class="gauge-svg" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="10"/>
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#10B981" stroke-width="10" stroke-linecap="round"
+              stroke-dasharray="258" stroke-dashoffset="45" transform="rotate(-90 60 60)"/>
+          </svg>
+          <div class="gauge-score">
+            <div class="gauge-num">82</div>
+            <div class="gauge-label">/100</div>
+          </div>
+        </div>
+        <div class="health-factors" style="width:100%;margin-top:12px">
+          <div class="factor-row"><span class="factor-label">Segurança</span><div class="factor-bar"><div class="factor-fill" style="--c:#10B981;width:88%"></div></div><span class="factor-val">88</span></div>
+          <div class="factor-row"><span class="factor-label">Performance</span><div class="factor-bar"><div class="factor-fill" style="--c:#3B82F6;width:79%"></div></div><span class="factor-val">79</span></div>
+          <div class="factor-row"><span class="factor-label">Compliance</span><div class="factor-bar"><div class="factor-fill" style="--c:#10B981;width:94%"></div></div><span class="factor-val">94</span></div>
+          <div class="factor-row"><span class="factor-label">Tech Debt</span><div class="factor-bar"><div class="factor-fill" style="--c:#F59E0B;width:62%"></div></div><span class="factor-val">62</span></div>
+          <div class="factor-row"><span class="factor-label">Observab.</span><div class="factor-bar"><div class="factor-fill" style="--c:#3B82F6;width:85%"></div></div><span class="factor-val">85</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Métricas de Operação</div>
+      <div class="metric-grid">
+        <div class="metric">
+          <div class="metric-label">Tech Debt</div>
+          <div class="metric-value" style="color:#F59E0B">12</div>
+          <div class="metric-tag" style="color:#F59E0B">itens ativos</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Compliance</div>
+          <div class="metric-value" style="color:#10B981">94%</div>
+          <div class="metric-tag" style="color:#10B981">conforme</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Cloud Cost</div>
+          <div class="metric-value" style="font-size:20px">R$42k</div>
+          <div class="metric-tag" style="color:#3B82F6">no orçamento</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Incidentes</div>
+          <div class="metric-value" style="color:#10B981">0</div>
+          <div class="metric-tag" style="color:#10B981">este mês</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="center-col">
+    <div class="card" style="flex:1">
+      <div class="card-title">Checklist de Conformidade</div>
+      <div class="comp-item">
+        <div class="comp-left"><span class="comp-icon">🔐</span><span class="comp-name">Autenticação 2FA ativada — Todos os sistemas críticos</span></div>
+        <div class="comp-badge badge-ok">✓ Conforme</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-left"><span class="comp-icon">🔑</span><span class="comp-name">Gerenciamento de secrets — Vault configurado</span></div>
+        <div class="comp-badge badge-ok">✓ Conforme</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-left"><span class="comp-icon">📊</span><span class="comp-name">Logs de auditoria habilitados — 90 dias de retenção</span></div>
+        <div class="comp-badge badge-ok">✓ Conforme</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-left"><span class="comp-icon">🔄</span><span class="comp-name">Backup automatizado — Testado em 15/10</span></div>
+        <div class="comp-badge badge-ok">✓ Conforme</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-left"><span class="comp-icon">⚡</span><span class="comp-name">Dependências desatualizadas — 3 pacotes críticos</span></div>
+        <div class="comp-badge badge-warn">⚠ Pendente</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-left"><span class="comp-icon">🌐</span><span class="comp-name">Certificados SSL — 2 expiram em 30 dias</span></div>
+        <div class="comp-badge badge-warn">⚠ Atenção</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-left"><span class="comp-icon">🛡️</span><span class="comp-name">Pen test trimestral — Último: Jul/25</span></div>
+        <div class="comp-badge badge-ok">✓ Conforme</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-left"><span class="comp-icon">📋</span><span class="comp-name">LGPD — Termo de uso e política atualizada</span></div>
+        <div class="comp-badge badge-ok">✓ Conforme</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Histórico de Incidentes — Q3 2025</div>
+      <div class="incident-row">
+        <div class="inc-dot" style="--c:#10B981"></div>
+        <div><div class="inc-text">Lentidão no banco de dados — resolvido em 4min via auto-scaling</div><div class="inc-time">12/08/2025 · Severity: Low · RCA: pico de acessos</div></div>
+      </div>
+      <div class="incident-row">
+        <div class="inc-dot" style="--c:#F59E0B"></div>
+        <div><div class="inc-text">Falha na integração com API de pagamento — timeout 502</div><div class="inc-time">28/07/2025 · Severity: Med · RCA: instabilidade do provider</div></div>
+      </div>
+      <div class="incident-row">
+        <div class="inc-dot" style="--c:#10B981"></div>
+        <div><div class="inc-text">Deploy com falha no ambiente de staging — rollback automático</div><div class="inc-time">05/07/2025 · Severity: Low · RCA: incompatibilidade de env</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="right-col">
+    <div class="card" style="flex:1">
+      <div class="card-title">Tech Debt Ativo (12 itens)</div>
+      <div class="debt-item">
+        <div class="debt-sev sev-high">HIGH</div>
+        <div><div class="debt-text">Migrar autenticação para OAuth 2.0 — sistema legado</div><div class="debt-meta">Estimativa: 3 sprints · Owner: Backend</div></div>
+      </div>
+      <div class="debt-item">
+        <div class="debt-sev sev-high">HIGH</div>
+        <div><div class="debt-text">Node.js 16 → 20 — versão sem suporte LTS</div><div class="debt-meta">Estimativa: 1 sprint · Owner: DevOps</div></div>
+      </div>
+      <div class="debt-item">
+        <div class="debt-sev sev-med">MED</div>
+        <div><div class="debt-text">Refatorar módulo de relatórios — código duplicado</div><div class="debt-meta">Estimativa: 2 sprints · Owner: Backend</div></div>
+      </div>
+      <div class="debt-item">
+        <div class="debt-sev sev-med">MED</div>
+        <div><div class="debt-text">Adicionar testes E2E no checkout flow</div><div class="debt-meta">Estimativa: 1 sprint · Owner: QA</div></div>
+      </div>
+      <div class="debt-item">
+        <div class="debt-sev sev-low">LOW</div>
+        <div><div class="debt-text">Documentar APIs REST do módulo financeiro</div><div class="debt-meta">Estimativa: 0.5 sprint · Owner: Full-stack</div></div>
+      </div>
+      <div class="debt-item">
+        <div class="debt-sev sev-low">LOW</div>
+        <div><div class="debt-text">Otimizar queries N+1 no módulo de relatórios</div><div class="debt-meta">Estimativa: 1 sprint · Owner: Backend</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Custos de Infraestrutura</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px">
+          <span style="color:rgba(255,255,255,.5)">AWS EC2</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="height:4px;width:60px;border-radius:2px;background:rgba(255,255,255,.06)"><div style="height:100%;width:72%;background:#3B82F6;border-radius:2px"></div></div>
+            <span style="color:rgba(255,255,255,.7);font-weight:600">R$18k</span>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px">
+          <span style="color:rgba(255,255,255,.5)">RDS Database</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="height:4px;width:60px;border-radius:2px;background:rgba(255,255,255,.06)"><div style="height:100%;width:42%;background:#3B82F6;border-radius:2px"></div></div>
+            <span style="color:rgba(255,255,255,.7);font-weight:600">R$11k</span>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px">
+          <span style="color:rgba(255,255,255,.5)">CloudFront + S3</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="height:4px;width:60px;border-radius:2px;background:rgba(255,255,255,.06)"><div style="height:100%;width:25%;background:#10B981;border-radius:2px"></div></div>
+            <span style="color:rgba(255,255,255,.7);font-weight:600">R$6.5k</span>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px">
+          <span style="color:rgba(255,255,255,.5)">Outros serviços</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="height:4px;width:60px;border-radius:2px;background:rgba(255,255,255,.06)"><div style="height:100%;width:25%;background:#F59E0B;border-radius:2px"></div></div>
+            <span style="color:rgba(255,255,255,.7);font-weight:600">R$6.5k</span>
+          </div>
+        </div>
+        <div style="border-top:1px solid rgba(255,255,255,.06);margin-top:4px;padding-top:8px;display:flex;justify-content:space-between">
+          <span style="font-size:12px;font-weight:700;color:#fff">Total mensal</span>
+          <span style="font-size:14px;font-weight:800;color:#10B981">R$42k</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

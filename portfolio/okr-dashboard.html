@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Dashboard OKRs & Flow</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#F8FAFC;color:#1E293B;font-size:13px;height:750px;overflow:hidden;display:flex;flex-direction:column}
+.topbar{background:#4F46E5;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;flex-shrink:0}
+.brand-name{font-size:17px;font-weight:800;color:#fff}
+.brand-sub{font-size:10px;color:rgba(255,255,255,.5)}
+.quarter-select{display:flex;background:rgba(255,255,255,.15);border-radius:8px;overflow:hidden}
+.q-btn{padding:6px 16px;font-size:12px;font-weight:600;color:rgba(255,255,255,.6);cursor:default}
+.q-btn.active{background:rgba(255,255,255,.2);color:#fff}
+.topbar-right{display:flex;gap:10px;align-items:center}
+.score-pill{background:rgba(255,255,255,.2);color:#fff;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700}
+.avatar{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.2);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.body{display:flex;flex:1;overflow:hidden;padding:14px;gap:12px}
+.okr-panel{flex:1.4;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.metrics-panel{flex:1;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.card{background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px}
+.card-title{font-size:12px;font-weight:700;color:#4F46E5;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+/* OKR Objective */
+.objective{border:1px solid #E0E7FF;border-radius:8px;padding:12px 14px;background:#F5F3FF;margin-bottom:6px}
+.obj-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.obj-icon{width:28px;height:28px;border-radius:6px;background:#4F46E5;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;flex-shrink:0}
+.obj-name{font-size:13px;font-weight:700;color:#312E81}
+.obj-score{margin-left:auto;font-size:11px;font-weight:700;color:#4F46E5;background:#EDE9FE;padding:2px 8px;border-radius:20px}
+.obj-progress{height:5px;border-radius:3px;background:#DDD6FE;margin-bottom:8px;overflow:hidden}
+.obj-fill{height:100%;border-radius:3px;background:#4F46E5}
+.kr-list{display:flex;flex-direction:column;gap:5px;padding-left:12px}
+.kr-item{display:flex;align-items:center;gap:8px;font-size:11px}
+.kr-dot{width:6px;height:6px;border-radius:50%;background:var(--c);flex-shrink:0}
+.kr-name{color:#334155;flex:1}
+.kr-prog{font-size:10px;font-weight:600;color:var(--c)}
+.kr-bar{width:80px;height:3px;background:#E2E8F0;border-radius:2px;overflow:hidden}
+.kr-fill{height:100%;background:var(--c);border-radius:2px}
+/* DORA metrics */
+.dora-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.dora-card{background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:10px 12px}
+.dora-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#64748B;margin-bottom:6px}
+.dora-value{font-size:22px;font-weight:800;color:#0A1628;line-height:1;letter-spacing:-.01em}
+.dora-unit{font-size:11px;color:#64748B;font-weight:500}
+.dora-trend{font-size:10px;font-weight:600;margin-top:3px}
+.dora-bar{height:3px;border-radius:2px;background:#F1F5F9;margin-top:6px;overflow:hidden}
+.dora-fill{height:100%;border-radius:2px;background:var(--c)}
+/* Flow metrics */
+.flow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.flow-card{background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:10px}
+.flow-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#64748B;margin-bottom:4px}
+.flow-value{font-size:20px;font-weight:800;color:#0A1628;line-height:1}
+.flow-sub{font-size:10px;color:#94A3B8;margin-top:2px}
+/* Mini sparkline */
+.sparkline{display:flex;align-items:flex-end;gap:2px;height:28px;margin-top:6px}
+.spark-bar{flex:1;border-radius:1px;background:var(--c);min-height:3px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div>
+    <div class="brand-name">OKR Hub · Objetivos & Métricas de Produto</div>
+    <div class="brand-sub">Ciclo Q3 2025 · Squad Alpha, Beta, Dados, Plataforma</div>
+  </div>
+  <div class="quarter-select">
+    <div class="q-btn">Q1</div><div class="q-btn">Q2</div><div class="q-btn active">Q3</div><div class="q-btn">Q4</div>
+  </div>
+  <div class="topbar-right">
+    <div class="score-pill">Score Geral: 0.72 ✓</div>
+    <div class="avatar">PO</div>
+  </div>
+</div>
+<div class="body">
+  <div class="okr-panel">
+    <div class="card" style="flex:1;overflow:hidden">
+      <div class="card-title">Objetivos do Trimestre</div>
+      <!-- Objective 1 -->
+      <div class="objective">
+        <div class="obj-header">
+          <div class="obj-icon">🚀</div>
+          <div class="obj-name">Acelerar a aquisição de novos clientes</div>
+          <div class="obj-score">0.81</div>
+        </div>
+        <div class="obj-progress"><div class="obj-fill" style="width:81%"></div></div>
+        <div class="kr-list">
+          <div class="kr-item" style="--c:#10B981">
+            <div class="kr-dot"></div>
+            <div class="kr-name">Aumentar taxa de conversão de 2.1% para 3.5%</div>
+            <div class="kr-bar"><div class="kr-fill" style="width:88%"></div></div>
+            <div class="kr-prog">88%</div>
+          </div>
+          <div class="kr-item" style="--c:#3B82F6">
+            <div class="kr-dot"></div>
+            <div class="kr-name">Reduzir CAC de R$480 para R$320</div>
+            <div class="kr-bar"><div class="kr-fill" style="width:74%"></div></div>
+            <div class="kr-prog">74%</div>
+          </div>
+          <div class="kr-item" style="--c:#10B981">
+            <div class="kr-dot"></div>
+            <div class="kr-name">Lançar 2 integrações com CRMs líderes</div>
+            <div class="kr-bar"><div class="kr-fill" style="width:100%"></div></div>
+            <div class="kr-prog">100%</div>
+          </div>
+        </div>
+      </div>
+      <!-- Objective 2 -->
+      <div class="objective">
+        <div class="obj-header">
+          <div class="obj-icon">💎</div>
+          <div class="obj-name">Elevar retenção e expansão de receita</div>
+          <div class="obj-score">0.68</div>
+        </div>
+        <div class="obj-progress"><div class="obj-fill" style="width:68%"></div></div>
+        <div class="kr-list">
+          <div class="kr-item" style="--c:#10B981">
+            <div class="kr-dot"></div>
+            <div class="kr-name">NPS de 42 para 60+</div>
+            <div class="kr-bar"><div class="kr-fill" style="width:76%"></div></div>
+            <div class="kr-prog">76%</div>
+          </div>
+          <div class="kr-item" style="--c:#F59E0B">
+            <div class="kr-dot"></div>
+            <div class="kr-name">Reduzir churn de 4.2% para 2.8%</div>
+            <div class="kr-bar"><div class="kr-fill" style="width:55%"></div></div>
+            <div class="kr-prog">55%</div>
+          </div>
+          <div class="kr-item" style="--c:#3B82F6">
+            <div class="kr-dot"></div>
+            <div class="kr-name">Net Revenue Retention > 110%</div>
+            <div class="kr-bar"><div class="kr-fill" style="width:72%"></div></div>
+            <div class="kr-prog">72%</div>
+          </div>
+        </div>
+      </div>
+      <!-- Objective 3 -->
+      <div class="objective">
+        <div class="obj-header">
+          <div class="obj-icon">⚡</div>
+          <div class="obj-name">Excelência em velocidade de entrega</div>
+          <div class="obj-score">0.79</div>
+        </div>
+        <div class="obj-progress"><div class="obj-fill" style="width:79%"></div></div>
+        <div class="kr-list">
+          <div class="kr-item" style="--c:#10B981">
+            <div class="kr-dot"></div>
+            <div class="kr-name">Deploy frequency: 1x/dia para 3x/dia</div>
+            <div class="kr-bar"><div class="kr-fill" style="width:90%"></div></div>
+            <div class="kr-prog">90%</div>
+          </div>
+          <div class="kr-item" style="--c:#F59E0B">
+            <div class="kr-dot"></div>
+            <div class="kr-name">Lead time < 24h (hoje: 38h)</div>
+            <div class="kr-bar"><div class="kr-fill" style="width:63%"></div></div>
+            <div class="kr-prog">63%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="metrics-panel">
+    <div class="card">
+      <div class="card-title">DORA Metrics — Engineering Performance</div>
+      <div class="dora-grid">
+        <div class="dora-card">
+          <div class="dora-label">Deploy Frequency</div>
+          <div class="dora-value">3.2 <span class="dora-unit">/dia</span></div>
+          <div class="dora-trend" style="color:#10B981">↑ Elite (> 1/dia)</div>
+          <div class="dora-bar"><div class="dora-fill" style="--c:#10B981;width:90%"></div></div>
+        </div>
+        <div class="dora-card">
+          <div class="dora-label">Lead Time for Changes</div>
+          <div class="dora-value">4.2 <span class="dora-unit">horas</span></div>
+          <div class="dora-trend" style="color:#10B981">↑ Elite (< 1 dia)</div>
+          <div class="dora-bar"><div class="dora-fill" style="--c:#10B981;width:85%"></div></div>
+        </div>
+        <div class="dora-card">
+          <div class="dora-label">MTTR (Recuperação)</div>
+          <div class="dora-value">18 <span class="dora-unit">min</span></div>
+          <div class="dora-trend" style="color:#10B981">↑ Elite (< 1h)</div>
+          <div class="dora-bar"><div class="dora-fill" style="--c:#10B981;width:95%"></div></div>
+        </div>
+        <div class="dora-card">
+          <div class="dora-label">Change Failure Rate</div>
+          <div class="dora-value">1.2 <span class="dora-unit">%</span></div>
+          <div class="dora-trend" style="color:#10B981">↑ Elite (< 5%)</div>
+          <div class="dora-bar"><div class="dora-fill" style="--c:#10B981;width:95%"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Flow Metrics — Eficiência do Fluxo</div>
+      <div class="flow-grid">
+        <div class="flow-card">
+          <div class="flow-label">Flow Efficiency</div>
+          <div class="flow-value">38<span style="font-size:14px;color:#64748B">%</span></div>
+          <div class="flow-sub">↑ +6pp vs Q2</div>
+          <div class="sparkline" style="--c:#4F46E5">
+            <div class="spark-bar" style="height:40%"></div>
+            <div class="spark-bar" style="height:50%"></div>
+            <div class="spark-bar" style="height:45%"></div>
+            <div class="spark-bar" style="height:60%"></div>
+            <div class="spark-bar" style="height:72%"></div>
+            <div class="spark-bar" style="height:80%"></div>
+            <div class="spark-bar" style="height:90%"></div>
+          </div>
+        </div>
+        <div class="flow-card">
+          <div class="flow-label">WIP Médio</div>
+          <div class="flow-value">12</div>
+          <div class="flow-sub">Limite: 15 itens</div>
+          <div class="sparkline" style="--c:#F59E0B">
+            <div class="spark-bar" style="height:90%"></div>
+            <div class="spark-bar" style="height:80%"></div>
+            <div class="spark-bar" style="height:100%"></div>
+            <div class="spark-bar" style="height:85%"></div>
+            <div class="spark-bar" style="height:70%"></div>
+            <div class="spark-bar" style="height:75%"></div>
+            <div class="spark-bar" style="height:65%"></div>
+          </div>
+        </div>
+        <div class="flow-card">
+          <div class="flow-label">Throughput</div>
+          <div class="flow-value">48<span style="font-size:12px;color:#64748B">/sem</span></div>
+          <div class="flow-sub">↑ +12 vs Q2</div>
+          <div class="sparkline" style="--c:#10B981">
+            <div class="spark-bar" style="height:50%"></div>
+            <div class="spark-bar" style="height:60%"></div>
+            <div class="spark-bar" style="height:65%"></div>
+            <div class="spark-bar" style="height:70%"></div>
+            <div class="spark-bar" style="height:80%"></div>
+            <div class="spark-bar" style="height:85%"></div>
+            <div class="spark-bar" style="height:92%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="flex:1">
+      <div class="card-title">Progresso Geral do Quarter</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px">
+            <span style="color:#334155;font-weight:600">Squad Alpha</span>
+            <span style="color:#4F46E5;font-weight:700">0.82</span>
+          </div>
+          <div style="height:6px;border-radius:3px;background:#F1F5F9"><div style="height:100%;width:82%;border-radius:3px;background:#4F46E5"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px">
+            <span style="color:#334155;font-weight:600">Squad Beta</span>
+            <span style="color:#10B981;font-weight:700">0.74</span>
+          </div>
+          <div style="height:6px;border-radius:3px;background:#F1F5F9"><div style="height:100%;width:74%;border-radius:3px;background:#10B981"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px">
+            <span style="color:#334155;font-weight:600">Squad Dados</span>
+            <span style="color:#F59E0B;font-weight:700">0.61</span>
+          </div>
+          <div style="height:6px;border-radius:3px;background:#F1F5F9"><div style="height:100%;width:61%;border-radius:3px;background:#F59E0B"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px">
+            <span style="color:#334155;font-weight:600">Squad Plataforma</span>
+            <span style="color:#3B82F6;font-weight:700">0.88</span>
+          </div>
+          <div style="height:6px;border-radius:3px;background:#F1F5F9"><div style="height:100%;width:88%;border-radius:3px;background:#3B82F6"></div></div>
+        </div>
+      </div>
+      <div style="margin-top:12px;display:flex;gap:8px">
+        <div style="flex:1;text-align:center;background:#F5F3FF;border:1px solid #DDD6FE;border-radius:8px;padding:8px">
+          <div style="font-size:18px;font-weight:800;color:#4F46E5">0.72</div>
+          <div style="font-size:9px;color:#64748B;text-transform:uppercase;letter-spacing:.06em">Score médio</div>
+        </div>
+        <div style="flex:1;text-align:center;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:8px">
+          <div style="font-size:18px;font-weight:800;color:#16A34A">74%</div>
+          <div style="font-size:9px;color:#64748B;text-transform:uppercase;letter-spacing:.06em">No caminho</div>
+        </div>
+        <div style="flex:1;text-align:center;background:#FFF7ED;border:1px solid #FED7AA;border-radius:8px;padding:8px">
+          <div style="font-size:18px;font-weight:800;color:#EA580C">2</div>
+          <div style="font-size:9px;color:#64748B;text-transform:uppercase;letter-spacing:.06em">Em risco</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
