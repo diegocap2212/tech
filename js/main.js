@@ -57,7 +57,14 @@ function injectNavbar() {
     <nav class="navbar">
       <div class="navbar__inner">
         <a href="${rootPath}index.html" class="navbar__logo">
-          <span class="logo-mark">CT</span>
+          <span class="logo-mark">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="36" height="36" rx="8" fill="#EA580C"/>
+              <path d="M 11 13 A 5 5 0 0 1 11 23" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M 11 9 A 9 9 0 0 1 11 27" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M 11 5 A 13 13 0 0 1 11 31" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </span>
           <div>
             <span class="logo-wordmark">CÉL<em>E</em>RE<span class="logo-tech"> TECH</span></span>
             <span class="logo-tagline">Consultoria · Software · Gestão</span>
