@@ -93,6 +93,11 @@ h2.section-title {
 .logo-wordmark { font-size: 20px; font-weight: 900; color: #fff; letter-spacing: 0.08em; line-height: 1; }
 .logo-wordmark em { font-style: normal; color: var(--orange); }
 .logo-tagline { font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.35); letter-spacing: 0.06em; text-transform: uppercase; display: block; margin-top: 2px; }
+.logo-tech { font-weight: 500; letter-spacing: 0.12em; color: rgba(255,255,255,0.45); margin-left: 2px; }
+.navbar__links { display: flex; align-items: center; gap: 28px; }
+.navbar__links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.6); letter-spacing: 0.02em; transition: color 0.2s; }
+.navbar__links a:hover { color: #ffffff; }
+@media (max-width: 900px) { .navbar__links { display: none; } }
 
 /* Hero */
 #hero { background: var(--navy); padding: 160px 0 100px; position: relative; overflow: hidden; }

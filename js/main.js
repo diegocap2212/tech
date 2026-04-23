@@ -59,18 +59,26 @@ function injectNavbar() {
         <a href="${rootPath}index.html" class="navbar__logo">
           <span class="logo-mark">
             <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="34" height="34" rx="8" fill="rgba(255,255,255,0.06)"/>
-              <path d="M9 10 L18 17 L9 24" stroke="#EA580C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M17 10 L26 17 L17 24" stroke="#EA580C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/>
+              <rect width="34" height="34" rx="8" fill="#EA580C"/>
+              <rect x="3"  y="5"  width="3"  height="24" rx="1" fill="white"/>
+              <rect x="3"  y="5"  width="12" height="3"  rx="1" fill="white"/>
+              <rect x="3"  y="26" width="12" height="3"  rx="1" fill="white"/>
+              <rect x="18" y="5"  width="13" height="3"  rx="1" fill="white"/>
+              <rect x="23" y="8"  width="4"  height="21" rx="1" fill="white"/>
             </svg>
           </span>
           <div>
-            <span class="logo-wordmark">CÉL<em>E</em>RE</span>
-            <span class="logo-tagline">Processos & Tecnologia</span>
+            <span class="logo-wordmark">CÉL<em>E</em>RE<span class="logo-tech"> TECH</span></span>
+            <span class="logo-tagline">Consultoria · Software · Gestão</span>
           </div>
         </a>
         <div style="display:flex;align-items:center;gap:20px;">
-          <a href="${rootPath}${blogPath}index.html" style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.55);letter-spacing:0.02em;">Blog</a>
+          <nav class="navbar__links">
+            <a href="${rootPath}index.html#solucao">Metodologia</a>
+            <a href="${rootPath}index.html#portfolio">Portfólio</a>
+            <a href="${rootPath}index.html#especialistas">Especialistas</a>
+            <a href="${rootPath}${blogPath}index.html">Blog</a>
+          </nav>
           <a ${ctaHref} class="btn btn--primary navbar__cta">
             Diagnóstico Gratuito
           </a>
