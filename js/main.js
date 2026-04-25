@@ -18,8 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 4. LEAD FORM HANDLERS
-  initLeadForm('lead-form');
+  // 4. LEAD FORM HANDLER
   initLeadForm('lead-form-bottom');
 
   // 5. PORTFOLIO IFRAME SCALING
@@ -51,23 +50,22 @@ function injectNavbar() {
   // On blog pages keep WhatsApp link; on LP scroll to the lead form
   const ctaHref = isBlog
     ? 'href="https://api.whatsapp.com/send/?phone=5511991476160&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20C%C3%A9lere%20e%20gostaria%20de%20agendar%20meu%20diagn%C3%B3stico%20gratuito&type=phone_number&app_absent=0" target="_blank"'
-    : 'href="#lead-form-wrap"';
+    : 'href="#cta-final"';
 
   placeholder.innerHTML = `
     <nav class="navbar">
       <div class="navbar__inner">
         <a href="${rootPath}index.html" class="navbar__logo">
           <span class="logo-mark">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="36" height="36" rx="8" fill="#EA580C"/>
-              <path d="M 11 13 A 5 5 0 0 1 11 23" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M 11 9 A 9 9 0 0 1 11 27" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M 11 5 A 13 13 0 0 1 11 31" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <svg width="36" height="36" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="7,7 55,7 49,19 7,19" fill="#EA580C"/>
+              <rect x="7" y="19" width="13" height="24" fill="#EA580C"/>
+              <polygon points="7,43 55,43 49,55 7,55" fill="#EA580C"/>
             </svg>
           </span>
-          <div>
-            <span class="logo-wordmark">CÉL<em>E</em>RE<span class="logo-tech"> TECH</span></span>
-            <span class="logo-tagline">Consultoria · Software · Gestão</span>
+          <div class="logo-wordmark">
+            <span class="logo-name">CÉLERE</span>
+            <span class="logo-sub">TECH</span>
           </div>
         </a>
         <div style="display:flex;align-items:center;gap:20px;">

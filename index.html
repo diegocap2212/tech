@@ -104,7 +104,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
 
   <!-- GLOBAL STYLES -->
-  <link rel="stylesheet" href="css/style.css?v=6" />
+  <link rel="stylesheet" href="css/style.css?v=7" />
 
   <!-- ─── GOOGLE ADS PIXEL ──────────────────────────── -->
   <!-- IMPORTANTE: substitua AW-XXXXXXXXXX pelo seu ID de conversão do Google Ads -->
@@ -141,36 +141,14 @@
         </div>
 
         <div class="hero__visual reveal">
-          <div class="hero__form-card" id="lead-form-wrap">
-            <h3 class="hero__form-title">Agende seu diagnóstico gratuito</h3>
-            <p class="hero__form-sub">30 minutos. Sem compromisso. Você sai com clareza — pagando ou não.</p>
-            <form id="lead-form" class="lead-form" novalidate>
-              <div class="lead-form__field">
-                <input type="text" name="nome" placeholder="Seu nome completo" required autocomplete="name" />
-              </div>
-              <div class="lead-form__field">
-                <input type="text" name="empresa" placeholder="Nome da empresa" required autocomplete="organization" />
-              </div>
-              <div class="lead-form__field">
-                <input type="tel" name="telefone" placeholder="(11) 99999-9999" required autocomplete="tel" />
-              </div>
-              <div class="lead-form__field">
-                <input type="text" name="cargo" placeholder="Seu cargo (ex: CEO, Diretor, Gerente)" required />
-              </div>
-              <button type="submit" class="btn btn--primary lead-form__submit">
-                Quero meu diagnóstico gratuito →
-              </button>
-            </form>
-            <p class="lead-form__privacy">Seus dados são protegidos. Sem spam, jamais.</p>
-            <div class="lead-form__logos">
-              <p class="lead-form__logos-label">Método validado em:</p>
-              <div class="lead-form__logos-strip">
-                <img src="images/renner.png" alt="Lojas Renner" style="height:15px;" />
-                <img src="images/dafiti.png" alt="Dafiti" />
-                <img src="images/pluxee.png" alt="Pluxee" />
-                <img src="images/raia-drogasil.png" alt="Raia Drogasil" />
-              </div>
-            </div>
+          <div class="hero__video">
+            <video
+              src="images/VSLClereV2.mp4"
+              controls
+              preload="metadata"
+              class="hero__video-player"
+              playsinline
+            ></video>
           </div>
         </div>
       </div>
@@ -707,7 +685,7 @@
 <div id="footer-placeholder"></div>
 
 <!-- GLOBAL SCRIPTS -->
-<script src="js/main.js?v=3"></script>
+<script src="js/main.js?v=4"></script>
 
 </body>
 </html>
