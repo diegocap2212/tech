@@ -380,11 +380,13 @@ h1.hero__title em { font-style: normal; color: var(--orange); }
 
 /* Especialistas */
 .spec__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
+.spec__grid--solo { grid-template-columns: 1fr; max-width: 600px; margin-left: auto; margin-right: auto; }
 .spec__card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 40px; }
 .spec__top { display: flex; align-items: center; gap: 24px; margin-bottom: 20px; }
 .spec__avatar { width: 80px; height: 80px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 900; color: var(--orange); flex-shrink: 0; }
+.spec__grid--solo .spec__avatar { width: 110px; height: 110px; }
 .spec__avatar--photo { padding: 0; overflow: hidden; }
-.spec__avatar--photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; border-radius: 50%; }
+.spec__avatar--photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; border-radius: 50%; }
 .spec__info { display: flex; flex-direction: column; gap: 4px; }
 .spec__name { font-size: 20px; font-weight: 700; color: var(--navy); }
 .spec__role { font-size: 12px; font-weight: 600; color: var(--orange); text-transform: uppercase; letter-spacing: 0.08em; }
