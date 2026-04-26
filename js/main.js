@@ -97,9 +97,8 @@ function initLeadForm(formId) {
     const nome     = (form.querySelector('[name="nome"]')?.value     || '').trim();
     const empresa  = (form.querySelector('[name="empresa"]')?.value  || '').trim();
     const telefone = (form.querySelector('[name="telefone"]')?.value || '').trim();
-    const cargo    = (form.querySelector('[name="cargo"]')?.value    || '').trim();
 
-    if (!nome || !empresa || !telefone || !cargo) {
+    if (!nome || !empresa || !telefone) {
       form.querySelectorAll('input').forEach(input => {
         if (!input.value.trim()) input.style.borderColor = '#EF4444';
       });
@@ -112,7 +111,7 @@ function initLeadForm(formId) {
     }
 
     const mensagem = encodeURIComponent(
-      `Olá! Gostaria de agendar meu diagnóstico gratuito.\n\nNome: ${nome}\nEmpresa: ${empresa}\nTelefone: ${telefone}\nCargo: ${cargo}`
+      `Olá! Gostaria de agendar meu diagnóstico gratuito.\n\nNome: ${nome}\nEmpresa: ${empresa}\nTelefone: ${telefone}`
     );
     window.open(`https://api.whatsapp.com/send/?phone=5511991476160&text=${mensagem}`, '_blank');
 

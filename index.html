@@ -346,34 +346,47 @@
   <!-- CASES -->
   <section id="cases" class="section section--light">
     <div class="container">
-      <h2 class="section-title reveal">A transformação na prática</h2>
-      <p class="section-sub reveal">Veja como saímos do caos para o controle total em um de nossos clientes recentes.</p>
-      
-      <div class="case__grid">
-        <div class="case__col case__col--before reveal">
-          <p class="case__col-title">Antes</p>
-          <ul class="case__list">
-            <li>❌ 4 dias para fechar um relatório</li>
-            <li>❌ Erros manuais em 15% dos pedidos</li>
-            <li>❌ Dependência total do gestor</li>
-          </ul>
+      <div class="section-label reveal" style="text-align:center">
+        <span class="label label--orange">Cases reais</span>
+      </div>
+      <h2 class="section-title reveal" style="text-align:center">A transformação na prática</h2>
+      <p class="section-sub reveal" style="margin:0 auto 52px;text-align:center">Problemas reais. Soluções sob medida. Resultados mensuráveis.</p>
+
+      <div class="case__cards">
+
+        <div class="case__card reveal">
+          <span class="case__badge">Delivery & Restaurantes</span>
+          <h3 class="case__card-title">Sistema de Pedidos Próprio</h3>
+          <p class="case__problem">Dependência total do iFood, com comissões que consumiam a margem e zero visibilidade sobre os pedidos em tempo real.</p>
+          <div class="case__divider">↓ Ação Célere</div>
+          <div class="case__result">
+            <span class="case__result-num">147</span>
+            <span class="case__result-label">pedidos/dia<br/>sem pagar comissão</span>
+          </div>
         </div>
-        <div class="case__col case__col--action reveal">
-          <p class="case__col-title">Ação Célere</p>
-          <ul class="case__list">
-            <li>⚙️ Automação de coleta de dados</li>
-            <li>⚙️ Interface customizada p/ equipe</li>
-            <li>⚙️ Dashboards em tempo real</li>
-          </ul>
+
+        <div class="case__card reveal">
+          <span class="case__badge">Empresa Comercial</span>
+          <h3 class="case__card-title">Dashboard de Métricas em Tempo Real</h3>
+          <p class="case__problem">4 dias para fechar um relatório gerencial, com 15% de erro manual em cada fechamento de período.</p>
+          <div class="case__divider">↓ Ação Célere</div>
+          <div class="case__result">
+            <span class="case__result-num">2 min</span>
+            <span class="case__result-label">para gerar qualquer<br/>relatório, erro zero</span>
+          </div>
         </div>
-        <div class="case__col case__col--after reveal">
-          <p class="case__col-title">Depois</p>
-          <ul class="case__list">
-            <li>✅ Relatórios em 2 minutos</li>
-            <li>✅ Erro humano reduzido a zero</li>
-            <li>✅ Equipe autogerenciável</li>
-          </ul>
+
+        <div class="case__card reveal">
+          <span class="case__badge">RH & People Ops</span>
+          <h3 class="case__card-title">Sistema de Hunting e Onboarding</h3>
+          <p class="case__problem">Recrutamento e onboarding espalhados no Excel e WhatsApp — sem rastreabilidade e com perda de candidatos no meio do processo.</p>
+          <div class="case__divider">↓ Ação Célere</div>
+          <div class="case__result">
+            <span class="case__result-num">56</span>
+            <span class="case__result-label">colaboradores com<br/>pipeline rastreável</span>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -569,6 +582,36 @@
     </div>
   </section>
 
+  <!-- DEPOIMENTOS (oculto — alterar style="display:none" para style="display:block" quando tiver depoimentos coletados) -->
+  <!--
+    TEMPLATE DE COLETA (enviar via WhatsApp para clientes dos cases):
+    "Oi [nome], tudo bem? Estou montando a página da Célere e queria muito incluir
+    sua experiência. Consegue me mandar 2 ou 3 frases contando o que mudou na
+    [empresa] depois que a gente implementou o sistema? Pode ser bem direto mesmo,
+    algo tipo 'antes levava X dias, hoje leva Y minutos'. Obrigado!"
+  -->
+  <section id="depoimentos" class="section section--light" style="display:none">
+    <div class="container">
+      <h2 class="section-title reveal" style="text-align:center">O que nossos clientes dizem</h2>
+      <div class="depo__grid">
+        <div class="depo__card reveal">
+          <p class="depo__quote">"[Substituir por depoimento real — 2 a 3 frases descrevendo o impacto da Célere na operação.]"</p>
+          <div class="depo__author">
+            <strong>[Nome do Cliente]</strong>
+            <span>[Cargo] — [Empresa]</span>
+          </div>
+        </div>
+        <div class="depo__card reveal">
+          <p class="depo__quote">"[Substituir por depoimento real — 2 a 3 frases descrevendo o impacto da Célere na operação.]"</p>
+          <div class="depo__author">
+            <strong>[Nome do Cliente]</strong>
+            <span>[Cargo] — [Empresa]</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section id="faq" class="section">
     <div class="container">
@@ -658,9 +701,6 @@
             </div>
             <div class="lead-form__field">
               <input type="tel" name="telefone" placeholder="(11) 99999-9999" required autocomplete="tel" />
-            </div>
-            <div class="lead-form__field">
-              <input type="text" name="cargo" placeholder="Seu cargo" required />
             </div>
           </div>
           <button type="submit" class="btn btn--primary btn--lg lead-form__submit">

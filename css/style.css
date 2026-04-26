@@ -125,48 +125,6 @@ h1.hero__title em { font-style: normal; color: var(--orange); }
 .hero__badge-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 24px; }
 .hero__badge-logos img { height: 22px; width: auto; opacity: 0.95; }
 
-/* Manifesto */
-.section--manifesto {
-  background: var(--navy);
-  padding: 80px 0;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.manifesto__inner {
-  max-width: 780px;
-  margin: 0 auto;
-  text-align: center;
-}
-.manifesto__label {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--orange);
-  margin-bottom: 24px;
-}
-.manifesto__quote {
-  font-size: clamp(26px, 3.5vw, 40px);
-  font-weight: 700;
-  color: rgba(255,255,255,0.75);
-  line-height: 1.35;
-  font-style: italic;
-  margin-bottom: 28px;
-  border: none;
-  padding: 0;
-}
-.manifesto__quote strong {
-  color: #fff;
-  font-style: normal;
-}
-.manifesto__body {
-  font-size: 17px;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.8;
-  max-width: 640px;
-  margin: 0 auto;
-}
-
 /* Hero Bullets */
 .hero__bullets {
   list-style: none;
@@ -290,7 +248,7 @@ h1.hero__title em { font-style: normal; color: var(--orange); }
 .lead-form--inline { gap: 0; }
 .lead-form--inline .lead-form__row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   margin-bottom: 16px;
 }
@@ -407,14 +365,25 @@ h1.hero__title em { font-style: normal; color: var(--orange); }
 @media (max-width: 900px) { .dif__grid { grid-template-columns: 1fr; } }
 
 /* Cases */
-.case__grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 48px; }
-.case__col { border-radius: 12px; padding: 32px; }
-.case__col--before { background: #FEF2F2; border: 1px solid #FECACA; }
-.case__col--action { background: var(--navy); color: #fff; }
-.case__col--after  { background: #F0FDF4; border: 1px solid #BBF7D0; }
-.case__col-title { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; }
-.case__list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-.case__list li { font-size: 15px; display: flex; gap: 10px; }
+.case__cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 0; }
+.case__card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 36px 32px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.case__badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange); background: rgba(234,88,12,0.1); padding: 4px 12px; border-radius: 4px; align-self: flex-start; }
+.case__card-title { font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.3; }
+.case__problem { font-size: 14px; color: var(--slate-light); line-height: 1.7; flex: 1; }
+.case__divider { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--slate-light); padding-top: 8px; border-top: 1px solid var(--border); }
+.case__result { display: flex; align-items: center; gap: 16px; padding: 16px; background: var(--off-white); border-radius: 10px; }
+.case__result-num { font-size: 36px; font-weight: 900; color: var(--orange); line-height: 1; white-space: nowrap; }
+.case__result-label { font-size: 13px; color: var(--slate); line-height: 1.5; }
+@media (max-width: 900px) { .case__cards { grid-template-columns: 1fr; } }
+
+/* Depoimentos */
+.depo__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
+.depo__card { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; padding: 32px; }
+.depo__quote { font-size: 17px; font-style: italic; color: var(--slate); line-height: 1.75; margin-bottom: 20px; }
+.depo__author { display: flex; flex-direction: column; gap: 4px; }
+.depo__author strong { font-size: 15px; font-weight: 700; color: var(--navy); }
+.depo__author span { font-size: 13px; color: var(--slate-light); }
+@media (max-width: 600px) { .depo__grid { grid-template-columns: 1fr; } }
 
 /* Comparativo */
 .comp__table-wrapper { overflow-x: auto; margin-top: 48px; border-radius: 12px; box-shadow: var(--shadow); }
