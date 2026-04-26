@@ -377,13 +377,54 @@ h1.hero__title em { font-style: normal; color: var(--orange); }
 @media (max-width: 900px) { .case__cards { grid-template-columns: 1fr; } }
 
 /* Depoimentos */
-.depo__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
-.depo__card { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; padding: 32px; }
-.depo__quote { font-size: 17px; font-style: italic; color: var(--slate); line-height: 1.75; margin-bottom: 20px; }
-.depo__author { display: flex; flex-direction: column; gap: 4px; }
-.depo__author strong { font-size: 15px; font-weight: 700; color: var(--navy); }
-.depo__author span { font-size: 13px; color: var(--slate-light); }
-@media (max-width: 600px) { .depo__grid { grid-template-columns: 1fr; } }
+.depo__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 48px; }
+.depo__card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.depo__top { display: flex; align-items: flex-start; justify-content: space-between; }
+.depo__stars { color: var(--orange); font-size: 15px; letter-spacing: 3px; }
+.depo__mark {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 72px;
+  line-height: 0.7;
+  color: var(--orange);
+  font-weight: 900;
+  opacity: 0.9;
+  user-select: none;
+}
+.depo__quote {
+  font-size: 17px;
+  font-style: italic;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.8;
+  flex: 1;
+}
+.depo__footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.depo__avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--orange);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+  letter-spacing: 0.04em;
+}
+.depo__author-info { display: flex; flex-direction: column; gap: 3px; }
+.depo__author-info strong { font-size: 15px; font-weight: 700; color: #fff; }
+.depo__author-info span { font-size: 13px; color: rgba(255,255,255,0.45); }
+@media (max-width: 900px) { .depo__grid { grid-template-columns: 1fr; } }
 
 /* Comparativo */
 .comp__table-wrapper { overflow-x: auto; margin-top: 48px; border-radius: 12px; box-shadow: var(--shadow); }

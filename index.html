@@ -582,7 +582,7 @@
     </div>
   </section>
 
-  <!-- DEPOIMENTOS (oculto — alterar style="display:none" para style="display:block" quando tiver depoimentos coletados) -->
+  <!-- DEPOIMENTOS (oculto — remover style="display:none" quando tiver depoimentos coletados) -->
   <!--
     TEMPLATE DE COLETA (enviar via WhatsApp para clientes dos cases):
     "Oi [nome], tudo bem? Estou montando a página da Célere e queria muito incluir
@@ -590,24 +590,44 @@
     [empresa] depois que a gente implementou o sistema? Pode ser bem direto mesmo,
     algo tipo 'antes levava X dias, hoje leva Y minutos'. Obrigado!"
   -->
-  <section id="depoimentos" class="section section--light" style="display:none">
+  <section id="depoimentos" class="section section--dark" style="display:none">
     <div class="container">
+      <div class="section-label reveal" style="text-align:center">
+        <span class="label label--white">Depoimentos</span>
+      </div>
       <h2 class="section-title reveal" style="text-align:center">O que nossos clientes dizem</h2>
       <div class="depo__grid">
+
         <div class="depo__card reveal">
-          <p class="depo__quote">"[Substituir por depoimento real — 2 a 3 frases descrevendo o impacto da Célere na operação.]"</p>
-          <div class="depo__author">
-            <strong>[Nome do Cliente]</strong>
-            <span>[Cargo] — [Empresa]</span>
+          <div class="depo__top">
+            <div class="depo__stars">★★★★★</div>
+            <span class="depo__mark">"</span>
+          </div>
+          <p class="depo__quote">[Substituir por depoimento real — 2 a 3 frases descrevendo o impacto da Célere na operação.]</p>
+          <div class="depo__footer">
+            <div class="depo__avatar">NC</div>
+            <div class="depo__author-info">
+              <strong>[Nome do Cliente]</strong>
+              <span>[Cargo] — [Empresa]</span>
+            </div>
           </div>
         </div>
+
         <div class="depo__card reveal">
-          <p class="depo__quote">"[Substituir por depoimento real — 2 a 3 frases descrevendo o impacto da Célere na operação.]"</p>
-          <div class="depo__author">
-            <strong>[Nome do Cliente]</strong>
-            <span>[Cargo] — [Empresa]</span>
+          <div class="depo__top">
+            <div class="depo__stars">★★★★★</div>
+            <span class="depo__mark">"</span>
+          </div>
+          <p class="depo__quote">[Substituir por depoimento real — 2 a 3 frases descrevendo o impacto da Célere na operação.]</p>
+          <div class="depo__footer">
+            <div class="depo__avatar">NC</div>
+            <div class="depo__author-info">
+              <strong>[Nome do Cliente]</strong>
+              <span>[Cargo] — [Empresa]</span>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
