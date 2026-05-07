@@ -3,61 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1200">
-<title>Sistema de Delivery</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Cardápio Online · Pedidos em Tempo Real — Célere</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:#FFF7ED;color:#1E293B;font-size:13px;height:750px;overflow:hidden}
-.topbar{background:#EA580C;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
-.brand{display:flex;align-items:center;gap:12px}
-.brand-icon{width:36px;height:36px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px}
-.brand-name{font-size:18px;font-weight:800;color:#fff}
-.brand-sub{font-size:11px;color:rgba(255,255,255,.7);margin-top:1px}
-.store-select{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.2);padding:7px 16px;border-radius:8px;color:#fff;font-size:13px;font-weight:600}
-.topbar-right{display:flex;gap:12px;align-items:center}
-.icon-btn{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff}
-.date-badge{background:rgba(255,255,255,.2);color:#fff;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600}
-.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:16px 20px;background:#fff;border-bottom:1px solid #FED7AA}
-.kpi{background:#FFF7ED;border:1px solid #FED7AA;border-radius:10px;padding:14px 16px;text-align:center}
-.kpi-label{font-size:10px;font-weight:600;color:#92400E;text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
-.kpi-value{font-size:32px;font-weight:800;color:#EA580C;line-height:1;letter-spacing:-.02em}
-.kpi-sub{font-size:10px;color:#D97706;margin-top:3px}
-.board{display:flex;gap:0;height:calc(750px - 56px - 72px);overflow:hidden}
-.col{flex:1;padding:12px 8px;border-right:1px solid #FED7AA;display:flex;flex-direction:column}
+body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#1a0a06 0%,#2d1206 100%);color:#F5DEB3;font-size:13px;height:750px;overflow:hidden}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.topbar{background:linear-gradient(90deg,#EA580C,#C94C08);height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;box-shadow:0 4px 20px rgba(234,88,12,.4)}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-icon{width:34px;height:34px;background:rgba(255,255,255,.2);border-radius:9px;display:flex;align-items:center;justify-content:center}
+.brand-icon svg{width:17px;height:17px;stroke:#fff;fill:none;stroke-width:2}
+.brand-name{font-size:16px;font-weight:900;color:#fff;letter-spacing:-.01em}
+.brand-sub{font-size:9px;color:rgba(255,255,255,.65);margin-top:1px}
+.store-select{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);padding:5px 14px;border-radius:7px;color:#fff;font-size:11px;font-weight:700}
+.live-badge{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:700;color:#fff;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);padding:3px 10px;border-radius:20px}
+.live-dot{width:5px;height:5px;border-radius:50%;background:#fff;animation:pulse 1.5s infinite}
+.icon-btn{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center}
+.icon-btn svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.08)}
+.kpi{padding:12px 18px;border-right:1px solid rgba(255,255,255,.07);text-align:center;animation:fadeUp .4s ease both}
+.kpi:last-child{border-right:none}
+.kpi:nth-child(1){animation-delay:.05s}.kpi:nth-child(2){animation-delay:.1s}.kpi:nth-child(3){animation-delay:.15s}.kpi:nth-child(4){animation-delay:.2s}
+.kpi-label{font-size:9px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.kpi-value{font-size:26px;font-weight:900;color:#fff;line-height:1;letter-spacing:-.02em}
+.kpi-sub{font-size:9px;color:rgba(255,255,255,.45);margin-top:2px}
+.board{display:flex;gap:0;height:calc(750px - 54px - 56px);overflow:hidden}
+.col{flex:1;padding:10px 7px;border-right:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column}
 .col:last-child{border-right:none}
-.col-header{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:8px;margin-bottom:10px;background:var(--bg);border:1px solid var(--border)}
-.col-name{font-size:12px;font-weight:700;color:var(--tc)}
-.col-badge{width:22px;height:22px;border-radius:50%;background:var(--tc);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
-.order-card{background:#fff;border:1px solid #FED7AA;border-radius:8px;padding:10px 12px;margin-bottom:7px;border-left:3px solid var(--c)}
-.order-id{font-size:10px;font-weight:700;color:#64748B;margin-bottom:4px}
-.order-name{font-size:12px;font-weight:700;color:#0A1628;margin-bottom:2px}
-.order-items{font-size:11px;color:#64748B;margin-bottom:6px}
+.col-header{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;border-radius:8px;margin-bottom:8px;background:var(--bg);border:1px solid var(--border)}
+.col-name{font-size:11px;font-weight:800;color:var(--tc);display:flex;align-items:center;gap:6px}
+.col-name svg{width:13px;height:13px;stroke:var(--tc);fill:none;stroke-width:2}
+.col-badge{min-width:20px;height:20px;border-radius:6px;background:var(--tc);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;padding:0 5px}
+.order-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:9px 11px;margin-bottom:6px;border-left:2px solid var(--c)}
+.order-id{font-size:9px;font-weight:700;color:rgba(255,255,255,.35);margin-bottom:3px}
+.order-name{font-size:11px;font-weight:800;color:#fff;margin-bottom:2px}
+.order-items{font-size:10px;color:rgba(255,255,255,.5);margin-bottom:6px}
 .order-footer{display:flex;justify-content:space-between;align-items:center}
-.order-value{font-size:12px;font-weight:700;color:#EA580C}
-.order-time{font-size:10px;color:#94A3B8;display:flex;align-items:center;gap:3px}
-.time-badge{font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px}
-.time-ok{background:#F0FDF4;color:#16A34A}
-.time-warn{background:#FFFBEB;color:#D97706}
-.time-late{background:#FEF2F2;color:#DC2626}
-.delivered-count{text-align:center;padding:12px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;margin-bottom:8px}
-.delivered-count strong{font-size:28px;font-weight:800;color:#16A34A;display:block}
-.delivered-count span{font-size:10px;color:#64748B}
+.order-value{font-size:12px;font-weight:800;color:#FB923C}
+.time-badge{font-size:9px;font-weight:700;padding:2px 7px;border-radius:5px}
+.time-ok{background:rgba(16,185,129,.2);color:#34D399;border:1px solid rgba(16,185,129,.2)}
+.time-warn{background:rgba(245,158,11,.2);color:#FBBF24;border:1px solid rgba(245,158,11,.2)}
+.time-late{background:rgba(239,68,68,.2);color:#F87171;border:1px solid rgba(239,68,68,.2)}
+.delivered-count{text-align:center;padding:10px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);border-radius:8px;margin-bottom:7px}
+.delivered-count strong{font-size:26px;font-weight:900;color:#34D399;display:block}
+.delivered-count span{font-size:9px;color:rgba(255,255,255,.4)}
+.delivered-stats{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.d-stat{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.15);border-radius:7px;padding:7px;text-align:center}
+.d-stat-val{font-size:16px;font-weight:900;color:#34D399}
+.d-stat-lbl{font-size:8px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.06em;margin-top:1px}
+.top-items{margin-top:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:7px;padding:8px 10px}
+.top-label{font-size:8px;font-weight:800;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px}
+.top-row{font-size:10px;color:rgba(255,255,255,.65);margin-bottom:3px;display:flex;align-items:center;gap:5px}
+.top-rank{font-size:9px;font-weight:800;color:rgba(255,255,255,.3);width:12px}
 </style>
 </head>
 <body>
 <div class="topbar">
   <div class="brand">
-    <div class="brand-icon">🍕</div>
+    <div class="brand-icon"><svg viewBox="0 0 24 24"><path d="M22 17H2a3 3 0 01-3-3V5a3 3 0 013-3h14a3 3 0 013 3v3"/><path d="M18 8h4l2 4v5h-6V8z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></div>
     <div>
       <div class="brand-name">Cardápio Online</div>
       <div class="brand-sub">Sistema de Pedidos em Tempo Real</div>
     </div>
   </div>
-  <div class="store-select">🏪 Unidade Centro ▾</div>
-  <div class="topbar-right">
-    <div class="date-badge">📅 Ter, 22 Abr · 19:42</div>
-    <div class="icon-btn">🔔</div>
-    <div class="icon-btn">⚙️</div>
+  <div class="store-select">
+    <svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+    Unidade Centro ▾
+  </div>
+  <div style="display:flex;align-items:center;gap:10px">
+    <div class="live-badge"><div class="live-dot"></div>Ter, 22 Mai · 19:42</div>
+    <div class="icon-btn"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div>
+    <div class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M4.93 19.07l1.41-1.41M19.07 19.07l-1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg></div>
   </div>
 </div>
 <div class="kpi-row">
@@ -68,25 +85,25 @@ body{font-family:'Inter',sans-serif;background:#FFF7ED;color:#1E293B;font-size:1
   </div>
   <div class="kpi">
     <div class="kpi-label">Faturamento</div>
-    <div class="kpi-value" style="font-size:26px">R$8.4k</div>
+    <div class="kpi-value" style="font-size:22px">R$8.4k</div>
     <div class="kpi-sub">Ticket médio: R$57</div>
   </div>
   <div class="kpi">
     <div class="kpi-label">Tempo Médio</div>
-    <div class="kpi-value">28<span style="font-size:16px;color:#D97706">min</span></div>
+    <div class="kpi-value">28<span style="font-size:14px;color:rgba(255,255,255,.45)">min</span></div>
     <div class="kpi-sub">-4min vs meta</div>
   </div>
   <div class="kpi">
     <div class="kpi-label">Avaliação</div>
-    <div class="kpi-value">4.8<span style="font-size:18px">⭐</span></div>
+    <div class="kpi-value">4.8<span style="font-size:16px;color:rgba(255,255,255,.5)">★</span></div>
     <div class="kpi-sub">312 avaliações</div>
   </div>
 </div>
 <div class="board">
   <div class="col">
-    <div class="col-header" style="--bg:#FFF7ED;--border:#FED7AA;--tc:#EA580C">
-      <div class="col-name">🆕 Novo Pedido</div>
-      <div class="col-badge" style="background:#EA580C">6</div>
+    <div class="col-header" style="--bg:rgba(234,88,12,.1);--border:rgba(234,88,12,.2);--tc:#FB923C">
+      <div class="col-name"><svg viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>Novo Pedido</div>
+      <div class="col-badge">6</div>
     </div>
     <div class="order-card" style="--c:#EA580C">
       <div class="order-id">#4521 · App Delivery</div>
@@ -108,71 +125,65 @@ body{font-family:'Inter',sans-serif;background:#FFF7ED;color:#1E293B;font-size:1
     </div>
   </div>
   <div class="col">
-    <div class="col-header" style="--bg:#FFFBEB;--border:#FDE68A;--tc:#D97706">
-      <div class="col-name">🔥 Em Preparo</div>
-      <div class="col-badge" style="background:#D97706">8</div>
+    <div class="col-header" style="--bg:rgba(245,158,11,.1);--border:rgba(245,158,11,.2);--tc:#FBBF24">
+      <div class="col-name"><svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 015 5v2H7V7a5 5 0 015-5z"/><path d="M17 9H7l-2 13h14L17 9z"/></svg>Em Preparo</div>
+      <div class="col-badge" style="background:#F59E0B">8</div>
     </div>
-    <div class="order-card" style="--c:#D97706">
+    <div class="order-card" style="--c:#F59E0B">
       <div class="order-id">#4512 · App Delivery</div>
       <div class="order-name">Família Santos</div>
       <div class="order-items">2x Pizza G · 1x Pudim · 2x Suco</div>
       <div class="order-footer"><div class="order-value">R$178,50</div><div class="time-badge time-warn">18min</div></div>
     </div>
-    <div class="order-card" style="--c:#D97706">
+    <div class="order-card" style="--c:#F59E0B">
       <div class="order-id">#4515 · App Próprio</div>
       <div class="order-name">Carla Dias</div>
-      <div class="order-items">1x Risoto · 1x Vinho</div>
+      <div class="order-items">1x Risoto · 1x Vinho Tinto</div>
       <div class="order-footer"><div class="order-value">R$98,00</div><div class="time-badge time-warn">22min</div></div>
     </div>
-    <div class="order-card" style="--c:#D97706">
+    <div class="order-card" style="--c:#EF4444">
       <div class="order-id">#4516 · Chat Direto</div>
       <div class="order-name">Carlos Mendes</div>
-      <div class="order-items">4x Hambúrguer · 4x Fries</div>
-      <div class="order-footer"><div class="order-value">R$212,00</div><div class="time-badge time-late">31min ⚠</div></div>
+      <div class="order-items">4x Hambúrguer Artesanal</div>
+      <div class="order-footer"><div class="order-value">R$212,00</div><div class="time-badge time-late">31min</div></div>
     </div>
   </div>
   <div class="col">
-    <div class="col-header" style="--bg:#EFF6FF;--border:#BFDBFE;--tc:#3B82F6">
-      <div class="col-name">🛵 Saiu p/ Entrega</div>
+    <div class="col-header" style="--bg:rgba(59,130,246,.1);--border:rgba(59,130,246,.2);--tc:#60A5FA">
+      <div class="col-name"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>Saiu p/ Entrega</div>
       <div class="col-badge" style="background:#3B82F6">5</div>
     </div>
     <div class="order-card" style="--c:#3B82F6">
       <div class="order-id">#4507 · App Delivery</div>
       <div class="order-name">Roberto Alves</div>
       <div class="order-items">1x Combo Especial</div>
-      <div class="order-footer"><div class="order-value">R$67,00</div><div class="order-time">🛵 Motoboy: João</div></div>
+      <div class="order-footer"><div class="order-value">R$67,00</div><div style="font-size:9px;color:rgba(255,255,255,.4)">Motoboy: João</div></div>
     </div>
     <div class="order-card" style="--c:#3B82F6">
       <div class="order-id">#4509 · App Próprio</div>
       <div class="order-name">Marina Peres</div>
       <div class="order-items">2x Prato do Dia</div>
-      <div class="order-footer"><div class="order-value">R$86,00</div><div class="order-time">🛵 Motoboy: Carlos</div></div>
+      <div class="order-footer"><div class="order-value">R$86,00</div><div style="font-size:9px;color:rgba(255,255,255,.4)">Motoboy: Carlos</div></div>
     </div>
   </div>
   <div class="col">
-    <div class="col-header" style="--bg:#F0FDF4;--border:#BBF7D0;--tc:#16A34A">
-      <div class="col-name">✅ Entregues Hoje</div>
-      <div class="col-badge" style="background:#16A34A">128</div>
+    <div class="col-header" style="--bg:rgba(16,185,129,.1);--border:rgba(16,185,129,.2);--tc:#34D399">
+      <div class="col-name"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Entregues Hoje</div>
+      <div class="col-badge" style="background:#10B981">128</div>
     </div>
     <div class="delivered-count">
       <strong>128</strong>
       <span>pedidos entregues com sucesso</span>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-      <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:6px;padding:8px;text-align:center">
-        <div style="font-size:18px;font-weight:800;color:#16A34A">R$7.3k</div>
-        <div style="font-size:9px;color:#64748B">Faturado</div>
-      </div>
-      <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:6px;padding:8px;text-align:center">
-        <div style="font-size:18px;font-weight:800;color:#16A34A">97%</div>
-        <div style="font-size:9px;color:#64748B">Satisfação</div>
-      </div>
+    <div class="delivered-stats">
+      <div class="d-stat"><div class="d-stat-val">R$7.3k</div><div class="d-stat-lbl">Faturado</div></div>
+      <div class="d-stat"><div class="d-stat-val">97%</div><div class="d-stat-lbl">Satisfação</div></div>
     </div>
-    <div style="margin-top:10px;font-size:11px;color:#64748B;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:6px;padding:8px">
-      <div style="margin-bottom:4px">🏆 <strong>Top pedidos:</strong></div>
-      <div>1. Pizza Margherita (34x)</div>
-      <div>2. Frango Grelhado (28x)</div>
-      <div>3. Combo Família (21x)</div>
+    <div class="top-items">
+      <div class="top-label">Top pedidos do dia</div>
+      <div class="top-row"><span class="top-rank">1</span>Pizza Margherita <strong style="margin-left:auto;color:#FB923C">34x</strong></div>
+      <div class="top-row"><span class="top-rank">2</span>Frango Grelhado <strong style="margin-left:auto;color:#FB923C">28x</strong></div>
+      <div class="top-row" style="margin-bottom:0"><span class="top-rank">3</span>Combo Família <strong style="margin-left:auto;color:#FB923C">21x</strong></div>
     </div>
   </div>
 </div>

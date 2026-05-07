@@ -7,248 +7,365 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:#0F172A;color:#E2E8F0;font-size:13px;height:750px;overflow:hidden;display:flex;flex-direction:column}
-.topbar{background:#1E293B;border-bottom:1px solid rgba(255,255,255,.06);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;flex-shrink:0}
+body{font-family:'Inter',sans-serif;background:linear-gradient(150deg,#060D1A 0%,#0A1628 55%,#060E1C 100%);color:#E2E8F0;font-size:13px;height:750px;overflow:hidden;display:flex;flex-direction:column}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fillBar{from{width:0}to{width:var(--w,0%)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes gaugeIn{from{stroke-dashoffset:314}to{stroke-dashoffset:57}}
+
+/* Topbar */
+.topbar{background:rgba(10,22,40,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;flex-shrink:0}
 .brand{display:flex;align-items:center;gap:12px}
-.brand-icon{width:34px;height:34px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
-.brand-name{font-size:17px;font-weight:800;color:#fff}
-.brand-sub{font-size:10px;color:rgba(255,255,255,.4)}
-.health-pill{display:flex;align-items:center;gap:8px;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.25);color:#34D399;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700}
+.brand-icon{width:34px;height:34px;background:linear-gradient(135deg,#3B82F6,#1D4ED8);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.brand-name{font-size:16px;font-weight:800;color:#fff}
+.brand-sub{font-size:10px;color:rgba(255,255,255,.32)}
+.health-pill{display:flex;align-items:center;gap:7px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);color:#34D399;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700}
+.health-dot{width:7px;height:7px;border-radius:50%;background:#10B981;animation:pulse 1.8s infinite}
 .topbar-right{display:flex;gap:10px;align-items:center}
-.period-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);padding:6px 14px;border-radius:6px;font-size:12px;font-weight:500}
-.avatar{width:34px;height:34px;border-radius:50%;background:#3B82F6;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
-.body{display:flex;flex:1;overflow:hidden;padding:16px;gap:14px}
-.left-col{width:280px;flex-shrink:0;display:flex;flex-direction:column;gap:12px}
+.period-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.55);padding:6px 14px;border-radius:6px;font-size:12px;font-weight:500}
+.avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#3B82F6,#1D4ED8);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px}
+
+/* Layout */
+.body{display:flex;flex:1;overflow:hidden;padding:14px;gap:12px}
+.left-col{width:268px;flex-shrink:0;display:flex;flex-direction:column;gap:12px}
 .center-col{flex:1;display:flex;flex-direction:column;gap:12px}
-.right-col{width:280px;flex-shrink:0;display:flex;flex-direction:column;gap:12px}
-.card{background:#1E293B;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:16px}
-.card-title{font-size:12px;font-weight:700;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
-/* Health gauge */
-.gauge-wrap{display:flex;flex-direction:column;align-items:center;padding:8px 0}
-.gauge-circle{position:relative;width:120px;height:120px}
-.gauge-svg{width:120px;height:120px}
+.right-col{width:268px;flex-shrink:0;display:flex;flex-direction:column;gap:12px}
+
+.card{background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;animation:fadeUp .4s ease both}
+.card:nth-child(1){animation-delay:.04s}
+.card:nth-child(2){animation-delay:.1s}
+
+.card-title{font-size:10px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px}
+
+/* Gauge */
+.gauge-wrap{display:flex;flex-direction:column;align-items:center;padding:4px 0}
+.gauge-circle{position:relative;width:118px;height:118px}
+.gauge-svg{width:118px;height:118px;display:block}
+.gauge-track{fill:none;stroke:rgba(255,255,255,.06);stroke-width:10}
+.gauge-fill{fill:none;stroke:#10B981;stroke-width:10;stroke-linecap:round;stroke-dasharray:314;stroke-dashoffset:314;animation:gaugeIn 1.3s cubic-bezier(.4,0,.2,1) .3s forwards;transform-origin:59px 59px;transform:rotate(-90deg)}
 .gauge-score{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
-.gauge-num{font-size:32px;font-weight:800;color:#10B981;line-height:1}
-.gauge-label{font-size:10px;color:rgba(255,255,255,.4);margin-top:2px}
-.health-factors{display:flex;flex-direction:column;gap:6px;margin-top:8px}
-.factor-row{display:flex;justify-content:space-between;align-items:center;font-size:11px}
-.factor-label{color:rgba(255,255,255,.5)}
-.factor-bar{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.1);margin:0 8px;overflow:hidden}
-.factor-fill{height:100%;border-radius:2px;background:var(--c)}
-.factor-val{color:rgba(255,255,255,.7);font-weight:600;font-size:10px}
-/* Metrics */
+.gauge-num{font-size:30px;font-weight:800;color:#10B981;line-height:1}
+.gauge-lbl{font-size:10px;color:rgba(255,255,255,.3);margin-top:2px}
+
+.factors{display:flex;flex-direction:column;gap:7px;margin-top:14px;width:100%}
+.frow{display:flex;align-items:center;gap:8px;font-size:11px}
+.flabel{color:rgba(255,255,255,.4);width:60px;flex-shrink:0;font-size:10px}
+.fbar{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.07);overflow:hidden}
+.ffill{height:100%;border-radius:2px;background:var(--c,#10B981);animation:fillBar 1.1s ease .5s both}
+.fval{color:rgba(255,255,255,.55);font-weight:700;font-size:10px;width:24px;text-align:right;flex-shrink:0}
+
+/* Metric grid */
 .metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.metric{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:12px}
-.metric-label{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
-.metric-value{font-size:24px;font-weight:800;color:#fff;line-height:1}
+.metric{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:9px;padding:12px}
+.metric-label{font-size:10px;color:rgba(255,255,255,.32);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.metric-value{font-size:23px;font-weight:800;color:#fff;line-height:1}
 .metric-tag{font-size:10px;font-weight:600;margin-top:4px}
-/* Compliance */
-.comp-item{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04)}
-.comp-item:last-child{border:none}
-.comp-left{display:flex;align-items:center;gap:8px}
-.comp-icon{font-size:14px;width:20px;text-align:center}
-.comp-name{font-size:12px;color:rgba(255,255,255,.7)}
-.comp-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px}
-.badge-ok{background:rgba(16,185,129,.2);color:#34D399}
-.badge-warn{background:rgba(245,158,11,.2);color:#FCD34D}
-.badge-fail{background:rgba(239,68,68,.2);color:#FCA5A5}
+
+/* Compliance checklist */
+.comp-item{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.comp-item:last-child{border:none;padding-bottom:0}
+.comp-left{display:flex;align-items:center;gap:8px;flex:1;min-width:0}
+.comp-icon{width:22px;height:22px;border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ci-ok{background:rgba(59,130,246,.1)}
+.ci-warn{background:rgba(245,158,11,.1)}
+.comp-name{font-size:11px;color:rgba(255,255,255,.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3}
+.comp-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:12px;flex-shrink:0;margin-left:8px;white-space:nowrap}
+.badge-ok{background:rgba(16,185,129,.14);color:#34D399;border:1px solid rgba(16,185,129,.2)}
+.badge-warn{background:rgba(245,158,11,.14);color:#FCD34D;border:1px solid rgba(245,158,11,.2)}
+
 /* Tech debt */
-.debt-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)}
-.debt-item:last-child{border:none}
-.debt-sev{font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;flex-shrink:0;margin-top:1px}
-.sev-high{background:rgba(239,68,68,.2);color:#FCA5A5}
-.sev-med{background:rgba(245,158,11,.2);color:#FCD34D}
-.sev-low{background:rgba(100,116,139,.2);color:#94A3B8}
-.debt-text{font-size:11px;color:rgba(255,255,255,.65);line-height:1.4}
-.debt-meta{font-size:10px;color:rgba(255,255,255,.3);margin-top:2px}
-/* Incident timeline */
-.incident-row{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04)}
-.incident-row:last-child{border:none}
-.inc-dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex-shrink:0;margin-top:4px}
-.inc-text{font-size:11px;color:rgba(255,255,255,.6);line-height:1.4}
-.inc-time{font-size:10px;color:rgba(255,255,255,.3);margin-top:2px}
+.debt-item{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.debt-item:last-child{border:none;padding-bottom:0}
+.debt-sev{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;margin-top:1px;letter-spacing:.04em}
+.sev-high{background:rgba(239,68,68,.18);color:#FCA5A5;border:1px solid rgba(239,68,68,.2)}
+.sev-med{background:rgba(245,158,11,.18);color:#FCD34D;border:1px solid rgba(245,158,11,.2)}
+.sev-low{background:rgba(100,116,139,.18);color:#94A3B8;border:1px solid rgba(100,116,139,.2)}
+.debt-text{font-size:11px;color:rgba(255,255,255,.57);line-height:1.4}
+.debt-meta{font-size:10px;color:rgba(255,255,255,.25);margin-top:2px}
+
+/* Incidents */
+.inc-row{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.inc-row:last-child{border:none;padding-bottom:0}
+.inc-dot{width:8px;height:8px;border-radius:50%;background:var(--c,#10B981);flex-shrink:0;margin-top:4px}
+.inc-text{font-size:11px;color:rgba(255,255,255,.52);line-height:1.35}
+.inc-time{font-size:10px;color:rgba(255,255,255,.24);margin-top:2px}
+
+/* Cost bars */
+.cost-rows{display:flex;flex-direction:column;gap:9px}
+.crow{display:flex;justify-content:space-between;align-items:center;font-size:11px}
+.clabel{color:rgba(255,255,255,.42)}
+.cright{display:flex;align-items:center;gap:8px}
+.cbar{height:4px;width:64px;border-radius:2px;background:rgba(255,255,255,.07);overflow:hidden}
+.cfill{height:100%;border-radius:2px;background:var(--c,#3B82F6);animation:fillBar 1s ease .65s both}
+.cval{color:rgba(255,255,255,.65);font-weight:600;min-width:36px;text-align:right;font-size:11px}
+.ctotal{border-top:1px solid rgba(255,255,255,.07);margin-top:10px;padding-top:10px;display:flex;justify-content:space-between;align-items:center}
 </style>
 </head>
 <body>
+
 <div class="topbar">
   <div class="brand">
-    <div class="brand-icon">🛡️</div>
+    <div class="brand-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    </div>
     <div>
       <div class="brand-name">TechGov · Governança de TI</div>
       <div class="brand-sub">Painel de controle de saúde tecnológica</div>
     </div>
   </div>
-  <div class="health-pill">🟢 Saúde Geral: 82/100</div>
+  <div class="health-pill">
+    <div class="health-dot"></div>
+    Saúde Geral: 82/100
+  </div>
   <div class="topbar-right">
     <div class="period-btn">Q3 2025 ▾</div>
     <div class="avatar">TM</div>
   </div>
 </div>
+
 <div class="body">
+  <!-- LEFT COL -->
   <div class="left-col">
     <div class="card">
       <div class="card-title">Score de Saúde</div>
       <div class="gauge-wrap">
         <div class="gauge-circle">
-          <svg class="gauge-svg" viewBox="0 0 120 120">
-            <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="10"/>
-            <circle cx="60" cy="60" r="50" fill="none" stroke="#10B981" stroke-width="10" stroke-linecap="round"
-              stroke-dasharray="258" stroke-dashoffset="45" transform="rotate(-90 60 60)"/>
+          <svg class="gauge-svg" viewBox="0 0 118 118">
+            <circle class="gauge-track" cx="59" cy="59" r="50"/>
+            <circle class="gauge-fill" cx="59" cy="59" r="50"/>
           </svg>
           <div class="gauge-score">
             <div class="gauge-num">82</div>
-            <div class="gauge-label">/100</div>
+            <div class="gauge-lbl">/100</div>
           </div>
         </div>
-        <div class="health-factors" style="width:100%;margin-top:12px">
-          <div class="factor-row"><span class="factor-label">Segurança</span><div class="factor-bar"><div class="factor-fill" style="--c:#10B981;width:88%"></div></div><span class="factor-val">88</span></div>
-          <div class="factor-row"><span class="factor-label">Performance</span><div class="factor-bar"><div class="factor-fill" style="--c:#3B82F6;width:79%"></div></div><span class="factor-val">79</span></div>
-          <div class="factor-row"><span class="factor-label">Compliance</span><div class="factor-bar"><div class="factor-fill" style="--c:#10B981;width:94%"></div></div><span class="factor-val">94</span></div>
-          <div class="factor-row"><span class="factor-label">Tech Debt</span><div class="factor-bar"><div class="factor-fill" style="--c:#F59E0B;width:62%"></div></div><span class="factor-val">62</span></div>
-          <div class="factor-row"><span class="factor-label">Observab.</span><div class="factor-bar"><div class="factor-fill" style="--c:#3B82F6;width:85%"></div></div><span class="factor-val">85</span></div>
+        <div class="factors">
+          <div class="frow">
+            <span class="flabel">Segurança</span>
+            <div class="fbar"><div class="ffill" style="--c:#10B981;--w:88%"></div></div>
+            <span class="fval">88</span>
+          </div>
+          <div class="frow">
+            <span class="flabel">Performance</span>
+            <div class="fbar"><div class="ffill" style="--c:#3B82F6;--w:79%"></div></div>
+            <span class="fval">79</span>
+          </div>
+          <div class="frow">
+            <span class="flabel">Compliance</span>
+            <div class="fbar"><div class="ffill" style="--c:#10B981;--w:94%"></div></div>
+            <span class="fval">94</span>
+          </div>
+          <div class="frow">
+            <span class="flabel">Tech Debt</span>
+            <div class="fbar"><div class="ffill" style="--c:#F59E0B;--w:62%"></div></div>
+            <span class="fval">62</span>
+          </div>
+          <div class="frow">
+            <span class="flabel">Observab.</span>
+            <div class="fbar"><div class="ffill" style="--c:#3B82F6;--w:85%"></div></div>
+            <span class="fval">85</span>
+          </div>
         </div>
       </div>
     </div>
+
     <div class="card">
       <div class="card-title">Métricas de Operação</div>
       <div class="metric-grid">
         <div class="metric">
           <div class="metric-label">Tech Debt</div>
-          <div class="metric-value" style="color:#F59E0B">12</div>
-          <div class="metric-tag" style="color:#F59E0B">itens ativos</div>
+          <div class="metric-value" style="color:#FCD34D">12</div>
+          <div class="metric-tag" style="color:#FCD34D">itens ativos</div>
         </div>
         <div class="metric">
           <div class="metric-label">Compliance</div>
-          <div class="metric-value" style="color:#10B981">94%</div>
-          <div class="metric-tag" style="color:#10B981">conforme</div>
+          <div class="metric-value" style="color:#34D399">94%</div>
+          <div class="metric-tag" style="color:#34D399">conforme</div>
         </div>
         <div class="metric">
           <div class="metric-label">Cloud Cost</div>
-          <div class="metric-value" style="font-size:20px">R$42k</div>
-          <div class="metric-tag" style="color:#3B82F6">no orçamento</div>
+          <div class="metric-value" style="font-size:18px;color:#60A5FA">R$42k</div>
+          <div class="metric-tag" style="color:#60A5FA">no orçamento</div>
         </div>
         <div class="metric">
           <div class="metric-label">Incidentes</div>
-          <div class="metric-value" style="color:#10B981">0</div>
-          <div class="metric-tag" style="color:#10B981">este mês</div>
+          <div class="metric-value" style="color:#34D399">0</div>
+          <div class="metric-tag" style="color:#34D399">este mês</div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- CENTER COL -->
   <div class="center-col">
-    <div class="card" style="flex:1">
+    <div class="card" style="flex:1;animation-delay:.07s">
       <div class="card-title">Checklist de Conformidade</div>
+
       <div class="comp-item">
-        <div class="comp-left"><span class="comp-icon">🔐</span><span class="comp-name">Autenticação 2FA ativada — Todos os sistemas críticos</span></div>
+        <div class="comp-left">
+          <div class="comp-icon ci-ok">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <span class="comp-name">Autenticação 2FA ativada — Todos os sistemas críticos</span>
+        </div>
         <div class="comp-badge badge-ok">✓ Conforme</div>
       </div>
+
       <div class="comp-item">
-        <div class="comp-left"><span class="comp-icon">🔑</span><span class="comp-name">Gerenciamento de secrets — Vault configurado</span></div>
+        <div class="comp-left">
+          <div class="comp-icon ci-ok">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6M15.5 7.5l3 3"/></svg>
+          </div>
+          <span class="comp-name">Gerenciamento de secrets — Vault configurado</span>
+        </div>
         <div class="comp-badge badge-ok">✓ Conforme</div>
       </div>
+
       <div class="comp-item">
-        <div class="comp-left"><span class="comp-icon">📊</span><span class="comp-name">Logs de auditoria habilitados — 90 dias de retenção</span></div>
+        <div class="comp-left">
+          <div class="comp-icon ci-ok">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <span class="comp-name">Logs de auditoria habilitados — 90 dias de retenção</span>
+        </div>
         <div class="comp-badge badge-ok">✓ Conforme</div>
       </div>
+
       <div class="comp-item">
-        <div class="comp-left"><span class="comp-icon">🔄</span><span class="comp-name">Backup automatizado — Testado em 15/10</span></div>
+        <div class="comp-left">
+          <div class="comp-icon ci-ok">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          </div>
+          <span class="comp-name">Backup automatizado — Testado em 15/10</span>
+        </div>
         <div class="comp-badge badge-ok">✓ Conforme</div>
       </div>
+
       <div class="comp-item">
-        <div class="comp-left"><span class="comp-icon">⚡</span><span class="comp-name">Dependências desatualizadas — 3 pacotes críticos</span></div>
+        <div class="comp-left">
+          <div class="comp-icon ci-warn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FCD34D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <span class="comp-name">Dependências desatualizadas — 3 pacotes críticos</span>
+        </div>
         <div class="comp-badge badge-warn">⚠ Pendente</div>
       </div>
+
       <div class="comp-item">
-        <div class="comp-left"><span class="comp-icon">🌐</span><span class="comp-name">Certificados SSL — 2 expiram em 30 dias</span></div>
+        <div class="comp-left">
+          <div class="comp-icon ci-warn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FCD34D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10z"/></svg>
+          </div>
+          <span class="comp-name">Certificados SSL — 2 expiram em 30 dias</span>
+        </div>
         <div class="comp-badge badge-warn">⚠ Atenção</div>
       </div>
+
       <div class="comp-item">
-        <div class="comp-left"><span class="comp-icon">🛡️</span><span class="comp-name">Pen test trimestral — Último: Jul/25</span></div>
+        <div class="comp-left">
+          <div class="comp-icon ci-ok">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <span class="comp-name">Pen test trimestral — Último: Jul/25</span>
+        </div>
         <div class="comp-badge badge-ok">✓ Conforme</div>
       </div>
+
       <div class="comp-item">
-        <div class="comp-left"><span class="comp-icon">📋</span><span class="comp-name">LGPD — Termo de uso e política atualizada</span></div>
+        <div class="comp-left">
+          <div class="comp-icon ci-ok">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
+          </div>
+          <span class="comp-name">LGPD — Termo de uso e política atualizada</span>
+        </div>
         <div class="comp-badge badge-ok">✓ Conforme</div>
       </div>
     </div>
-    <div class="card">
+
+    <div class="card" style="animation-delay:.12s">
       <div class="card-title">Histórico de Incidentes — Q3 2025</div>
-      <div class="incident-row">
+      <div class="inc-row">
         <div class="inc-dot" style="--c:#10B981"></div>
         <div><div class="inc-text">Lentidão no banco de dados — resolvido em 4min via auto-scaling</div><div class="inc-time">12/08/2025 · Severity: Low · RCA: pico de acessos</div></div>
       </div>
-      <div class="incident-row">
+      <div class="inc-row">
         <div class="inc-dot" style="--c:#F59E0B"></div>
         <div><div class="inc-text">Falha na integração com API de pagamento — timeout 502</div><div class="inc-time">28/07/2025 · Severity: Med · RCA: instabilidade do provider</div></div>
       </div>
-      <div class="incident-row">
+      <div class="inc-row">
         <div class="inc-dot" style="--c:#10B981"></div>
-        <div><div class="inc-text">Deploy com falha no ambiente de staging — rollback automático</div><div class="inc-time">05/07/2025 · Severity: Low · RCA: incompatibilidade de env</div></div>
+        <div><div class="inc-text">Deploy com falha no staging — rollback automático executado</div><div class="inc-time">05/07/2025 · Severity: Low · RCA: incompatibilidade de env</div></div>
       </div>
     </div>
   </div>
+
+  <!-- RIGHT COL -->
   <div class="right-col">
-    <div class="card" style="flex:1">
+    <div class="card" style="flex:1;animation-delay:.09s">
       <div class="card-title">Tech Debt Ativo (12 itens)</div>
       <div class="debt-item">
         <div class="debt-sev sev-high">HIGH</div>
-        <div><div class="debt-text">Migrar autenticação para OAuth 2.0 — sistema legado</div><div class="debt-meta">Estimativa: 3 sprints · Owner: Backend</div></div>
+        <div><div class="debt-text">Migrar autenticação para OAuth 2.0 — sistema legado</div><div class="debt-meta">3 sprints · Owner: Backend</div></div>
       </div>
       <div class="debt-item">
         <div class="debt-sev sev-high">HIGH</div>
-        <div><div class="debt-text">Node.js 16 → 20 — versão sem suporte LTS</div><div class="debt-meta">Estimativa: 1 sprint · Owner: DevOps</div></div>
+        <div><div class="debt-text">Node.js 16 → 20 — versão sem suporte LTS</div><div class="debt-meta">1 sprint · Owner: DevOps</div></div>
       </div>
       <div class="debt-item">
         <div class="debt-sev sev-med">MED</div>
-        <div><div class="debt-text">Refatorar módulo de relatórios — código duplicado</div><div class="debt-meta">Estimativa: 2 sprints · Owner: Backend</div></div>
+        <div><div class="debt-text">Refatorar módulo de relatórios — código duplicado</div><div class="debt-meta">2 sprints · Owner: Backend</div></div>
       </div>
       <div class="debt-item">
         <div class="debt-sev sev-med">MED</div>
-        <div><div class="debt-text">Adicionar testes E2E no checkout flow</div><div class="debt-meta">Estimativa: 1 sprint · Owner: QA</div></div>
+        <div><div class="debt-text">Adicionar testes E2E no checkout flow</div><div class="debt-meta">1 sprint · Owner: QA</div></div>
       </div>
       <div class="debt-item">
         <div class="debt-sev sev-low">LOW</div>
-        <div><div class="debt-text">Documentar APIs REST do módulo financeiro</div><div class="debt-meta">Estimativa: 0.5 sprint · Owner: Full-stack</div></div>
+        <div><div class="debt-text">Documentar APIs REST do módulo financeiro</div><div class="debt-meta">0.5 sprint · Owner: Full-stack</div></div>
       </div>
       <div class="debt-item">
         <div class="debt-sev sev-low">LOW</div>
-        <div><div class="debt-text">Otimizar queries N+1 no módulo de relatórios</div><div class="debt-meta">Estimativa: 1 sprint · Owner: Backend</div></div>
+        <div><div class="debt-text">Otimizar queries N+1 no módulo de relatórios</div><div class="debt-meta">1 sprint · Owner: Backend</div></div>
       </div>
     </div>
-    <div class="card">
+
+    <div class="card" style="animation-delay:.14s">
       <div class="card-title">Custos de Infraestrutura</div>
-      <div style="display:flex;flex-direction:column;gap:6px">
-        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px">
-          <span style="color:rgba(255,255,255,.5)">Cloud VMs</span>
-          <div style="display:flex;align-items:center;gap:8px">
-            <div style="height:4px;width:60px;border-radius:2px;background:rgba(255,255,255,.06)"><div style="height:100%;width:72%;background:#3B82F6;border-radius:2px"></div></div>
-            <span style="color:rgba(255,255,255,.7);font-weight:600">R$18k</span>
+      <div class="cost-rows">
+        <div class="crow">
+          <span class="clabel">Cloud VMs</span>
+          <div class="cright">
+            <div class="cbar"><div class="cfill" style="--c:#3B82F6;--w:72%"></div></div>
+            <span class="cval">R$18k</span>
           </div>
         </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px">
-          <span style="color:rgba(255,255,255,.5)">Banco de Dados</span>
-          <div style="display:flex;align-items:center;gap:8px">
-            <div style="height:4px;width:60px;border-radius:2px;background:rgba(255,255,255,.06)"><div style="height:100%;width:42%;background:#3B82F6;border-radius:2px"></div></div>
-            <span style="color:rgba(255,255,255,.7);font-weight:600">R$11k</span>
+        <div class="crow">
+          <span class="clabel">Banco de Dados</span>
+          <div class="cright">
+            <div class="cbar"><div class="cfill" style="--c:#3B82F6;--w:42%"></div></div>
+            <span class="cval">R$11k</span>
           </div>
         </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px">
-          <span style="color:rgba(255,255,255,.5)">CDN + Storage</span>
-          <div style="display:flex;align-items:center;gap:8px">
-            <div style="height:4px;width:60px;border-radius:2px;background:rgba(255,255,255,.06)"><div style="height:100%;width:25%;background:#10B981;border-radius:2px"></div></div>
-            <span style="color:rgba(255,255,255,.7);font-weight:600">R$6.5k</span>
+        <div class="crow">
+          <span class="clabel">CDN + Storage</span>
+          <div class="cright">
+            <div class="cbar"><div class="cfill" style="--c:#10B981;--w:25%"></div></div>
+            <span class="cval">R$6.5k</span>
           </div>
         </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px">
-          <span style="color:rgba(255,255,255,.5)">Outros serviços</span>
-          <div style="display:flex;align-items:center;gap:8px">
-            <div style="height:4px;width:60px;border-radius:2px;background:rgba(255,255,255,.06)"><div style="height:100%;width:25%;background:#F59E0B;border-radius:2px"></div></div>
-            <span style="color:rgba(255,255,255,.7);font-weight:600">R$6.5k</span>
+        <div class="crow">
+          <span class="clabel">Outros serviços</span>
+          <div class="cright">
+            <div class="cbar"><div class="cfill" style="--c:#F59E0B;--w:25%"></div></div>
+            <span class="cval">R$6.5k</span>
           </div>
         </div>
-        <div style="border-top:1px solid rgba(255,255,255,.06);margin-top:4px;padding-top:8px;display:flex;justify-content:space-between">
+        <div class="ctotal">
           <span style="font-size:12px;font-weight:700;color:#fff">Total mensal</span>
-          <span style="font-size:14px;font-weight:800;color:#10B981">R$42k</span>
+          <span style="font-size:14px;font-weight:800;color:#34D399">R$42k</span>
         </div>
       </div>
     </div>
