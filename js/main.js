@@ -22,23 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. LEAD FORM HANDLERS
   initLeadForm('lead-form-hero');
   initLeadForm('lead-form-bottom');
-
-  // 5. PORTFOLIO IFRAME SCALING
-  scalePortfolioIframes();
-  window.addEventListener('resize', scalePortfolioIframes);
 });
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-function scalePortfolioIframes() {
-  document.querySelectorAll('.portfolio__preview').forEach(function(preview) {
-    var iframe = preview.querySelector('.portfolio__iframe');
-    if (!iframe) return;
-    var scale = preview.offsetWidth / 1200;
-    iframe.style.transform = 'scale(' + scale + ')';
-    preview.style.height = Math.round(750 * scale) + 'px';
-  });
-}
 
 /**
  * Injects the global Navbar into elements with id="navbar-placeholder"
@@ -75,7 +61,6 @@ function injectNavbar() {
         <div class="navbar__right">
           <nav class="navbar__links" id="navbar-links">
             <a href="${rootPath}index.html#solucao">Metodologia</a>
-            <a href="${rootPath}index.html#portfolio">Portfólio</a>
             <a href="${rootPath}index.html#especialistas">Especialistas</a>
             <a href="${rootPath}${blogPath}index.html">Blog</a>
             <a ${ctaHref} class="navbar__links-cta">Diagnóstico Gratuito</a>
@@ -184,7 +169,6 @@ function injectFooter() {
             <h4 class="footer__col-title">Navegação</h4>
             <ul class="footer__links">
               <li><a href="${rootPath}index.html#solucao">Metodologia</a></li>
-              <li><a href="${rootPath}index.html#portfolio">Portfólio</a></li>
               <li><a href="${rootPath}index.html#especialistas">Especialistas</a></li>
               <li><a href="${rootPath}index.html#faq">Perguntas Frequentes</a></li>
             </ul>

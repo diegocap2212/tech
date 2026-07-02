@@ -858,99 +858,6 @@ h1.hero__title {
 .pilar__title { font-size: 18px; font-weight: 700; color: var(--text-hi); margin-bottom: 10px; }
 .pilar__text { font-size: 14px; color: var(--text-mid); line-height: 1.7; }
 
-/* ── 4.5 PORTFÓLIO ── */
-#portfolio {
-  background: radial-gradient(ellipse 60% 40% at 80% 0%, rgba(234, 88, 12, 0.06), transparent 60%), var(--navy-950);
-}
-.portfolio__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 0;
-}
-.portfolio__card {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--r-md);
-  overflow: hidden;
-  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
-}
-.portfolio__card:hover {
-  box-shadow: var(--shadow-md), 0 0 32px rgba(234, 88, 12, 0.12);
-  transform: translateY(-5px);
-  border-color: rgba(234, 88, 12, 0.35);
-}
-.portfolio__preview {
-  width: 100%;
-  overflow: hidden;
-  background: var(--navy-900);
-  position: relative;
-  border-bottom: 1px solid var(--glass-border);
-}
-.portfolio__overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(6, 13, 26, 0.8);
-  backdrop-filter: blur(4px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  z-index: 2;
-}
-.portfolio__card:hover .portfolio__overlay { opacity: 1; }
-.portfolio__overlay-name {
-  font-size: 15px;
-  font-weight: 700;
-  color: #fff;
-  text-align: center;
-  padding: 0 16px;
-}
-.portfolio__overlay-btn {
-  background: var(--grad-brand);
-  color: #fff;
-  border: none;
-  padding: 10px 22px;
-  border-radius: var(--r-sm);
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-.portfolio__overlay-btn:hover { box-shadow: var(--glow-orange); transform: translateY(-1px); }
-.portfolio__iframe {
-  width: 1200px;
-  height: 750px;
-  border: none;
-  pointer-events: none;
-  transform-origin: top left;
-  display: block;
-}
-.portfolio__info { padding: 18px 20px 20px; }
-.portfolio__tag {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--orange-light);
-  background: rgba(234, 88, 12, 0.12);
-  border: 1px solid rgba(234, 88, 12, 0.2);
-  padding: 3px 10px;
-  border-radius: var(--r-full);
-}
-.portfolio__title {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text-hi);
-  margin: 10px 0 6px;
-  line-height: 1.3;
-}
-.portfolio__desc { font-size: 13px; color: var(--text-low); line-height: 1.6; }
-
 /* ── 4.6 COMPARATIVO ── */
 .comp__table-wrapper {
   overflow-x: auto;
@@ -1296,7 +1203,6 @@ body:not(.page-dark) .faq__a-inner { color: var(--slate); }
   .dor__grid { grid-template-columns: 1fr; }
   .solucao__grid { grid-template-columns: 1fr; gap: 48px; }
   .pilares__grid { grid-template-columns: 1fr; margin-top: 48px; }
-  .portfolio__grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
   .case__cards { grid-template-columns: 1fr; }
   .spec__grid { grid-template-columns: 1fr; }
   .lead-form--inline .lead-form__row { grid-template-columns: 1fr 1fr; }
@@ -1309,7 +1215,6 @@ body:not(.page-dark) .faq__a-inner { color: var(--slate); }
   .stats__grid { grid-template-columns: 1fr 1fr; gap: 12px; }
   .stat { padding: 26px 12px; }
   .stat__num { font-size: 36px; }
-  .portfolio__grid { grid-template-columns: 1fr; }
   .dor__callout { padding: 28px 24px; }
   .spec__quote-content { padding: 32px 24px; }
   .btn--lg { font-size: 16px; padding: 16px 28px; }

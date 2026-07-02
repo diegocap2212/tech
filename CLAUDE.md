@@ -47,17 +47,6 @@
 │   ├── dafiti.png          # Logo Dafiti
 │   ├── pluxee.png          # Logo Pluxee
 │   └── raia-drogasil.png   # Logo Raia Drogasil
-├── portfolio/              # Mocks HTML de sistemas (iframes na seção portfólio)
-│   ├── dashboard-metricas.html
-│   ├── hr-system.html
-│   ├── crm-system.html
-│   ├── kanban-board.html
-│   ├── delivery-system.html
-│   ├── logistics-system.html
-│   ├── workflow-system.html
-│   ├── financial-dashboard.html
-│   ├── governance-system.html
-│   └── okr-dashboard.html
 ├── blog/                   # Posts do blog
 │   ├── index.html
 │   └── *.html              # Artigos individuais
@@ -76,11 +65,10 @@
 8. `#solucao` — Metodologia 3 passos: Diagnóstico > Construção > Evolução
 9. `#diferencial` — 3 diferenciais: Consultoria de Processos, Design de Fluxo, Sistema Integrado
 10. `#cases` — Transformação Antes/Ação Célere/Depois de um case real
-11. `#portfolio` — Portfólio de Produtos (10 mocks em iframe, 3 colunas)
-12. `#comparativo` — Tabela vs. consultoria tradicional vs. SaaS vs. Célere
-13. `#especialistas` — Diego Caporusso
-14. `#faq` — 7 perguntas frequentes (accordion)
-15. `#cta-final` — Formulário de lead final (inline 4 colunas)
+11. `#comparativo` — Tabela vs. consultoria tradicional vs. SaaS vs. Célere
+12. `#especialistas` — Diego Caporusso
+13. `#faq` — 7 perguntas frequentes (accordion)
+14. `#cta-final` — Formulário de lead final (inline 4 colunas)
 
 ## Classes CSS Utilitárias Chave
 | Classe | Uso |
@@ -104,7 +92,6 @@
 - `initScrollReveal()` — IntersectionObserver em `.reveal`, `.dor__item`, `.step`, etc.
 - `initLeadForm(id)` — Valida campos → dispara `gtag conversion` → abre WhatsApp
 - `toggleFaq(btn)` — Accordion de FAQ (fecha os demais ao abrir um)
-- `scalePortfolioIframes()` — Escala iframes do portfólio dinamicamente via ResizeObserver
 
 ## Integrações
 - **WhatsApp Business:** +55 11 9 9147-6160
@@ -119,19 +106,3 @@
 
 ## Founders
 - **Diego Caporusso** — Founder & CEO (10+ anos em Raia Drogasil, Lojas Renner, Sodexo, Dafiti)
-
-## Portfólio de Produtos (seção #portfolio)
-Cada card exibe um iframe de uma página HTML standalone em `portfolio/`. As páginas são mocks estáticos de 1200×750px que simulam SaaS reais. O JS escala o iframe dinamicamente para caber no card.
-
-| Mock | Tipo | Arquivo |
-|------|------|---------|
-| Dashboard de Métricas | KPI + Burndown | `portfolio/dashboard-metricas.html` |
-| Sistema de Hunting & Onboarding | RH & People | `portfolio/hr-system.html` |
-| CRM Integrado | Sales CRM | `portfolio/crm-system.html` |
-| Kanban de Produto | Produto/Agile | `portfolio/kanban-board.html` |
-| Sistema de Delivery | Restaurantes | `portfolio/delivery-system.html` |
-| Painel de Logística | Operações | `portfolio/logistics-system.html` |
-| Ways of Working | Processos | `portfolio/workflow-system.html` |
-| Dashboard Financeiro | Financeiro | `portfolio/financial-dashboard.html` |
-| Governança de TI | Tecnologia | `portfolio/governance-system.html` |
-| Dashboard OKRs & Flow | Produto/OKRs | `portfolio/okr-dashboard.html` |
