@@ -193,33 +193,26 @@ h2.section-title {
 }
 .btn--lg { font-size: 18px; padding: 20px 44px; }
 
-/* ─── 3.2 LABELS / BADGES ────────────────────────────────── */
+/* ─── 3.2 LABELS / EYEBROWS ──────────────────────────────── */
 .label {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  padding: 6px 14px;
-  border-radius: var(--r-full);
 }
-.label--orange {
-  background: rgba(234, 88, 12, 0.12);
-  color: var(--orange-light);
-  border: 1px solid rgba(234, 88, 12, 0.25);
-}
-.label--white {
-  background: rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.8);
-}
+.label--orange { color: var(--orange-light); }
 .label--orange::before {
   content: '';
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--orange-light);
-  box-shadow: 0 0 8px rgba(249, 115, 22, 0.9);
+  width: 24px;
+  height: 1px;
+  background: var(--orange);
+  flex-shrink: 0;
+  /* alinha com o centro da 1ª linha quando o texto quebra (mobile) */
+  align-self: flex-start;
+  margin-top: 0.78em;
 }
 
 /* ─── 3.3 GLASS CARD (utility) ───────────────────────────── */
