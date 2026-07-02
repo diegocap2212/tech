@@ -116,10 +116,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
 
   <!-- GLOBAL STYLES -->
-  <link rel="stylesheet" href="css/style.css?v=14" />
+  <link rel="stylesheet" href="css/style.css?v=20" />
 
   <!-- ─── GOOGLE ADS PIXEL ──────────────────────────── -->
   <!-- Google tag (gtag.js) -->
@@ -136,291 +136,232 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5027217286342270"
      crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="page-dark">
 
 <div id="navbar-placeholder"></div>
 
 <main>
-  <!-- HERO -->
+  <!-- 1. HERO -->
   <section id="hero">
+    <div class="hero__glow"></div>
     <div class="container">
-      <div class="hero__inner">
+      <div class="hero__grid">
         <div class="hero__content reveal">
+          <span class="label label--orange hero__eyebrow">Consultoria de Processos + Software Sob Medida</span>
           <h1 class="hero__title">
             Não adaptamos sua empresa ao software.<br/>
-            <em>Entendemos seu processo e criamos a solução ideal.</em>
+            <span class="grad-text">Criamos o software para a sua empresa.</span>
           </h1>
           <p class="hero__sub">
-            Para qualquer estágio do seu negócio — crescimento, reestruturação ou eficiência operacional. Mapeamos seus gargalos e construímos o sistema sob medida, do jeito que você trabalha.
+            Mapeamos seus processos e construímos o sistema do jeito que a sua operação funciona — <strong>até 60% mais barato</strong> do que assinar mais um SaaS que sua equipe usa 5%.
           </p>
           <ul class="hero__bullets">
-            <li><span class="hero__bullet-check">✓</span> Diagnóstico gratuito de 30 minutos, sem compromisso</li>
-            <li><span class="hero__bullet-check">✓</span> Primeiros resultados em 2 a 4 semanas</li>
-            <li><span class="hero__bullet-check">✓</span> Software que se adapta ao seu processo, não ao contrário</li>
+            <li>
+              <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Diagnóstico gratuito de 30 minutos, sem compromisso
+            </li>
+            <li>
+              <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Primeiros resultados em 2 a 4 semanas
+            </li>
+            <li>
+              <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Payback médio em menos de 6 meses
+            </li>
           </ul>
-        </div>
-
-        <div class="hero__visual reveal">
-          <div class="hero__video">
-            <div class="hero__video-wrap">
-              <iframe
-                src="https://player.vimeo.com/video/1186575022?title=0&byline=0&portrait=0"
-                title="Célere Tech — Como transformamos processos em software sob medida"
-                frameborder="0"
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowfullscreen
-                loading="lazy"
-              ></iframe>
+          <div class="hero__trust">
+            <p class="hero__trust-label">Experiência construída em</p>
+            <div class="hero__trust-logos">
+              <img src="images/raia-drogasil.png" alt="Raia Drogasil" loading="lazy" />
+              <img src="images/renner.png" alt="Lojas Renner" loading="lazy" />
+              <img src="images/dafiti.png" alt="Dafiti" loading="lazy" />
+              <img src="images/pluxee.png" alt="Pluxee (Sodexo)" loading="lazy" />
             </div>
           </div>
         </div>
+
+        <div class="hero__form-card border-glow reveal">
+          <h3 class="hero__form-title">Agende seu diagnóstico gratuito</h3>
+          <p class="hero__form-sub"><strong>30 minutos, sem compromisso.</strong> Retornamos em até 1 hora útil.</p>
+          <form id="lead-form-hero" class="lead-form" novalidate>
+            <div class="lead-form__field">
+              <input type="text" name="nome" placeholder="Seu nome" required autocomplete="name" />
+            </div>
+            <div class="lead-form__field">
+              <input type="text" name="empresa" placeholder="Nome da empresa" required autocomplete="organization" />
+            </div>
+            <div class="lead-form__field">
+              <input type="tel" name="telefone" placeholder="(11) 99999-9999" required autocomplete="tel" />
+            </div>
+            <button type="submit" class="btn btn--primary lead-form__submit">
+              Agendar diagnóstico gratuito →
+            </button>
+          </form>
+          <p class="lead-form__privacy lead-form__privacy--light">Seus dados são protegidos. Sem spam, jamais.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FOTO INSTITUCIONAL -->
-  <section id="apresentacao" class="section--foto">
-    <div class="foto__bg">
-      <img src="images/diego.stage.png" alt="Diego Caporusso palestrando sobre automação de processos e metodologia ágil para empresas" class="foto__img" loading="lazy" width="1920" height="1080" />
-      <div class="foto__overlay"></div>
-      <div class="foto__content container reveal">
-        <p class="foto__quote">Grandes empresas funcionam porque têm processo.<br/>Pequenas empresas crescem quando descobrem isso.</p>
-        <p class="foto__autor">Diego Caporusso — Founder & CEO da Célere</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <section id="stats" class="section section--dark">
+  <!-- 2. STATS -->
+  <section id="stats" class="section">
     <div class="container">
-      <div class="stats__grid">
+      <div class="stats__grid stagger">
         <div class="stat reveal">
-          <div class="stat__num">10+</div>
+          <div class="stat__num" data-target="10" data-suffix="+">0+</div>
           <div class="stat__text">Anos de Experiência</div>
         </div>
         <div class="stat reveal">
-          <div class="stat__num">300+</div>
+          <div class="stat__num" data-target="300" data-suffix="+">0+</div>
           <div class="stat__text">Processos Mapeados</div>
         </div>
         <div class="stat reveal">
-          <div class="stat__num">R$ 2M+</div>
+          <div class="stat__num" data-target="2" data-prefix="R$ " data-suffix="M+">R$ 0M+</div>
           <div class="stat__text">Economizados p/ Clientes</div>
         </div>
         <div class="stat reveal">
-          <div class="stat__num">100%</div>
+          <div class="stat__num" data-target="100" data-suffix="%">0%</div>
           <div class="stat__text">Soluções Customizadas</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- DOR -->
-  <section id="dor" class="section section--light">
+  <!-- 3. DOR -->
+  <section id="dor" class="section">
     <div class="container">
-      <div class="section-label reveal">
+      <div class="section-label reveal text-center">
         <span class="label label--orange">Você reconhece isso?</span>
       </div>
-      <h2 class="section-title reveal">Sua operação travou.<br/>O problema tem nome.</h2>
+      <h2 class="section-title reveal text-center">Sua operação travou.<br/>O problema tem nome.</h2>
+      <p class="section-sub reveal">39% das PMEs não utilizam os programas nos quais investiram. Não é falta de esforço da equipe — é falta de aderência da ferramenta ao processo.</p>
 
-      <div class="dor__grid">
-        <div class="dor__item reveal">
-          <p class="dor__text">Cansado de pagar caro por uma ferramenta que não atende o seu processo — e ainda assim ter que adaptar a empresa ao software?</p>
+      <div class="dor__grid stagger">
+        <div class="dor__item glass-card reveal">
+          <div class="dor__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          </div>
+          <h3 class="dor__title">Ferramenta cara que não encaixa</h3>
+          <p class="dor__text">Jira, Salesforce, SAP, TOTVS, Monday, HubSpot… você paga caro por uma plataforma genérica e ainda precisa adaptar a empresa ao software — quando deveria ser o contrário.</p>
         </div>
-        <div class="dor__item reveal">
-          <p class="dor__text">Treinamentos longos e exaustivos para os seus colaboradores, com um custo enorme de gestão que nunca para de crescer?</p>
+        <div class="dor__item glass-card reveal">
+          <div class="dor__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
+          </div>
+          <h3 class="dor__title">Operação presa em planilhas</h3>
+          <p class="dor__text">Versões conflitantes, retrabalho invisível e processos que só funcionam porque estão na memória de uma pessoa-chave. Quando ela sai de férias, a operação para.</p>
         </div>
-        <div class="dor__item reveal">
-          <p class="dor__text">Preso em contratos anuais com Big Techs de SaaS, pagando por funcionalidades que você nunca vai usar e suporte que não entende o seu negócio?</p>
+        <div class="dor__item glass-card reveal">
+          <div class="dor__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h3 class="dor__title">Contratos anuais e licenças sem uso</h3>
+          <p class="dor__text">Treinamentos exaustivos, suporte que não entende o seu negócio e funcionalidades que ninguém abre — enquanto a mensalidade enterprise chega todo mês.</p>
         </div>
+      </div>
+
+      <div class="dor__callout reveal">
+        <p class="dor__callout-text">A culpa não é da sua equipe. <strong>A ferramenta não foi desenhada para o seu processo.</strong></p>
+        <p class="dor__callout-stat">44% das licenças de SaaS globalmente ficam sem uso — custando às empresas médias mais de R$ 60 mil por ano em desperdício. (Zylo SaaS Management Index, 2024)</p>
       </div>
     </div>
   </section>
 
-  <!-- FERRAMENTAS -->
-  <section id="ferramentas" class="section">
-    <div class="container">
-      <div class="section-label reveal text-center">
-        <span class="label label--orange">Você paga. Eles cobram. A operação continua no Excel.</span>
-      </div>
-      <h2 class="section-title reveal text-center">Você reconhece alguma<br/>dessas ferramentas?</h2>
-      <p class="section-sub reveal" style="margin-bottom:52px">39% das PMEs não utilizam os programas nos quais investiram. 61% dos apps SaaS ficam completamente inativos — mesmo com licenças sendo pagas todo mês. Não é falta de esforço. É falta de aderência ao processo.</p>
-
-      <div class="tools__grid">
-        <div class="tools__item reveal">
-          <div class="tools__name">Jira</div>
-          <p class="tools__desc">Desenhado para times de engenharia de software em escala global. Na maioria das empresas, vira um kanban básico que poderia ser um post-it.</p>
-        </div>
-        <div class="tools__item reveal">
-          <div class="tools__name">Salesforce</div>
-          <p class="tools__desc">O CRM mais famoso do mundo — e 50% das suas funcionalidades nunca são utilizadas. Implementação que custa mais do que o problema que resolve.</p>
-        </div>
-        <div class="tools__item reveal">
-          <div class="tools__name">SAP</div>
-          <p class="tools__desc">Anos de implementação, equipe dedicada só para operar e módulos que ninguém sabe para que servem. Feito para Fortune 500, vendido para todos.</p>
-        </div>
-        <div class="tools__item reveal">
-          <div class="tools__name">TOTVS</div>
-          <p class="tools__desc">Líder absoluto no Brasil com 45% do mercado de ERP. Robusto demais para a realidade da maioria das PMEs — e caro demais para o retorno que entrega.</p>
-        </div>
-        <div class="tools__item reveal">
-          <div class="tools__name">Monday.com</div>
-          <p class="tools__desc">Contratado como plataforma de gestão completa. Em semanas vira uma lista de tarefas glorificada — com mensalidade de plataforma enterprise.</p>
-        </div>
-        <div class="tools__item reveal">
-          <div class="tools__name">HubSpot</div>
-          <p class="tools__desc">Pago pelo Marketing Hub, Sales Hub e CRM completo. Usado, na prática, só para disparar e-mail marketing. O resto da assinatura: desperdício puro.</p>
-        </div>
-      </div>
-
-      <div class="tools__callout reveal">
-        <p class="tools__callout-text">A culpa não é da sua equipe. <strong>A ferramenta não foi desenhada para o seu processo.</strong></p>
-        <p class="tools__callout-stat">44% das licenças de SaaS globalmente ficam sem uso — custando às empresas médias mais de R$ 60 mil por ano em desperdício. <span>(Zylo SaaS Management Index, 2024)</span></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- NOVA ERA -->
-  <section id="nova-era" class="section section--dark">
-    <div class="container">
-      <div class="section-label reveal text-center">
-        <span class="label label--orange">Uma nova era</span>
-      </div>
-      <h2 class="section-title reveal text-center">O software empresarial mudou.<br/>A sua empresa já está aproveitando isso?</h2>
-      <p class="section-sub reveal" style="margin-bottom:56px;max-width:700px">Grandes empresas como Salesforce já abrem APIs diretas para que negócios construam suas próprias soluções customizadas. O resultado é uma ferramenta que funciona exatamente para o seu processo — e não o contrário. Logística, RH, Operações, TI, Marketing, Varejo: não importa o setor, a solução se adapta à sua cadeia de valor.</p>
-      <div class="era__grid">
-        <div class="era__card reveal">
-          <div class="era__num">~60%</div>
-          <div class="era__title">Mais barato</div>
-          <p class="era__text">Soluções sob medida custam em média 60% menos do que pacotes SaaS premium carregados de funcionalidades que você nunca vai usar.</p>
-        </div>
-        <div class="era__card reveal">
-          <div class="era__num">≈ 0</div>
-          <div class="era__title">Custo de gestão</div>
-          <p class="era__text">Sem onboarding interminável, sem treinamentos exaustivos e sem suporte terceirizado que não entende a realidade do seu negócio.</p>
-        </div>
-        <div class="era__card reveal">
-          <div class="era__num">↑↑</div>
-          <div class="era__title">Produtividade real</div>
-          <p class="era__text">Colaboradores rendem muito mais quando a ferramenta acompanha passo a passo a cadeia de valor da empresa — não o contrário.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOLUÇÃO -->
+  <!-- 4. SOLUÇÃO / METODOLOGIA -->
   <section id="solucao" class="section">
     <div class="container">
-      <h2 class="section-title reveal">Não é consultoria tradicional. Não é SaaS genérico.<br/>É automação de processos feita para o seu negócio.</h2>
-      <div class="solucao__steps">
-        <div class="step reveal">
-          <div class="step__num">01</div>
-          <div class="step__title">Diagnóstico</div>
-          <p class="step__text">Mapeamos seu processo atual e identificamos gargalos reais.</p>
-        </div>
-        <div class="step reveal">
-          <div class="step__num">02</div>
-          <div class="step__title">Construção</div>
-          <p class="step__text">Desenvolvemos a solução sob medida para a sua operação.</p>
-        </div>
-        <div class="step reveal">
-          <div class="step__num">03</div>
-          <div class="step__title">Evolução</div>
-          <p class="step__text">Você começa a usar em semanas e nós evoluímos com você.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DIFERENCIAL -->
-  <section id="diferencial" class="section section--diferencial">
-    <div class="container">
-      <div class="dif__header">
-        <div class="section-label reveal">
-          <span class="label label--orange">Por que somos diferentes</span>
-        </div>
-        <h2 class="section-title reveal">Software construído sobre processo ruim<br/>só digitaliza o <em>caos</em>.</h2>
-        <p class="dif__intro reveal">No boom atual de ferramentas criadas por IA, surgem dezenas de "SaaS personalizados" — construídos rápido, sem entendimento real de como processos funcionam na prática. O resultado é sempre o mesmo: mais um sistema que não serve para o seu negócio e que a equipe abandona em semanas.</p>
-        <p class="dif__intro reveal">A Célere é diferente. Nossa base são anos de trabalho em <strong>Agilidade e Processos</strong> — know-how que nos permite mapear de ponta a ponta a cadeia de valor da sua empresa antes de escrever uma linha de código. Não adianta criar um sistema sem entender como os processos se integram e onde o valor é gerado ou desperdiçado.</p>
-      </div>
-
-      <div class="dif__grid">
-        <div class="dif__card reveal">
-          <div class="dif__icon">🔍</div>
-          <h3 class="dif__title">Consultoria de Processos</h3>
-          <p class="dif__text">Mapeamos sua cadeia de valor completa — identificando onde o valor é criado, onde é desperdiçado e como cada processo se integra ao negócio. Sem esse mapa, qualquer software é só mais uma ferramenta genérica.</p>
-        </div>
-        <div class="dif__card reveal">
-          <div class="dif__icon">🔄</div>
-          <h3 class="dif__title">Design de Fluxo</h3>
-          <p class="dif__text">Desenhamos como informações, decisões e pessoas fluem pela sua operação — de forma visível, auditável e eficiente. Seja logística, RH, TI, marketing ou varejo: o fluxo certo transforma a entrega de valor.</p>
-        </div>
-        <div class="dif__card reveal">
-          <div class="dif__icon">⚙️</div>
-          <h3 class="dif__title">Sistema Integrado</h3>
-          <p class="dif__text">Só então construímos ou configuramos a tecnologia — 100% alinhada ao seu processo real. Não é software que você adapta à sua empresa. É a sua operação que vira sistema, funcionando de forma fluida e visível.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CASES -->
-  <section id="cases" class="section section--light">
-    <div class="container">
       <div class="section-label reveal text-center">
-        <span class="label label--orange">Cases reais</span>
+        <span class="label label--orange">Como funciona</span>
       </div>
-      <h2 class="section-title reveal text-center">A transformação na prática</h2>
-      <p class="section-sub reveal" style="margin-bottom:52px">Problemas reais. Soluções sob medida. Resultados mensuráveis.</p>
+      <h2 class="section-title reveal text-center">Não é consultoria tradicional. Não é SaaS genérico.<br/>É a sua operação virando sistema.</h2>
+      <p class="section-sub reveal">Anos de experiência em Agilidade e Processos nos permitem mapear a cadeia de valor da sua empresa de ponta a ponta — antes de escrever uma linha de código.</p>
 
-      <div class="case__cards">
-
-        <div class="case__card reveal">
-          <span class="case__badge">Delivery & Restaurantes</span>
-          <h3 class="case__card-title">Sistema de Pedidos Próprio</h3>
-          <p class="case__problem">Dependência total do iFood, com comissões que consumiam a margem e zero visibilidade sobre os pedidos em tempo real.</p>
-          <div class="case__divider">↓ Ação Célere</div>
-          <div class="case__result">
-            <span class="case__result-num">147</span>
-            <span class="case__result-label">pedidos/dia<br/>sem pagar comissão</span>
+      <div class="solucao__grid">
+        <div class="solucao__steps reveal">
+          <div class="step">
+            <div class="step__rail">
+              <div class="step__num">01</div>
+              <div class="step__line"></div>
+            </div>
+            <div class="step__body">
+              <h3 class="step__title">Diagnóstico</h3>
+              <p class="step__text">Mapeamos seu processo atual, identificamos gargalos reais e mostramos onde o valor é criado — e onde é desperdiçado.</p>
+              <span class="step__tag">30 minutos · gratuito</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step__rail">
+              <div class="step__num">02</div>
+              <div class="step__line"></div>
+            </div>
+            <div class="step__body">
+              <h3 class="step__title">Construção</h3>
+              <p class="step__text">Desenhamos o fluxo ideal e desenvolvemos a solução sob medida para a sua operação — 100% alinhada ao processo real.</p>
+              <span class="step__tag">2 a 4 semanas</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step__rail">
+              <div class="step__num">03</div>
+            </div>
+            <div class="step__body">
+              <h3 class="step__title">Evolução</h3>
+              <p class="step__text">Você começa a usar em semanas e nós evoluímos o sistema junto com o crescimento do seu negócio.</p>
+              <span class="step__tag">Melhoria contínua</span>
+            </div>
           </div>
         </div>
 
-        <div class="case__card reveal">
-          <span class="case__badge">Empresa Comercial</span>
-          <h3 class="case__card-title">Dashboard de Métricas em Tempo Real</h3>
-          <p class="case__problem">4 dias para fechar um relatório gerencial, com 15% de erro manual em cada fechamento de período.</p>
-          <div class="case__divider">↓ Ação Célere</div>
-          <div class="case__result">
-            <span class="case__result-num">2 min</span>
-            <span class="case__result-label">para gerar qualquer<br/>relatório, erro zero</span>
+        <div class="solucao__video reveal">
+          <div class="solucao__video-wrap">
+            <iframe
+              src="https://player.vimeo.com/video/1186575022?title=0&byline=0&portrait=0"
+              title="Célere Tech — Como transformamos processos em software sob medida"
+              frameborder="0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
           </div>
         </div>
+      </div>
 
-        <div class="case__card reveal">
-          <span class="case__badge">RH & People Ops</span>
-          <h3 class="case__card-title">Sistema de Hunting e Onboarding</h3>
-          <p class="case__problem">Recrutamento e onboarding espalhados no Excel e WhatsApp — sem rastreabilidade e com perda de candidatos no meio do processo.</p>
-          <div class="case__divider">↓ Ação Célere</div>
-          <div class="case__result">
-            <span class="case__result-num">56</span>
-            <span class="case__result-label">colaboradores com<br/>pipeline rastreável</span>
+      <div class="pilares__grid stagger">
+        <div class="pilar glass-card reveal">
+          <div class="dor__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           </div>
+          <h3 class="pilar__title">Consultoria de Processos</h3>
+          <p class="pilar__text">Mapeamos sua cadeia de valor completa — onde o valor é criado, onde é desperdiçado e como cada processo se integra ao negócio. Sem esse mapa, qualquer software é só mais uma ferramenta genérica.</p>
         </div>
-
+        <div class="pilar glass-card reveal">
+          <div class="dor__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          </div>
+          <h3 class="pilar__title">Design de Fluxo</h3>
+          <p class="pilar__text">Desenhamos como informações, decisões e pessoas fluem pela sua operação — de forma visível, auditável e eficiente. O fluxo certo transforma a entrega de valor.</p>
+        </div>
+        <div class="pilar glass-card reveal">
+          <div class="dor__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+          </div>
+          <h3 class="pilar__title">Sistema Integrado</h3>
+          <p class="pilar__text">Só então construímos ou configuramos a tecnologia — 100% alinhada ao seu processo real. Não é software que você adapta. É a sua operação que vira sistema.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PORTFÓLIO DE PRODUTOS -->
+  <!-- 5. PORTFÓLIO DE PRODUTOS -->
   <section id="portfolio" class="section">
     <div class="container">
       <div class="section-label reveal text-center">
-        <span class="label label--orange">PORTFÓLIO</span>
+        <span class="label label--orange">Portfólio</span>
       </div>
-      <h2 class="section-title reveal text-center">Portfólio de Produtos</h2>
-      <p class="section-sub reveal" style="margin-bottom:52px">Sistemas que construímos do zero — cada um projetado para resolver um problema específico de negócio.</p>
+      <h2 class="section-title reveal text-center">Não vendemos slides.<br/>Construímos sistemas reais.</h2>
+      <p class="section-sub reveal" style="margin-bottom:52px">Cada um destes sistemas foi projetado para resolver um problema específico de negócio. Passe o mouse para explorar.</p>
 
-      <div class="portfolio__grid">
+      <div class="portfolio__grid stagger">
 
         <div class="portfolio__card reveal">
           <div class="portfolio__preview">
@@ -576,10 +517,11 @@
     </div>
   </section>
 
-  <!-- COMPARATIVO -->
+  <!-- 6. COMPARATIVO -->
   <section id="comparativo" class="section">
     <div class="container">
-      <h2 class="section-title reveal">Por que a Célere?</h2>
+      <h2 class="section-title reveal text-center">Por que a Célere?</h2>
+      <p class="section-sub reveal">O momento racional da decisão: compare os três caminhos.</p>
       <div class="comp__table-wrapper reveal">
         <table class="comp__table">
           <thead>
@@ -587,33 +529,33 @@
               <th>Característica</th>
               <th>Consultoria Tradicional</th>
               <th>SaaS de Prateleira</th>
-              <th class="celere-col">Célere</th>
+              <th class="celere-col">Célere<span class="comp__badge">Recomendado</span></th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Adaptação</td>
-              <td>Você se adapta ao método deles</td>
-              <td>Você se adapta ao software</td>
-              <td class="celere-col">O software se adapta a você</td>
+              <td><span class="comp__x">✕</span> Você se adapta ao método deles</td>
+              <td><span class="comp__x">✕</span> Você se adapta ao software</td>
+              <td class="celere-col"><span class="comp__check">✓</span> O software se adapta a você</td>
             </tr>
             <tr>
               <td>Velocidade</td>
-              <td>Meses de reuniões e PDFs</td>
-              <td>Imediato (mas incompleto)</td>
-              <td class="celere-col">Resultados em semanas</td>
+              <td><span class="comp__x">✕</span> Meses de reuniões e PDFs</td>
+              <td><span class="comp__x">✕</span> Imediato (mas incompleto)</td>
+              <td class="celere-col"><span class="comp__check">✓</span> Resultados em semanas</td>
             </tr>
             <tr>
               <td>Custo</td>
-              <td>Altíssimo investimento inicial</td>
-              <td>Mensalidade eterna por usuário</td>
-              <td class="celere-col">Payback em menos de 6 meses</td>
+              <td><span class="comp__x">✕</span> Altíssimo investimento inicial</td>
+              <td><span class="comp__x">✕</span> Mensalidade eterna por usuário</td>
+              <td class="celere-col"><span class="comp__check">✓</span> Payback em menos de 6 meses</td>
             </tr>
             <tr>
               <td>Foco</td>
-              <td>Teoria e Slides</td>
-              <td>Funcionalidades genéricas</td>
-              <td class="celere-col">Sua operação funcionando</td>
+              <td><span class="comp__x">✕</span> Teoria e slides</td>
+              <td><span class="comp__x">✕</span> Funcionalidades genéricas</td>
+              <td class="celere-col"><span class="comp__check">✓</span> Sua operação funcionando</td>
             </tr>
           </tbody>
         </table>
@@ -621,12 +563,71 @@
     </div>
   </section>
 
-  <!-- ESPECIALISTAS -->
-  <section id="especialistas" class="section section--light">
+  <!-- 7. CASES -->
+  <section id="cases" class="section">
     <div class="container">
-      <h2 class="section-title reveal">Quem está por trás da Célere</h2>
-      <div class="spec__grid spec__grid--solo">
-        <div class="spec__card reveal">
+      <div class="section-label reveal text-center">
+        <span class="label label--orange">Cases reais</span>
+      </div>
+      <h2 class="section-title reveal text-center">A transformação na prática</h2>
+      <p class="section-sub reveal" style="margin-bottom:52px">Problemas reais. Soluções sob medida. Resultados mensuráveis.</p>
+
+      <div class="case__cards stagger">
+
+        <div class="case__card glass-card reveal">
+          <span class="case__badge">Delivery & Restaurantes</span>
+          <h3 class="case__card-title">Sistema de Pedidos Próprio</h3>
+          <p class="case__problem">Dependência total do iFood, com comissões que consumiam a margem e zero visibilidade sobre os pedidos em tempo real.</p>
+          <div class="case__divider">↓ Ação Célere</div>
+          <div class="case__result">
+            <span class="case__result-num">147</span>
+            <span class="case__result-label">pedidos/dia<br/>sem pagar comissão</span>
+          </div>
+        </div>
+
+        <div class="case__card glass-card reveal">
+          <span class="case__badge">Empresa Comercial</span>
+          <h3 class="case__card-title">Dashboard de Métricas em Tempo Real</h3>
+          <p class="case__problem">4 dias para fechar um relatório gerencial, com 15% de erro manual em cada fechamento de período.</p>
+          <div class="case__divider">↓ Ação Célere</div>
+          <div class="case__result">
+            <span class="case__result-num">2 min</span>
+            <span class="case__result-label">para gerar qualquer<br/>relatório, erro zero</span>
+          </div>
+        </div>
+
+        <div class="case__card glass-card reveal">
+          <span class="case__badge">RH & People Ops</span>
+          <h3 class="case__card-title">Sistema de Hunting e Onboarding</h3>
+          <p class="case__problem">Recrutamento e onboarding espalhados no Excel e WhatsApp — sem rastreabilidade e com perda de candidatos no meio do processo.</p>
+          <div class="case__divider">↓ Ação Célere</div>
+          <div class="case__result">
+            <span class="case__result-num">56</span>
+            <span class="case__result-label">colaboradores com<br/>pipeline rastreável</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. ESPECIALISTAS -->
+  <section id="especialistas" class="section">
+    <div class="container">
+      <h2 class="section-title reveal text-center">Quem está por trás da Célere</h2>
+      <p class="section-sub reveal" style="margin-bottom:48px">Processos e tecnologia, na mesma mesa desde o primeiro dia.</p>
+
+      <div class="spec__quote-band reveal">
+        <img src="images/diego.stage.png" alt="Diego Caporusso palestrando sobre automação de processos e metodologia ágil para empresas" class="spec__quote-img" loading="lazy" width="1920" height="1080" />
+        <div class="spec__quote-overlay"></div>
+        <div class="spec__quote-content">
+          <p class="spec__quote">Grandes empresas funcionam porque têm processo. Pequenas empresas crescem quando descobrem isso.</p>
+          <p class="spec__quote-autor">Diego Caporusso — Founder & CEO</p>
+        </div>
+      </div>
+
+      <div class="spec__grid stagger">
+        <div class="spec__card glass-card reveal">
           <div class="spec__top">
             <div class="spec__avatar spec__avatar--photo">
               <img src="images/diego.png?v=2" alt="Diego Caporusso — Founder e CEO, especialista em mapeamento de processos e consultoria operacional" />
@@ -638,19 +639,30 @@
           </div>
           <p class="spec__bio">Mais de 10 anos estruturando operações nas maiores empresas do varejo brasileiro — Raia Drogasil, Lojas Renner, Sodexo e Dafiti. Especialista em transformar processos caóticos em sistemas que a equipe realmente usa e que escalam com o crescimento.</p>
         </div>
+        <div class="spec__card glass-card reveal">
+          <div class="spec__top">
+            <div class="spec__avatar">TM</div>
+            <div class="spec__info">
+              <h3 class="spec__name">Tiago Massaro</h3>
+              <p class="spec__role">Co-Founder & CTO</p>
+            </div>
+          </div>
+          <p class="spec__bio">Arquiteto de software especialista em sistemas sob medida. Transforma o processo mapeado em tecnologia que funciona: simples de usar no dia a dia, robusta por trás e pronta para escalar junto com o negócio.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
+  <!-- 9. FAQ -->
   <section id="faq" class="section">
     <div class="container">
-      <h2 class="section-title reveal">Perguntas Frequentes</h2>
+      <h2 class="section-title reveal text-center">Perguntas Frequentes</h2>
       <div class="faq__list">
 
         <div class="faq__item reveal">
           <button class="faq__q" onclick="toggleFaq(this)">
-            Quanto tempo leva para ver resultados? <span class="faq__icon">+</span>
+            Quanto tempo leva para ver resultados?
+            <span class="faq__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
           <div class="faq__a">
             <div class="faq__a-inner">Os primeiros processos automatizados costumam entrar em operação entre 2 a 4 semanas após o diagnóstico inicial. O ritmo depende da complexidade do processo, mas nossa metodologia é focada em entregas rápidas — você vê resultado em semanas, não em meses.</div>
@@ -659,7 +671,8 @@
 
         <div class="faq__item reveal">
           <button class="faq__q" onclick="toggleFaq(this)">
-            O diagnóstico de 30 minutos é realmente gratuito? <span class="faq__icon">+</span>
+            O diagnóstico de 30 minutos é realmente gratuito?
+            <span class="faq__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
           <div class="faq__a">
             <div class="faq__a-inner">Sim, 100% gratuito e sem compromisso. É uma conversa direta para entender onde estão os seus maiores gargalos operacionais e te mostrar o que seria possível resolver — com ou sem a Célere. Se fizer sentido seguirmos juntos, apresentamos uma proposta. Se não, você sai com clareza e sem pagar nada.</div>
@@ -668,7 +681,8 @@
 
         <div class="faq__item reveal">
           <button class="faq__q" onclick="toggleFaq(this)">
-            Eu preciso contratar outros softwares para usar a solução da Célere? <span class="faq__icon">+</span>
+            Eu preciso contratar outros softwares para usar a solução da Célere?
+            <span class="faq__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
           <div class="faq__a">
             <div class="faq__a-inner">Geralmente não. Nós construímos a solução sob medida ou integramos com o que você já usa — para que você pare de pagar mensalidades de ferramentas que a equipe usa 5% das funcionalidades. O objetivo é simplificar, não adicionar mais sistemas.</div>
@@ -677,7 +691,8 @@
 
         <div class="faq__item reveal">
           <button class="faq__q" onclick="toggleFaq(this)">
-            Qual o tamanho de empresa que a Célere atende? <span class="faq__icon">+</span>
+            Qual o tamanho de empresa que a Célere atende?
+            <span class="faq__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
           <div class="faq__a">
             <div class="faq__a-inner">Atendemos pequenas e médias empresas — geralmente com 5 a 200 colaboradores — que já cresceram mas cuja operação ainda depende de planilhas, processos manuais ou da memória de uma pessoa-chave. Se você sente que a empresa está travada na operação enquanto o negócio em si tem potencial, é exatamente para isso que existimos.</div>
@@ -686,7 +701,8 @@
 
         <div class="faq__item reveal">
           <button class="faq__q" onclick="toggleFaq(this)">
-            Como a Célere se diferencia de uma consultoria tradicional ou de um ERP? <span class="faq__icon">+</span>
+            Como a Célere se diferencia de uma consultoria tradicional ou de um ERP?
+            <span class="faq__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
           <div class="faq__a">
             <div class="faq__a-inner">Consultoria tradicional entrega slides e recomendações — você ainda precisa implementar. ERP e SaaS genérico exigem que a sua empresa se adapte ao software. A Célere faz o caminho inverso: entendemos o seu processo do jeito que ele funciona hoje, e construímos ou configuramos uma solução que se adapta a você — com implementação inclusa e suporte real.</div>
@@ -695,7 +711,8 @@
 
         <div class="faq__item reveal">
           <button class="faq__q" onclick="toggleFaq(this)">
-            Quanto custa contratar a Célere? <span class="faq__icon">+</span>
+            Quanto custa contratar a Célere?
+            <span class="faq__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
           <div class="faq__a">
             <div class="faq__a-inner">O investimento varia conforme o escopo do projeto, mas nossa proposta é sempre baseada em retorno real: o payback médio dos nossos clientes é de menos de 6 meses. Começamos com o diagnóstico gratuito justamente para entender o tamanho do problema antes de apresentar qualquer número. Não existe pacote fixo — existe a solução certa para o seu caso.</div>
@@ -704,7 +721,8 @@
 
         <div class="faq__item reveal">
           <button class="faq__q" onclick="toggleFaq(this)">
-            A Célere desenvolve software do zero ou usa plataformas prontas? <span class="faq__icon">+</span>
+            A Célere desenvolve software do zero ou usa plataformas prontas?
+            <span class="faq__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
           <div class="faq__a">
             <div class="faq__a-inner">Usamos a abordagem mais eficiente para cada caso. Às vezes isso significa configurar e integrar ferramentas que você já tem. Outras vezes, desenvolvemos sistemas sob medida do zero. O que nunca fazemos é te vender uma solução padrão que não resolve o seu problema específico. A tecnologia é meio — o processo é o fim.</div>
@@ -715,11 +733,11 @@
     </div>
   </section>
 
-  <!-- CTA FINAL -->
+  <!-- 10. CTA FINAL -->
   <section id="cta-final">
     <div class="container reveal">
-      <h2 class="cta-final__title">Comece com um diagnóstico<br/><em>gratuito de 30 minutos.</em></h2>
-      <p class="cta-final__sub">Preencha o formulário e entraremos em contato em até 1 hora útil.</p>
+      <h2 class="cta-final__title">Comece com um diagnóstico<br/><em class="grad-text">gratuito de 30 minutos.</em></h2>
+      <p class="cta-final__sub">Sem compromisso. Preencha o formulário e entraremos em contato em até 1 hora útil.</p>
       <div class="cta-final__form-wrap">
         <form id="lead-form-bottom" class="lead-form lead-form--inline" novalidate>
           <div class="lead-form__row">
@@ -746,7 +764,7 @@
 <div id="footer-placeholder"></div>
 
 <!-- GLOBAL SCRIPTS -->
-<script src="js/main.js?v=4"></script>
+<script src="js/main.js?v=20"></script>
 
 </body>
 </html>
