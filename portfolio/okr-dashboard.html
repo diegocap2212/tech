@@ -11,7 +11,7 @@ body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#0A1628 0%
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fillBar{from{width:0}to{width:var(--w,0%)}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.topbar{background:linear-gradient(90deg,rgba(79,70,229,.9),rgba(79,70,229,.6));border-bottom:1px solid rgba(255,255,255,.12);backdrop-filter:blur(16px);height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 26px;flex-shrink:0}
+.topbar{background:linear-gradient(90deg,rgba(234,88,12,.85),rgba(201,76,8,.55));border-bottom:1px solid rgba(255,255,255,.12);backdrop-filter:blur(16px);height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 26px;flex-shrink:0}
 .brand-name{font-size:15px;font-weight:800;color:#fff;letter-spacing:-.01em}
 .brand-sub{font-size:9px;color:rgba(255,255,255,.45);margin-top:1px}
 .quarter-select{display:flex;background:rgba(255,255,255,.1);border-radius:7px;overflow:hidden;gap:2px;padding:3px}
@@ -23,16 +23,16 @@ body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#0A1628 0%
 .okr-panel{flex:1.4;display:flex;flex-direction:column;gap:8px;overflow:hidden}
 .metrics-panel{flex:1;display:flex;flex-direction:column;gap:8px;overflow:hidden}
 .card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px 14px;animation:fadeUp .5s ease both}
-.card-title{font-size:10px;font-weight:800;color:rgba(79,70,229,.9);background:rgba(79,70,229,.1);border:1px solid rgba(79,70,229,.2);display:inline-block;padding:3px 9px;border-radius:6px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
-.objective{border:1px solid rgba(79,70,229,.18);border-radius:10px;padding:10px 12px;background:rgba(79,70,229,.07);margin-bottom:6px}
+.card-title{font-size:10px;font-weight:800;color:rgba(234,88,12,.9);background:rgba(234,88,12,.1);border:1px solid rgba(234,88,12,.2);display:inline-block;padding:3px 9px;border-radius:6px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+.objective{border:1px solid rgba(234,88,12,.18);border-radius:10px;padding:10px 12px;background:rgba(234,88,12,.07);margin-bottom:6px}
 .objective:last-child{margin-bottom:0}
 .obj-header{display:flex;align-items:center;gap:8px;margin-bottom:7px}
-.obj-icon{width:26px;height:26px;border-radius:7px;background:rgba(79,70,229,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.obj-icon svg{width:13px;height:13px;stroke:#A78BFA;fill:none;stroke-width:2}
+.obj-icon{width:26px;height:26px;border-radius:7px;background:rgba(234,88,12,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.obj-icon svg{width:13px;height:13px;stroke:#FB923C;fill:none;stroke-width:2}
 .obj-name{font-size:12px;font-weight:700;color:rgba(255,255,255,.9);flex:1}
-.obj-score{font-size:11px;font-weight:800;color:#A78BFA;background:rgba(79,70,229,.15);padding:2px 8px;border-radius:12px;flex-shrink:0}
+.obj-score{font-size:11px;font-weight:800;color:#FB923C;background:rgba(234,88,12,.15);padding:2px 8px;border-radius:12px;flex-shrink:0}
 .obj-progress{height:4px;border-radius:3px;background:rgba(255,255,255,.08);margin-bottom:7px;overflow:hidden}
-.obj-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#4F46E5,#818CF8);animation:fillBar .9s ease both;animation-fill-mode:forwards;width:0}
+.obj-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#EA580C,#F97316);animation:fillBar .9s ease both;animation-fill-mode:forwards;width:0}
 .kr-list{display:flex;flex-direction:column;gap:4px;padding-left:8px}
 .kr-item{display:flex;align-items:center;gap:7px}
 .kr-dot{width:5px;height:5px;border-radius:50%;background:var(--c);flex-shrink:0}
@@ -201,7 +201,7 @@ body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#0A1628 0%
           <div class="flow-label">Flow Efficiency</div>
           <div class="flow-value">38<span style="font-size:12px;color:rgba(255,255,255,.38)">%</span></div>
           <div class="flow-sub">↑ +6pp vs Q2</div>
-          <div class="sparkline" style="--c:#4F46E5">
+          <div class="sparkline" style="--c:#F97316">
             <div class="spark-bar" style="height:40%"></div><div class="spark-bar" style="height:50%"></div><div class="spark-bar" style="height:45%"></div><div class="spark-bar" style="height:62%"></div><div class="spark-bar" style="height:74%"></div><div class="spark-bar" style="height:82%"></div><div class="spark-bar" style="height:90%"></div>
           </div>
         </div>
@@ -226,8 +226,8 @@ body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#0A1628 0%
     <div class="card" style="flex:1;animation-delay:.2s">
       <div class="card-title">Progresso por Squad</div>
       <div class="squad-row">
-        <div class="squad-meta"><span class="squad-name">Squad Alpha</span><span class="squad-score" style="color:#818CF8">0.82</span></div>
-        <div class="squad-bar-track"><div class="squad-bar-fill" style="--c:#4F46E5;--w:82%;animation-delay:.5s"></div></div>
+        <div class="squad-meta"><span class="squad-name">Squad Alpha</span><span class="squad-score" style="color:#F97316">0.82</span></div>
+        <div class="squad-bar-track"><div class="squad-bar-fill" style="--c:#F97316;--w:82%;animation-delay:.5s"></div></div>
       </div>
       <div class="squad-row">
         <div class="squad-meta"><span class="squad-name">Squad Beta</span><span class="squad-score" style="color:#34D399">0.74</span></div>
@@ -242,8 +242,8 @@ body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#0A1628 0%
         <div class="squad-bar-track"><div class="squad-bar-fill" style="--c:#3B82F6;--w:88%;animation-delay:.65s"></div></div>
       </div>
       <div class="summary-pills">
-        <div class="s-pill" style="background:rgba(79,70,229,.08);--bc:rgba(79,70,229,.2)">
-          <div style="font-size:16px;font-weight:900;color:#818CF8">0.72</div>
+        <div class="s-pill" style="background:rgba(234,88,12,.08);--bc:rgba(234,88,12,.2)">
+          <div style="font-size:16px;font-weight:900;color:#F97316">0.72</div>
           <div style="font-size:8px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.07em;margin-top:1px">Score médio</div>
         </div>
         <div class="s-pill" style="background:rgba(16,185,129,.06);--bc:rgba(16,185,129,.15)">

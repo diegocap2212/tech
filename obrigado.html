@@ -8,8 +8,8 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=4" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=20" />
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-856467424"></script>
@@ -29,19 +29,29 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5027217286342270"
      crossorigin="anonymous"></script>
 </head>
-<body style="background:var(--navy);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;">
-  <a href="index.html" style="font-size:24px;font-weight:900;color:#fff;letter-spacing:0.08em;margin-bottom:48px;display:block;">CÉL<span style="color:#EA580C;">E</span>RE</a>
-  <h1 style="font-size:clamp(32px,5vw,52px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:20px;">
-    Recebemos seu pedido!
+<body class="page-dark" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;background:radial-gradient(ellipse 70% 60% at 50% 0%, rgba(234,88,12,0.12), transparent 60%), var(--navy-950);">
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:14px;margin-bottom:48px;">
+    <svg width="44" height="44" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="7,7 55,7 49,19 7,19" fill="#EA580C"/>
+      <rect x="7" y="19" width="13" height="24" fill="#EA580C"/>
+      <polygon points="7,43 55,43 49,55 7,55" fill="#EA580C"/>
+    </svg>
+    <span style="display:flex;flex-direction:column;gap:3px;text-align:left;">
+      <span style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;letter-spacing:0.05em;line-height:1;">CÉLERE</span>
+      <span style="font-size:10px;font-weight:500;color:var(--orange-light);letter-spacing:0.42em;line-height:1;">TECH</span>
+    </span>
+  </a>
+  <h1 style="font-family:var(--font-display);font-size:clamp(32px,5vw,52px);font-weight:700;color:var(--text-hi);line-height:1.15;letter-spacing:-0.03em;margin-bottom:20px;">
+    Recebemos <span class="grad-text">seu pedido!</span>
   </h1>
-  <p style="font-size:18px;color:rgba(255,255,255,0.65);max-width:520px;line-height:1.7;margin-bottom:40px;">
+  <p style="font-size:18px;color:var(--text-mid);max-width:520px;line-height:1.7;margin-bottom:40px;">
     Em breve entraremos em contato para confirmar o seu diagnóstico gratuito. Enquanto isso, fique à vontade para nos chamar diretamente no WhatsApp.
   </p>
   <a href="https://api.whatsapp.com/send/?phone=5511991476160&text=Ol%C3%A1%21%20Preenchi%20o%20formul%C3%A1rio%20no%20site%20e%20gostaria%20de%20agendar%20meu%20diagn%C3%B3stico%20gratuito."
      target="_blank"
-     style="display:inline-flex;align-items:center;gap:10px;background:#EA580C;color:#fff;font-weight:700;font-size:17px;padding:18px 40px;border-radius:8px;text-decoration:none;">
+     class="btn btn--primary btn--lg">
     Falar pelo WhatsApp →
   </a>
-  <a href="index.html" style="display:block;margin-top:24px;font-size:14px;color:rgba(255,255,255,0.35);">← Voltar para o site</a>
+  <a href="index.html" style="display:block;margin-top:24px;font-size:14px;color:var(--text-low);">← Voltar para o site</a>
 </body>
 </html>
