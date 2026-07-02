@@ -78,7 +78,7 @@
 10. `#cases` — Transformação Antes/Ação Célere/Depois de um case real
 11. `#portfolio` — Portfólio de Produtos (10 mocks em iframe, 3 colunas)
 12. `#comparativo` — Tabela vs. consultoria tradicional vs. SaaS vs. Célere
-13. `#especialistas` — Diego Caporusso + Tiago Massaro
+13. `#especialistas` — Diego Caporusso
 14. `#faq` — 7 perguntas frequentes (accordion)
 15. `#cta-final` — Formulário de lead final (inline 4 colunas)
 
@@ -119,7 +119,6 @@
 
 ## Founders
 - **Diego Caporusso** — Founder & CEO (10+ anos em Raia Drogasil, Lojas Renner, Sodexo, Dafiti)
-- **Tiago Massaro** — Co-Founder & CTO (arquiteto de software, sistemas sob medida)
 
 ## Portfólio de Produtos (seção #portfolio)
 Cada card exibe um iframe de uma página HTML standalone em `portfolio/`. As páginas são mocks estáticos de 1200×750px que simulam SaaS reais. O JS escala o iframe dinamicamente para caber no card.
