@@ -605,35 +605,60 @@ h1.hero__title {
   filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.5));
 }
 
-/* Trust strip */
+/* Trust strip — marquee de logos (largura total, abaixo do grid do hero) */
+.hero__trust { margin-top: 72px; }
 .hero__trust-label {
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text-low);
-  margin-bottom: 16px;
+  margin-bottom: 24px;
+  text-align: center;
 }
-.hero__trust-logos {
+.logo-marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.logo-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: logo-scroll 32s linear infinite;
+}
+.logo-marquee:hover .logo-marquee__track { animation-play-state: paused; }
+.logo-marquee__set {
   display: flex;
   align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  gap: 64px;
+  padding-right: 64px;
 }
-.hero__trust-logos img {
-  height: 34px;
+.logo-marquee__set img {
+  height: 48px;
   width: auto;
   background: rgba(241, 245, 249, 0.92);
-  padding: 7px 12px;
+  padding: 10px 18px;
   border-radius: var(--r-sm);
   filter: grayscale(1);
   opacity: 0.75;
   transition: opacity 0.25s ease, filter 0.25s ease;
 }
-.hero__trust-logos img:hover { opacity: 1; filter: grayscale(0); }
+.logo-marquee__set img:hover { opacity: 1; filter: grayscale(0); }
 /* fundo verde sólido da Pluxee: clareia para não virar bloco cinza */
-.hero__trust-logos img[alt*="Pluxee"] { filter: grayscale(1) brightness(1.75); }
-.hero__trust-logos img[alt*="Pluxee"]:hover { filter: grayscale(0); }
+.logo-marquee__set img[alt*="Pluxee"],
+.logo-marquee__set img[src*="pluxee"] { filter: grayscale(1) brightness(1.75); }
+.logo-marquee__set img[alt*="Pluxee"]:hover,
+.logo-marquee__set img[src*="pluxee"]:hover { filter: grayscale(0); }
+@keyframes logo-scroll {
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee { -webkit-mask-image: none; mask-image: none; }
+  .logo-marquee__track { animation: none; width: auto; justify-content: center; }
+  .logo-marquee__set { flex-wrap: wrap; justify-content: center; padding-right: 0; }
+  .logo-marquee__set img:nth-child(n+5),
+  .logo-marquee__set[aria-hidden="true"] { display: none; }
+}
 
 /* Card do formulário no hero */
 .hero__form-card {
@@ -1202,8 +1227,9 @@ body:not(.page-dark) .faq__a-inner { color: var(--slate); }
 }
 @media (max-width: 600px) {
   h1.hero__title { font-size: 34px; }
-  .hero__trust-logos { gap: 22px; }
-  .hero__trust-logos img { height: 18px; }
+  .hero__trust { margin-top: 56px; }
+  .logo-marquee__set { gap: 36px; padding-right: 36px; }
+  .logo-marquee__set img { height: 38px; padding: 8px 14px; }
   .hero__form-card { padding: 28px 22px; }
   .stats__grid { grid-template-columns: 1fr 1fr; gap: 12px; }
   .stat { padding: 26px 12px; }
