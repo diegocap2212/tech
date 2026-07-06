@@ -98,7 +98,7 @@
 - **Google Ads tag:** `AW-856467424` (real, em todas as páginas: index, obrigado e blog)
   - Conversão lead form: `AW-856467424/lswwCIi-r6ccEODPspgD` (main.js)
   - Conversão página obrigado: `AW-856467424/p2QlCKbMqKocEODPspgD`
-- **GA4:** property `250126879` — config `G-XXXXXXXXXX` ainda é placeholder; substituir pelo Measurement ID real (GA4 → Admin → Fluxos de dados) em index.html, obrigado.html e blog/*.html
+- **GA4:** property `250126879`, Measurement ID `G-LX9B0H8BF7` (em todas as páginas; lead form dispara `generate_lead`)
 - **AdSense:** `ca-pub-5027217286342270`
 
 ## Posicionamento & Mensagem
