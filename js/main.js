@@ -114,9 +114,10 @@ function initLeadForm(formId) {
       return;
     }
 
-    // Dispara conversão — Lead — Diagnóstico Gratuito
+    // Dispara conversão — Lead — Diagnóstico Gratuito (Ads) + evento GA4
     if (typeof gtag === 'function') {
       gtag('event', 'conversion', { send_to: 'AW-856467424/lswwCIi-r6ccEODPspgD' });
+      gtag('event', 'generate_lead', { form_id: formId });
     }
 
     const mensagem = encodeURIComponent(

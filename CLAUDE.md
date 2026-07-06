@@ -95,8 +95,11 @@
 
 ## Integrações
 - **WhatsApp Business:** +55 11 9 9147-6160
-- **Google Ads GTM:** placeholder `AW-XXXXXXXXXX` (substituir pelo ID real de conversão)
-- **Conversão:** `AW-XXXXXXXXXX/YYYYYYYYYY` (substituir ambos)
+- **Google Ads tag:** `AW-856467424` (real, em todas as páginas: index, obrigado e blog)
+  - Conversão lead form: `AW-856467424/lswwCIi-r6ccEODPspgD` (main.js)
+  - Conversão página obrigado: `AW-856467424/p2QlCKbMqKocEODPspgD`
+- **GA4:** property `250126879` — config `G-XXXXXXXXXX` ainda é placeholder; substituir pelo Measurement ID real (GA4 → Admin → Fluxos de dados) em index.html, obrigado.html e blog/*.html
+- **AdSense:** `ca-pub-5027217286342270`
 
 ## Posicionamento & Mensagem
 - **Tagline:** "Não adaptamos sua empresa ao software. Criamos o software para a sua empresa."
