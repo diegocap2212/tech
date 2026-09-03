@@ -130,5 +130,181 @@
     "meta_description": "Crescimento sem processo é caos escalonado. Saiba quais estruturas operacionais precisam estar no lugar antes de dobrar o tamanho da equipe ou a base de clientes.",
     "cta_headline": "Sua operação está pronta para crescer sem travar?",
     "status": "published"
+  },
+  {
+    "title": "Como desenhar um fluxograma de processo que a equipe realmente usa",
+    "slug": "fluxograma-de-processo-que-a-equipe-usa",
+    "category": "Metodologia",
+    "excerpt": "A maioria dos fluxogramas morre no PowerPoint. Veja como desenhar um que a equipe consulta no dia a dia — e o que tirar dele para isso acontecer.",
+    "og_title": "Fluxograma de processo: como fazer um que a equipe realmente usa",
+    "og_description": "A maioria morre no PowerPoint. Veja como desenhar um fluxograma que a equipe consulta de verdade.",
+    "meta_description": "A maioria dos fluxogramas nunca sai do PowerPoint. Aprenda a desenhar um fluxograma de processo simples, legível e que a sua equipe realmente consulta no dia a dia.",
+    "cta_headline": "Seus processos estão desenhados ou só na cabeça das pessoas?",
+    "status": "pending"
+  },
+  {
+    "title": "POP, SOP e manual de procedimentos: qual é a diferença e quando usar cada um",
+    "slug": "pop-sop-manual-de-procedimentos-diferenca",
+    "category": "Metodologia",
+    "excerpt": "Três nomes, três níveis de detalhe e muita confusão. Entenda o que cada documento resolve e pare de escrever o errado.",
+    "og_title": "POP, SOP e manual de procedimentos: a diferença que ninguém explica",
+    "og_description": "Três nomes, três níveis de detalhe. Entenda o que cada documento resolve na prática.",
+    "meta_description": "POP, SOP e manual de procedimentos não são sinônimos. Entenda a diferença entre os três, quando usar cada um e como escolher o nível de detalhe certo para a sua operação.",
+    "cta_headline": "Sua operação depende de documentação que ninguém lê?",
+    "status": "pending"
+  },
+  {
+    "title": "Como documentar um processo sem parar a operação para isso",
+    "slug": "documentar-processo-sem-parar-a-operacao",
+    "category": "Gestão & Processos",
+    "excerpt": "Documentar parece luxo de empresa grande porque quase sempre é feito da forma mais cara. Veja o método que cabe na rotina de quem não pode parar.",
+    "og_title": "Como documentar processos sem parar a operação",
+    "og_description": "Documentar parece luxo porque quase sempre é feito da forma mais cara. Veja o método que cabe na rotina.",
+    "meta_description": "Documentar processos não exige força-tarefa nem semanas de reunião. Veja como registrar o que a operação faz sem tirar ninguém do trabalho e manter o documento vivo.",
+    "cta_headline": "Quanto da sua operação só existe na memória de uma pessoa?",
+    "status": "pending"
+  },
+  {
+    "title": "Gargalo operacional: como identificar o que realmente trava a sua empresa",
+    "slug": "como-identificar-gargalo-operacional",
+    "category": "Eficiência Operacional",
+    "excerpt": "Quase toda empresa otimiza a etapa errada. Veja como achar o gargalo verdadeiro antes de investir em resolver o problema que não era.",
+    "og_title": "Gargalo operacional: como achar o que realmente trava a empresa",
+    "og_description": "Quase toda empresa otimiza a etapa errada. Veja como achar o gargalo verdadeiro.",
+    "meta_description": "Otimizar a etapa errada custa caro e não resolve nada. Aprenda a identificar o gargalo real da sua operação com um método simples de medição e observação.",
+    "cta_headline": "Você sabe qual etapa está segurando a sua operação?",
+    "status": "pending"
+  },
+  {
+    "title": "Quais processos automatizar primeiro: a matriz de esforço e impacto",
+    "slug": "quais-processos-automatizar-primeiro",
+    "category": "Eficiência Operacional",
+    "excerpt": "Automatizar tudo de uma vez é a forma mais rápida de não automatizar nada. Veja como priorizar com uma matriz que cabe numa folha.",
+    "og_title": "Quais processos automatizar primeiro: a matriz de esforço e impacto",
+    "og_description": "Automatizar tudo de uma vez é a forma mais rápida de não automatizar nada. Veja como priorizar.",
+    "meta_description": "Nem todo processo vale a pena automatizar, e a ordem importa mais que a lista. Use a matriz de esforço e impacto para priorizar o que dá retorno primeiro.",
+    "cta_headline": "Sabe por onde começar a automatizar na sua empresa?",
+    "status": "pending"
+  },
+  {
+    "title": "Como montar a rotina de reunião de indicadores que não vira teatro",
+    "slug": "reuniao-de-indicadores-que-funciona",
+    "category": "Gestão & Processos",
+    "excerpt": "Reunião de números costuma virar apresentação de slides e desculpa. Veja o formato que transforma indicador em decisão.",
+    "og_title": "Reunião de indicadores: como fazer uma que gera decisão",
+    "og_description": "Reunião de números costuma virar slide e desculpa. Veja o formato que gera decisão.",
+    "meta_description": "Reunião de indicadores que só apresenta números não muda nada. Veja como estruturar a pauta, a cadência e o dono de cada métrica para transformar dado em decisão.",
+    "cta_headline": "Seus indicadores viram decisão ou só relatório?",
+    "status": "pending"
+  },
+  {
+    "title": "Metas operacionais: como definir números que a equipe consegue perseguir",
+    "slug": "como-definir-metas-operacionais",
+    "category": "Crescimento",
+    "excerpt": "Meta que ninguém entende como influenciar é só pressão. Veja como transformar objetivo de negócio em número que a equipe controla.",
+    "og_title": "Metas operacionais: como definir números que a equipe persegue",
+    "og_description": "Meta que ninguém sabe como influenciar é só pressão. Veja como definir números acionáveis.",
+    "meta_description": "Meta que a equipe não sabe como influenciar vira pressão, não resultado. Aprenda a desdobrar objetivos de negócio em metas operacionais que o time controla de verdade.",
+    "cta_headline": "Sua equipe sabe o que fazer para bater a meta?",
+    "status": "pending"
+  },
+  {
+    "title": "Planilha compartilhada, banco de dados ou sistema: quando cada um para de servir",
+    "slug": "planilha-banco-de-dados-ou-sistema",
+    "category": "Tecnologia",
+    "excerpt": "Toda operação começa numa planilha e a maioria fica tempo demais nela. Veja os sinais de que você passou do ponto de cada estágio.",
+    "og_title": "Planilha, banco de dados ou sistema: quando cada um para de servir",
+    "og_description": "Toda operação começa numa planilha e a maioria fica tempo demais nela. Veja os sinais.",
+    "meta_description": "Planilha, banco de dados e sistema resolvem problemas diferentes. Veja os sinais claros de que a sua operação passou do ponto e precisa do próximo estágio.",
+    "cta_headline": "Sua operação já passou do que a planilha aguenta?",
+    "status": "pending"
+  },
+  {
+    "title": "Quanto custa um software sob medida para PME no Brasil",
+    "slug": "quanto-custa-software-sob-medida-pme",
+    "category": "Software sob Medida",
+    "excerpt": "Faixas reais de investimento, o que faz o preço subir e por que orçamento de sistema varia tanto entre fornecedores. Sem parar na resposta fácil de que depende.",
+    "og_title": "Quanto custa um software sob medida para PME: faixas reais",
+    "og_description": "Faixas reais, o que faz o preço subir e por que orçamentos variam tanto entre fornecedores.",
+    "meta_description": "Quanto custa desenvolver um software sob medida para uma PME no Brasil? Veja faixas reais de investimento, o que encarece um projeto e como comparar orçamentos.",
+    "cta_headline": "Quer uma estimativa real para o seu caso?",
+    "status": "pending"
+  },
+  {
+    "title": "ERP pronto ou sistema sob medida: como decidir sem se arrepender",
+    "slug": "erp-pronto-ou-sistema-sob-medida",
+    "category": "Software sob Medida",
+    "excerpt": "A escolha errada custa anos de operação torta. Veja os critérios objetivos que separam quem deve comprar de quem deve construir.",
+    "og_title": "ERP pronto ou sistema sob medida: como decidir",
+    "og_description": "A escolha errada custa anos de operação torta. Veja os critérios objetivos.",
+    "meta_description": "ERP pronto ou sistema sob medida? Veja os critérios objetivos que definem qual dos dois faz sentido para a sua operação e o custo real de escolher errado.",
+    "cta_headline": "Comprar pronto ou construir sob medida: qual é o seu caso?",
+    "status": "pending"
+  },
+  {
+    "title": "Quanto tempo leva para implantar um sistema sob medida numa PME",
+    "slug": "prazo-de-implantacao-sistema-sob-medida",
+    "category": "Software sob Medida",
+    "excerpt": "Da primeira conversa ao sistema rodando: o que acontece em cada etapa, o que costuma atrasar e o que está sob o seu controle.",
+    "og_title": "Prazo de implantação de um sistema sob medida numa PME",
+    "og_description": "Da primeira conversa ao sistema rodando: o que acontece, o que atrasa e o que você controla.",
+    "meta_description": "Quanto tempo leva para implantar um sistema sob medida numa PME? Veja o prazo realista de cada etapa, o que mais atrasa projetos e como encurtar o caminho.",
+    "cta_headline": "Quer saber o prazo real para o seu projeto?",
+    "status": "pending"
+  },
+  {
+    "title": "Como escolher uma empresa de desenvolvimento sob medida: 9 perguntas que revelam tudo",
+    "slug": "como-escolher-empresa-de-desenvolvimento",
+    "category": "Software sob Medida",
+    "excerpt": "Portfólio bonito não diz nada sobre o que vai acontecer no seu projeto. Nove perguntas separam fornecedor sério de vendedor.",
+    "og_title": "Como escolher uma empresa de desenvolvimento: 9 perguntas",
+    "og_description": "Portfólio bonito não diz nada sobre o seu projeto. Nove perguntas revelam o resto.",
+    "meta_description": "Escolher errado o fornecedor de software custa mais que o próprio projeto. Use estas 9 perguntas para separar quem entrega de quem só vende na reunião comercial.",
+    "cta_headline": "Está avaliando fornecedores para o seu sistema?",
+    "status": "pending"
+  },
+  {
+    "title": "Software sob medida ou SaaS: a conta que quase ninguém faz direito",
+    "slug": "software-sob-medida-ou-saas",
+    "category": "Software sob Medida",
+    "excerpt": "A mensalidade parece barata até você somar cinco anos, os usuários extras e tudo o que a ferramenta não faz. Veja a conta completa.",
+    "og_title": "Software sob medida ou SaaS: a conta completa",
+    "og_description": "A mensalidade parece barata até somar cinco anos e o que a ferramenta não faz.",
+    "meta_description": "Comparar software sob medida com SaaS só pela mensalidade leva à decisão errada. Veja como calcular o custo total dos dois em cinco anos, incluindo o que ninguém soma.",
+    "cta_headline": "Já somou quanto suas assinaturas custam por ano?",
+    "status": "pending"
+  },
+  {
+    "title": "O que exigir num orçamento de sistema sob medida (e o que deveria estar incluso)",
+    "slug": "o-que-exigir-num-orcamento-de-sistema",
+    "category": "Software sob Medida",
+    "excerpt": "Orçamento de uma linha esconde as surpresas. Veja o que precisa estar escrito antes de você assinar qualquer coisa.",
+    "og_title": "O que exigir num orçamento de sistema sob medida",
+    "og_description": "Orçamento de uma linha esconde as surpresas. Veja o que precisa estar escrito.",
+    "meta_description": "Orçamento de software sob medida sem detalhamento é onde nascem as surpresas. Veja item por item o que deve estar escrito antes de assinar um contrato de desenvolvimento.",
+    "cta_headline": "Quer um orçamento detalhado, sem letra miúda?",
+    "status": "pending"
+  },
+  {
+    "title": "Migrar de um sistema legado sem parar a operação: como planejar",
+    "slug": "migrar-de-sistema-legado-sem-parar",
+    "category": "Software sob Medida",
+    "excerpt": "Trocar o sistema que a empresa inteira usa dá medo por bons motivos. Veja como fazer a migração em etapas, sem apagão.",
+    "og_title": "Migrar de sistema legado sem parar a operação",
+    "og_description": "Trocar o sistema que a empresa inteira usa dá medo. Veja como migrar em etapas, sem apagão.",
+    "meta_description": "Migrar de um sistema legado sem parar a operação é questão de método. Veja como planejar a transição em etapas, o que rodar em paralelo e como evitar o apagão.",
+    "cta_headline": "Precisa trocar um sistema que a operação inteira usa?",
+    "status": "pending"
+  },
+  {
+    "title": "De quem é o código do seu sistema? Propriedade, contrato e o risco de ficar refém",
+    "slug": "de-quem-e-o-codigo-do-seu-sistema",
+    "category": "Software sob Medida",
+    "excerpt": "Muita empresa descobre tarde que não é dona do que pagou para construir. Veja as cláusulas que decidem isso.",
+    "og_title": "De quem é o código do seu sistema? O risco de ficar refém",
+    "og_description": "Muita empresa descobre tarde que não é dona do que pagou para construir.",
+    "meta_description": "Pagar pelo desenvolvimento não garante que o código é seu. Entenda propriedade intelectual, cláusulas de contrato e como não ficar refém do fornecedor do seu sistema.",
+    "cta_headline": "Você é dono do código que sua empresa usa?",
+    "status": "pending"
   }
 ]

@@ -3,49 +3,133 @@
 
   <url>
     <loc>https://celeretech.com.br/</loc>
-    <lastmod>2026-05-07</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://celeretech.com.br/blog/</loc>
-    <lastmod>2026-05-07</lastmod>
+    <lastmod>2026-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
+    <loc>https://celeretech.com.br/blog/como-escalar-operacao-sem-escalar-o-caos.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://celeretech.com.br/blog/gestao-de-fornecedores-para-pmes.html</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://celeretech.com.br/blog/custo-real-do-colaborador-quando-automatizar.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://celeretech.com.br/blog/integracao-de-sistemas-para-pmes.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://celeretech.com.br/blog/dashboard-operacional-o-que-medir.html</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://celeretech.com.br/blog/fluxo-de-aprovacao-sem-travar-a-operacao.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://celeretech.com.br/blog/processo-de-vendas-estruturado-para-pmes.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://celeretech.com.br/blog/como-criar-sop-guia-pratico-pmes.html</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://celeretech.com.br/blog/onboarding-de-clientes-estruturado.html</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://celeretech.com.br/blog/indicadores-operacionais-para-pmes.html</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://celeretech.com.br/blog/como-sair-do-whatsapp-como-ferramenta-de-gestao.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://celeretech.com.br/blog/roi-de-automatizar-processos-manuais.html</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://celeretech.com.br/blog/como-reduzir-retrabalho-sem-contratar-mais.html</loc>
-    <lastmod>2026-04-01</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://celeretech.com.br/blog/o-que-e-mapeamento-de-processos-e-como-fazer.html</loc>
-    <lastmod>2026-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://celeretech.com.br/blog/como-organizar-processos-de-rh-em-pequenas-empresas.html</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://celeretech.com.br/blog/excel-vs-sistema-de-gestao-quando-migrar.html</loc>
-    <lastmod>2026-03-01</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://celeretech.com.br/blog/automacao-de-processos-para-pmes-por-onde-comecar.html</loc>
-    <lastmod>2026-03-01</lastmod>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://celeretech.com.br/blog/como-organizar-processos-de-rh-em-pequenas-empresas.html</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://celeretech.com.br/blog/excel-vs-sistema-de-gestao-quando-migrar.html</loc>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
