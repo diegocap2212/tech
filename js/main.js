@@ -87,6 +87,7 @@ function injectNavbar() {
           <nav class="navbar__links" id="navbar-links">
             <a href="${rootPath}index.html#degraus">Como funciona</a>
             <a href="${rootPath}index.html#mapa">O Mapa</a>
+            <a href="${rootPath}index.html#solucoes">Soluções</a>
             <a href="${blogPath}index.html">Blog</a>
             <a ${ctaHref} class="navbar__links-cta">Diagnóstico Gratuito</a>
           </nav>
@@ -207,6 +208,7 @@ function injectFooter() {
               <li><a href="${rootPath}index.html#traducao">A tradução</a></li>
               <li><a href="${rootPath}index.html#degraus">Como funciona</a></li>
               <li><a href="${rootPath}index.html#mapa">O Mapa da Operação</a></li>
+              <li><a href="${rootPath}index.html#solucoes">Soluções em ação</a></li>
               <li><a href="${rootPath}index.html#quemfaz">Quem faz</a></li>
               <li><a href="${rootPath}index.html#faq">Perguntas Frequentes</a></li>
             </ul>
