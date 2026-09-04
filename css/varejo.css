@@ -292,10 +292,26 @@
   gap: 64px;
   align-items: center;
 }
-.quemfaz__foto {
-  width: 100%;
+.quemfaz__retrato {
+  position: relative;
   border-radius: var(--r-lg);
+  overflow: hidden;
   border: 1px solid var(--glass-border);
+  /* Sem line-height o inline-box da img deixa uma faixa de 4px sob ela. */
+  line-height: 0;
+}
+.quemfaz__foto { width: 100%; height: auto; }
+
+/* O retrato foi feito em estúdio, com fundo cinza-claro. Sem um degradê na
+   base ele termina num corte duro de cinza contra o navy da seção — parece
+   figura colada, não parte da página. O degradê dissolve a borda inferior. */
+.quemfaz__retrato::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 34%;
+  background: linear-gradient(to top, var(--navy-900) 6%, transparent);
+  pointer-events: none;
 }
 .quemfaz__quote {
   font-family: var(--font-display);

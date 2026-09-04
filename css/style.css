@@ -79,7 +79,13 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-img { display: block; max-width: 100%; }
+/* height:auto é o par obrigatório do max-width. Sem ele, imagem com atributo
+   height no HTML mantém a altura fixa enquanto o max-width encolhe só a
+   largura — e ela estica. Foi o que aconteceu com o retrato do fundador:
+   arquivo de 760x943 desenhado em 380x943. Os atributos width/height
+   continuam valendo (reservam a proporção e evitam salto no carregamento);
+   eles só precisam do height:auto para agir como proporção, não como medida. */
+img { display: block; max-width: 100%; height: auto; }
 a { text-decoration: none; transition: all 0.2s ease; }
 h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
 ::selection { background: rgba(234, 88, 12, 0.35); color: #fff; }
