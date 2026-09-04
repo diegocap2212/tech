@@ -72,6 +72,20 @@ node scripts/build-related.mjs
 node scripts/build-sitemap.mjs
 ```
 
+## Editou CSS? Suba a versão
+
+As folhas são pedidas como `css/style.css?v=21`. Esse número é a **única** chave de cache do site: se ele não muda, o navegador de quem já visitou e a borda do GitHub continuam servindo a folha antiga — a sua mudança sobe para produção e ninguém vê.
+
+```bash
+node scripts/bump-css.mjs           # sobe todas as folhas em 1
+node scripts/bump-css.mjs style     # sobe só a style.css
+node scripts/bump-css.mjs --check   # mostra as versões e quem ficou atrasado
+```
+
+Rode antes de abrir o PR, sempre que tocar em qualquer arquivo de `css/`, e commite as páginas alteradas junto. São 21 arquivos HTML — não dá para fazer à mão sem esquecer um.
+
+> Aconteceu: o reset de imagem foi corrigido, subiu para produção, e o retrato do fundador continuou esticado no ar porque o `?v=` não mudou.
+
 ## Fim de linha
 
 `.gitattributes` força **LF** em tudo, inclusive na árvore de trabalho. Não desligue e não sobrescreva com configuração local: o Windows grava CRLF e o sandbox dos agentes grava LF, e sem a regra o mesmo arquivo aparece "modificado" nas duas pontas sem ninguém ter editado nada.

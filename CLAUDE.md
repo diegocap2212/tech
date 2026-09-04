@@ -44,6 +44,8 @@ O tema é **escuro** (`body.page-dark`) — não claro. Tokens em `css/style.css
 
 Container 1120px, `.section` com 104px de padding vertical. Breakpoints em 900px e 600px.
 
+**Tocou em `css/`? Rode `node scripts/bump-css.mjs` antes do PR.** O `?v=` das folhas é a única chave de cache do site; sem subi-lo a mudança vai ao ar e ninguém vê.
+
 **`css/style.css` é compartilhado com o blog.** As assinaturas `.container`, `.section`, `.section-title`, `.section-sub`, `.btn*`, `.label*`, `.navbar*`, `footer`, `.reveal` e `.faq__*` são contrato — mexer nelas mexe no blog inteiro.
 
 **`css/varejo.css` é a camada da home**, com o que não existe no compartilhado: `.trust-logos`, `.trad__*`, `.degraus__*`, `.mapa__*`, `.naofaz__*`, `.case-var__*`, `.quemfaz__*` e o estilo do `<select>`. Antes de criar classe nova aqui, procure no `style.css` — `.glass-card`, `.step__num`, `.step__title`, `.step__text`, `.step__tag`, `.dor__*` e os formulários já existem e são reaproveitados.
