@@ -9,7 +9,8 @@
 // node_modules, uma worktree nova já abre no navegador — custo zero.
 //
 // Uso:
-//   node scripts/worktree.mjs nova <nome>   cria feat/<nome> em ../tech-<nome>
+//   node scripts/worktree.mjs nova <nome>            cria feat/<nome> em ../tech-<nome>
+//   node scripts/worktree.mjs nova <tipo>/<nome>     usa o prefixo que voce pedir
 //   node scripts/worktree.mjs lista         mostra as worktrees e o estado de cada uma
 //   node scripts/worktree.mjs fim <nome>    remove a worktree (recusa se houver trabalho solto)
 
@@ -19,8 +20,20 @@ import { dirname, join, resolve, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const PAI = dirname(RAIZ);
-const PREFIXO = basename(RAIZ); // "tech"
+
+// A worktree principal, e nao a pasta onde o script foi chamado. Rodar o
+// script de dentro de uma worktree derivava o prefixo dela e os nomes se
+// acumulavam: tech-cases-outra-coisa. O prefixo tem que ser sempre o do repo.
+const PRINCIPAL = execFileSync('git', ['worktree', 'list', '--porcelain'], {
+  cwd: RAIZ,
+  encoding: 'utf8',
+})
+  .split('\n')[0]
+  .replace(/^worktree /, '')
+  .trim();
+
+const PAI = dirname(PRINCIPAL);
+const PREFIXO = basename(PRINCIPAL); // "tech"
 
 const git = (args, opts = {}) =>
   execFileSync('git', args, { cwd: RAIZ, encoding: 'utf8', ...opts }).trim();
@@ -49,6 +62,19 @@ const morrer = (msg) => {
   process.exit(1);
 };
 
+// Os quatro tipos do CONTRIBUTING. Sem isto o script só gerava feat/ e a
+// própria regra que ele deveria cumprir ficava impossível de seguir.
+const TIPOS = ['feat', 'fix', 'content', 'chore'];
+
+// Aceita "cases" (vira feat/cases) e "content/cases" (vira content/cases).
+const separar = (cru) => {
+  const barra = cru.indexOf('/');
+  if (barra < 0) return { tipo: 'feat', nome: cru };
+  const tipo = cru.slice(0, barra).toLowerCase();
+  if (!TIPOS.includes(tipo)) morrer(`"${tipo}" nao e um tipo. Use: ${TIPOS.join(', ')}.`);
+  return { tipo, nome: cru.slice(barra + 1) };
+};
+
 // O nome vira branch e vira pasta: só o que é seguro nos dois.
 const limpar = (nome) =>
   nome
@@ -60,10 +86,11 @@ const limpar = (nome) =>
 
 function nova(nomeCru) {
   if (!nomeCru) morrer('Falta o nome: node scripts/worktree.mjs nova conciliacao-de-cartao');
-  const nome = limpar(nomeCru);
+  const { tipo, nome: bruto } = separar(nomeCru);
+  const nome = limpar(bruto);
   if (!nome) morrer(`"${nomeCru}" não sobrou nada depois de limpar. Use letras e números.`);
 
-  const branch = `feat/${nome}`;
+  const branch = `${tipo}/${nome}`;
   const destino = join(PAI, `${PREFIXO}-${nome}`);
 
   if (existsSync(destino)) morrer(`A pasta ${destino} já existe.`);
@@ -122,11 +149,17 @@ function lista() {
 
 function fim(nomeCru) {
   if (!nomeCru) morrer('Falta o nome: node scripts/worktree.mjs fim conciliacao-de-cartao');
-  const nome = limpar(nomeCru);
+  // Aceita "cases" e "content/cases": o que identifica a pasta é o nome, não
+  // o tipo. Um prefixo passado aqui é ignorado sem reclamar.
+  const nome = limpar(separar(nomeCru).nome);
   const destino = join(PAI, `${PREFIXO}-${nome}`);
-  const branch = `feat/${nome}`;
 
   if (!existsSync(destino)) morrer(`Não existe a pasta ${destino}.`);
+
+  // O branch vem da própria worktree, não de suposição: ela sabe onde está.
+  // Antes isto era `feat/${nome}` fixo, e removia a pasta certa deixando o
+  // branch de qualquer outro tipo órfão.
+  const branch = gitEm(destino, ['rev-parse', '--abbrev-ref', 'HEAD']);
 
   // Nunca remover trabalho que não está em lugar nenhum.
   const sujo = gitEm(destino, ['status', '--porcelain']);
@@ -152,8 +185,21 @@ function fim(nomeCru) {
   }
 
   git(['worktree', 'remove', destino]);
-  git(['branch', '-d', branch]);
-  console.log(`\n  removidos: pasta ${destino} e branch ${branch}\n`);
+
+  // O PR entra por squash, então os commits do branch não são ancestrais da
+  // main e o `git branch -d` pode recusar por "not yet merged". Como o trabalho
+  // já está provado no GitHub pela checagem acima, aqui é seguro forçar — mas
+  // dizendo o que foi feito, em vez de engolir o erro.
+  try {
+    git(['branch', '-d', branch], { stdio: ['ignore', 'pipe', 'ignore'] });
+    console.log(`\n  removidos: pasta ${destino} e branch ${branch}\n`);
+  } catch {
+    git(['branch', '-D', branch]);
+    console.log(
+      `\n  removidos: pasta ${destino} e branch ${branch}` +
+        `\n  (o branch entrou por squash, então precisou de -D; os commits estão no GitHub)\n`
+    );
+  }
 }
 
 const [comando, argumento] = process.argv.slice(2);
