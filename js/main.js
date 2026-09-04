@@ -87,6 +87,7 @@ function injectNavbar() {
           <nav class="navbar__links" id="navbar-links">
             <a href="${rootPath}index.html#degraus">Como funciona</a>
             <a href="${rootPath}index.html#mapa">O Mapa</a>
+            <a href="${rootPath}index.html#solucoes">Soluções</a>
             <a href="${blogPath}index.html">Blog</a>
             <a ${ctaHref} class="navbar__links-cta">Diagnóstico Gratuito</a>
           </nav>
@@ -207,6 +208,7 @@ function injectFooter() {
               <li><a href="${rootPath}index.html#traducao">A tradução</a></li>
               <li><a href="${rootPath}index.html#degraus">Como funciona</a></li>
               <li><a href="${rootPath}index.html#mapa">O Mapa da Operação</a></li>
+              <li><a href="${rootPath}index.html#solucoes">Soluções em ação</a></li>
               <li><a href="${rootPath}index.html#quemfaz">Quem faz</a></li>
               <li><a href="${rootPath}index.html#faq">Perguntas Frequentes</a></li>
             </ul>
@@ -252,8 +254,11 @@ window.toggleFaq = function(btn) {
  * Scroll reveal animations (with stagger support via .stagger containers)
  */
 function initScrollReveal() {
+  // threshold 0: o gatilho é a margem, não uma fração do elemento. Com 0.1, um
+  // bloco mais alto que a janela nunca chega a 10% visível de uma vez e fica
+  // invisível para sempre — foi o que aconteceu com a seção Soluções no celular.
   const observerOptions = {
-    threshold: 0.1,
+    threshold: 0,
     rootMargin: '0px 0px -50px 0px'
   };
 
