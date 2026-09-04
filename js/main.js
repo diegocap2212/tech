@@ -27,18 +27,43 @@ document.addEventListener('DOMContentLoaded', () => {
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /**
+ * Caminhos relativos à raiz do site, a partir da URL atual.
+ *
+ * Isto era um teste booleano de "/blog/": ou a página estava na raiz, ou no
+ * blog. O teste quebrava em qualquer pasta nova — mandava o link do logo para
+ * a própria página. Contar a profundidade vale para qualquer nível.
+ */
+function caminhosDoSite() {
+  const partes = window.location.pathname.split('/').filter(Boolean);
+  const ultima = partes[partes.length - 1];
+  // O último segmento é arquivo quando tem extensão; senão a URL já é a pasta.
+  const pastas = ultima && ultima.includes('.') ? partes.slice(0, -1) : partes;
+  const emBlog = pastas[0] === 'blog';
+
+  const rootPath = '../'.repeat(pastas.length);
+
+  return {
+    rootPath,
+    // blogPath já vem completo a partir da página atual. Antes era só o sufixo
+    // ("blog/" ou "") concatenado depois do rootPath, e dentro de /blog/ isso
+    // virava "../post.html": os três links de post no rodapé davam 404 em toda
+    // página do blog. Um caminho, uma variável.
+    blogPath: `${rootPath}blog/`,
+    emBlog,
+  };
+}
+
+/**
  * Injects the global Navbar into elements with id="navbar-placeholder"
  */
 function injectNavbar() {
   const placeholder = document.getElementById('navbar-placeholder');
   if (!placeholder) return;
 
-  const isBlog = window.location.pathname.includes('/blog/');
-  const rootPath = isBlog ? '../' : '';
-  const blogPath = isBlog ? '' : 'blog/';
+  const { rootPath, blogPath, emBlog } = caminhosDoSite();
 
   // On blog pages keep WhatsApp link; on LP scroll to the hero lead form
-  const ctaHref = isBlog
+  const ctaHref = emBlog
     ? 'href="https://api.whatsapp.com/send/?phone=5511991476160&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20C%C3%A9lere%20e%20gostaria%20de%20agendar%20meu%20diagn%C3%B3stico%20gratuito&type=phone_number&app_absent=0" target="_blank"'
     : 'href="#cta-final"';
 
@@ -60,9 +85,9 @@ function injectNavbar() {
         </a>
         <div class="navbar__right">
           <nav class="navbar__links" id="navbar-links">
-            <a href="${rootPath}index.html#solucao">Metodologia</a>
-            <a href="${rootPath}index.html#especialistas">Especialistas</a>
-            <a href="${rootPath}${blogPath}index.html">Blog</a>
+            <a href="${rootPath}index.html#degraus">Como funciona</a>
+            <a href="${rootPath}index.html#mapa">O Mapa</a>
+            <a href="${blogPath}index.html">Blog</a>
             <a ${ctaHref} class="navbar__links-cta">Diagnóstico Gratuito</a>
           </nav>
           <a ${ctaHref} class="btn btn--primary navbar__cta">
@@ -103,26 +128,38 @@ function initLeadForm(formId) {
   form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    const nome     = (form.querySelector('[name="nome"]')?.value     || '').trim();
-    const empresa  = (form.querySelector('[name="empresa"]')?.value  || '').trim();
-    const telefone = (form.querySelector('[name="telefone"]')?.value || '').trim();
+    const valor = (nome) => (form.querySelector(`[name="${nome}"]`)?.value || '').trim();
+    const nome     = valor('nome');
+    const empresa  = valor('empresa');
+    const telefone = valor('telefone');
+    // Só a landing de varejo tem este campo: é a qualificação do estágio 2
+    // (tem mais de uma loja?) feita antes da conversa, não durante.
+    const lojas    = valor('lojas');
 
-    if (!nome || !empresa || !telefone) {
-      form.querySelectorAll('input').forEach(input => {
-        if (!input.value.trim()) input.style.borderColor = '#EF4444';
-      });
+    // Valida pelo atributo, e não por lista fixa: assim um campo novo num
+    // formulário novo passa a ser validado sem mexer aqui de novo.
+    const faltando = Array.from(form.querySelectorAll('[required]')).filter((c) => !c.value.trim());
+    if (faltando.length) {
+      faltando.forEach((campo) => { campo.style.borderColor = '#EF4444'; });
       return;
     }
 
     // Dispara conversão — Lead — Diagnóstico Gratuito (Ads) + evento GA4
+    const origem = form.dataset.origem || 'home';
     if (typeof gtag === 'function') {
       gtag('event', 'conversion', { send_to: 'AW-856467424/lswwCIi-r6ccEODPspgD' });
-      gtag('event', 'generate_lead', { form_id: formId });
+      gtag('event', 'generate_lead', { form_id: formId, origem });
     }
 
-    const mensagem = encodeURIComponent(
-      `Olá! Gostaria de agendar meu diagnóstico gratuito.\n\nNome: ${nome}\nEmpresa: ${empresa}\nTelefone: ${telefone}`
-    );
+    const linhas = [
+      'Olá! Gostaria de agendar meu diagnóstico gratuito.',
+      '',
+      `Nome: ${nome}`,
+      `Empresa: ${empresa}`,
+    ];
+    if (lojas) linhas.push(`Lojas: ${lojas}`);
+    linhas.push(`Telefone: ${telefone}`);
+    const mensagem = encodeURIComponent(linhas.join('\n'));
     window.open(`https://api.whatsapp.com/send/?phone=5511991476160&text=${mensagem}`, '_blank');
 
     // Show success feedback
@@ -141,9 +178,7 @@ function injectFooter() {
   const placeholder = document.getElementById('footer-placeholder');
   if (!placeholder) return;
 
-  const isBlog = window.location.pathname.includes('/blog/');
-  const rootPath = isBlog ? '../' : '';
-  const blogPath = isBlog ? '' : 'blog/';
+  const { rootPath, blogPath } = caminhosDoSite();
   const year = new Date().getFullYear();
 
   placeholder.innerHTML = `
@@ -164,23 +199,25 @@ function injectFooter() {
                 <span class="logo-sub">TECH</span>
               </div>
             </a>
-            <p class="footer__tagline">Não adaptamos sua empresa ao software. Criamos o software para a sua empresa.</p>
+            <p class="footer__tagline">A operação do varejo grande, no tamanho da sua rede. Para redes de 2 a 10 lojas.</p>
           </div>
           <div>
             <h4 class="footer__col-title">Navegação</h4>
             <ul class="footer__links">
-              <li><a href="${rootPath}index.html#solucao">Metodologia</a></li>
-              <li><a href="${rootPath}index.html#especialistas">Especialistas</a></li>
+              <li><a href="${rootPath}index.html#traducao">A tradução</a></li>
+              <li><a href="${rootPath}index.html#degraus">Como funciona</a></li>
+              <li><a href="${rootPath}index.html#mapa">O Mapa da Operação</a></li>
+              <li><a href="${rootPath}index.html#quemfaz">Quem faz</a></li>
               <li><a href="${rootPath}index.html#faq">Perguntas Frequentes</a></li>
             </ul>
           </div>
           <div>
             <h4 class="footer__col-title">Conteúdo</h4>
             <ul class="footer__links">
-              <li><a href="${rootPath}${blogPath}index.html">Blog</a></li>
-              <li><a href="${rootPath}${blogPath}como-criar-sop-guia-pratico-pmes.html">Como criar um SOP</a></li>
-              <li><a href="${rootPath}${blogPath}excel-vs-sistema-de-gestao-quando-migrar.html">Excel vs. Sistema</a></li>
-              <li><a href="${rootPath}${blogPath}indicadores-operacionais-para-pmes.html">Indicadores para PMEs</a></li>
+              <li><a href="${blogPath}index.html">Blog</a></li>
+              <li><a href="${blogPath}como-criar-sop-guia-pratico-pmes.html">Como criar um SOP</a></li>
+              <li><a href="${blogPath}excel-vs-sistema-de-gestao-quando-migrar.html">Excel vs. Sistema</a></li>
+              <li><a href="${blogPath}indicadores-operacionais-para-pmes.html">Indicadores para PMEs</a></li>
             </ul>
           </div>
           <div>
