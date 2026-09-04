@@ -472,7 +472,26 @@
     </div>
   </section>
 
-  <!-- 8. O CASE -->
+  <!-- ══════════════════════════════════════════════════════════════════
+       8. O CASE — DESLIGADO ATE TER DADO REAL
+
+       Foi ao ar com placeholder visivel ([SEGMENTO A CONFIRMAR], [A PREENCHER])
+       numa pagina publica. Fica comentado ate existir um case de varejo com
+       numero, e nao volta antes disso.
+
+       Para religar, preencha os tres e descomente:
+         1. o segmento e o numero de lojas da rede, no badge;
+         2. o numero que fala com dono de loja -- quanto valeu em R$, em
+            ruptura evitada ou em compra que deixou de ser feita no escuro;
+         3. confira se o cliente autoriza ser citado, mesmo sem o nome.
+
+       E devolva a alternancia de fundo: com o case de volta, #quemfaz volta a
+       ser section--navy e #faq perde a classe. O CSS de .case-var__* segue em
+       varejo.css, intacto, esperando.
+       ══════════════════════════════════════════════════════════════════ -->
+
+  <!--
+  [[ 8. O CASE ]]
   <section id="case" class="section">
     <div class="container">
       <div class="section-label reveal text-center">
@@ -500,9 +519,10 @@
       </div>
     </div>
   </section>
+  -->
 
   <!-- 9. QUEM FAZ -->
-  <section id="quemfaz" class="section section--navy">
+  <section id="quemfaz" class="section">
     <div class="container">
       <div class="quemfaz__grid">
         <div class="quemfaz__retrato reveal">
@@ -520,7 +540,7 @@
   </section>
 
   <!-- 10. FAQ -->
-  <section id="faq" class="section">
+  <section id="faq" class="section section--navy">
     <div class="container">
       <h2 class="section-title reveal text-center">Perguntas frequentes</h2>
       <div class="faq__list">
