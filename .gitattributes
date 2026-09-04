@@ -1,0 +1,34 @@
+# Normaliza o fim de linha em todo o repositório.
+#
+# Por que isto existe: o checkout do Diego é Windows e grava CRLF; o sandbox
+# dos agentes de IA é Linux e grava LF. Sem esta regra o mesmo arquivo aparece
+# "modificado" nas duas pontas sem ninguém ter editado nada — diff fantasma,
+# e conflito em arquivo que pessoa nenhuma tocou.
+#
+# eol=lf força LF também na árvore de trabalho, não só no repositório. É mais
+# rígido que o `text=auto` sozinho e é de propósito: com humano e agente
+# escrevendo no mesmo branch, uma convenção só é mais barata que duas.
+* text=auto eol=lf
+
+# Binários: nunca normalizar, nunca tentar diff de texto.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.ico  binary
+*.mp4  binary
+*.mov  binary
+*.woff binary
+*.woff2 binary
+*.pdf  binary
+*.docx binary
+*.xlsx binary
+
+# SVG é texto: diff legível vale mais que tratá-lo como imagem.
+*.svg text eol=lf
+
+# Diff com heurística da linguagem certa, no GitHub e no terminal.
+*.html diff=html
+*.css  diff=css
+*.js   diff=javascript
+*.mjs  diff=javascript
