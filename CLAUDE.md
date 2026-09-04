@@ -48,7 +48,7 @@ Container 1120px, `.section` com 104px de padding vertical. Breakpoints em 900px
 
 **`css/style.css` é compartilhado com o blog.** As assinaturas `.container`, `.section`, `.section-title`, `.section-sub`, `.btn*`, `.label*`, `.navbar*`, `footer`, `.reveal` e `.faq__*` são contrato — mexer nelas mexe no blog inteiro.
 
-**`css/varejo.css` é a camada da home**, com o que não existe no compartilhado: `.trust-logos`, `.trad__*`, `.degraus__*`, `.mapa__*`, `.naofaz__*`, `.case-var__*`, `.quemfaz__*` e o estilo do `<select>`. Antes de criar classe nova aqui, procure no `style.css` — `.glass-card`, `.step__num`, `.step__title`, `.step__text`, `.step__tag`, `.dor__*` e os formulários já existem e são reaproveitados.
+**`css/varejo.css` é a camada da home**, com o que não existe no compartilhado: `.trust-logos`, `.trad__*`, `.degraus__*`, `.mapa__*`, `.cases__*`, `.cases-empty__*`, `.project-card__*`, `.naofaz__*`, `.quemfaz__*` e o estilo do `<select>`. Antes de criar classe nova aqui, procure no `style.css` — `.glass-card`, `.step__num`, `.step__title`, `.step__text`, `.step__tag`, `.dor__*` e os formulários já existem e são reaproveitados.
 
 > `style.css` ainda carrega as seções da home antiga (`#stats`, `#solucao`, `#comparativo`, `.case__cards`, `.spec__*`, `.pilares__*`, `.logo-marquee`). Está morto na home, mas parte disso o blog usa — não saia apagando sem conferir.
 
@@ -61,6 +61,7 @@ Container 1120px, `.section` com 104px de padding vertical. Breakpoints em 900px
 ├── css/style.css       # compartilhado com o blog
 ├── css/varejo.css      # camada da home
 ├── js/main.js          # navbar e rodapé injetados, formulários, animações
+├── js/cases.js         # catálogo e componentes dos cases da home
 ├── images/logos/       # logos de clientes: branco com alfa (ver abaixo)
 ├── images/             # fotos e assets antigos
 ├── blog/               # 17 posts + index + _template.html
@@ -70,9 +71,15 @@ Container 1120px, `.section` com 104px de padding vertical. Breakpoints em 900px
 
 ### Seções da home, em ordem
 
-`#hero` · `#dor` (os seis sintomas da segunda loja) · `#tese` (a ferramenta chegou, o processo não) · `#traducao` (o que desce do varejo grande e o que fica lá) · `#degraus` (os quatro degraus) · `#mapa` (o que o Mapa entrega) · `#naofazemos` · `#case` · `#quemfaz` · `#faq` · `#cta-final`
+`#hero` · `#dor` (os seis sintomas da segunda loja) · `#tese` (a ferramenta chegou, o processo não) · `#traducao` (o que desce do varejo grande e o que fica lá) · `#degraus` (os quatro degraus) · `#mapa` (o que o Mapa entrega) · `#cases` · `#naofazemos` · `#quemfaz` · `#faq` · `#cta-final`
 
 A navbar e o rodapé linkam `#degraus`, `#mapa`, `#traducao`, `#quemfaz` e `#faq`. **Renomeou um id, atualize `js/main.js`** — as âncoras vêm de lá, não do HTML.
+
+### Cases e portfólio
+
+O catálogo vive no array `projetos` de `js/cases.js`. Vazio, ele mantém o estado editorial que já está no HTML; preenchido, renderiza o primeiro item marcado como `destaque` em formato maior e distribui os demais no grid. O componente aceita vídeo MP4 sem controles (`autoplay`, `muted`, `loop`, `playsInline`), usa a imagem cadastrada como poster e fallback e expõe `data-case-media` como gancho para um modal futuro.
+
+Não publique card incompleto para ocupar espaço. Nome de cliente, problema, solução, resultado, mídia e autorização de uso entram apenas quando forem reais e confirmados.
 
 ## A faixa de logos
 
