@@ -4,6 +4,8 @@
 
 Este repositório é **público**. A intranet da operação vive em `diegocap2212/celere-intranet` e não tem relação com ele — se a tarefa for sobre a esteira, o Paper ou o quadro Kanban, é no outro repositório.
 
+> **Antes de commitar, leia o [CONTRIBUTING.md](CONTRIBUTING.md).** `main` é produção e está protegida: push direto é recusado pelo GitHub, para todo mundo. Trabalho novo nasce numa worktree (`node scripts/worktree.mjs nova <nome>`) e entra por Pull Request. Abrir o PR é seu; o merge é decisão de pessoa.
+
 ## Posicionamento
 
 A home fala com **donos de redes de varejo físico de 2 a 10 lojas**. A promessa é uma só: *a operação do varejo grande, no tamanho da sua rede*.
