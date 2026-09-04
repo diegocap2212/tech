@@ -254,8 +254,11 @@ window.toggleFaq = function(btn) {
  * Scroll reveal animations (with stagger support via .stagger containers)
  */
 function initScrollReveal() {
+  // threshold 0: o gatilho é a margem, não uma fração do elemento. Com 0.1, um
+  // bloco mais alto que a janela nunca chega a 10% visível de uma vez e fica
+  // invisível para sempre — foi o que aconteceu com a seção Soluções no celular.
   const observerOptions = {
-    threshold: 0.1,
+    threshold: 0,
     rootMargin: '0px 0px -50px 0px'
   };
 
