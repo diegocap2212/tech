@@ -1,111 +1,108 @@
-# Célere — Consultoria de Processos & Tecnologia
+# Célere Tech — site público
 
-## Projeto
-**Site:** celeretech.com.br  
-**Deploy:** GitHub Pages (push to main = deploy automático)  
-**Domínio:** CNAME → celeretech.com.br
+**Site:** celeretech.com.br · **Deploy:** GitHub Pages (push na `main` = deploy) · **Domínio:** CNAME
+
+Este repositório é **público**. A intranet da operação vive em `diegocap2212/celere-intranet` e não tem relação com ele — se a tarefa for sobre a esteira, o Paper ou o quadro Kanban, é no outro repositório.
+
+## Posicionamento
+
+A home fala com **donos de redes de varejo físico de 2 a 10 lojas**. A promessa é uma só: *a operação do varejo grande, no tamanho da sua rede*.
+
+O produto de entrada não é software — é o **Mapa da Operação**, pago, vendido depois de um diagnóstico gratuito de 30 minutos. O sistema vem depois do Mapa, em fatias de 2 a 4 semanas, com loja piloto primeiro.
+
+Isto substituiu o posicionamento anterior ("PMEs de 5 a 200 colaboradores", "software sob medida"), em setembro de 2026. Se for mexer em texto de venda, o argumento inteiro — ICP, oferta em quatro degraus, o que a Célere não faz, os selos de confiança — está no Paper de Fundação, dentro da intranet. **Não invente posicionamento novo aqui.**
+
+Três travas de escrita, herdadas do Paper:
+
+- Nunca prometa **"clareza"**, **"visibilidade"** ou **"diagnóstico completo"**. A promessa é a lista do que o cliente recebe, não o adjetivo.
+- Nunca venda "digitalização como um todo" nem "transformação digital". É a frase de toda agência; o dono não sabe o que comprar quando ouve.
+- Toda seção nova precisa caber num dono de rede de quatro lojas. Se serve para qualquer empresa, está errada.
 
 ## Stack
-- HTML5 semântico + CSS3 vanilla + JavaScript ES6 puro
-- **Zero frameworks** (sem React, Vue, Webpack, etc.)
-- Fonte: Inter — Google Fonts (400, 500, 600, 700, 900)
 
-## Design System
+HTML5 semântico, CSS3 vanilla, JavaScript ES6. **Zero frameworks, zero build.** Fontes: Inter (corpo) e Space Grotesk (títulos), via Google Fonts.
 
-### Paleta de cores
+## Design system
+
+O tema é **escuro** (`body.page-dark`) — não claro. Tokens em `css/style.css`, seção 1:
+
 ```css
---navy:        #0A1628   /* Background principal / textos dark */
---navy-80:     rgba(10,22,40,0.80)
---orange:      #EA580C   /* Accent primário, CTAs */
---orange-h:    #C94C08   /* Hover do orange */
---white:       #FFFFFF
---off-white:   #F1F5F9   /* Background seções light */
---slate:       #334155   /* Texto principal */
---slate-light: #64748B   /* Texto secundário */
---border:      #E2E8F0
---shadow:      0 4px 24px rgba(0,0,0,0.1)
+--navy-950: #060D1A   /* fundo da página */
+--navy-900: #0A1628   /* fundo alternado entre seções */
+--navy-800: #0F1F3A
+--orange:       #EA580C   /* accent, CTAs */
+--orange-light: #F97316
+--grad-brand: linear-gradient(135deg, #EA580C, #F97316)
+--text-hi:  #F1F5F9            /* títulos */
+--text-mid: rgba(241,245,249,.70)  /* corpo */
+--text-low: rgba(241,245,249,.45)  /* legendas */
+--glass-bg: rgba(255,255,255,.04)  --glass-border: rgba(255,255,255,.09)
+--r-sm: 8px  --r-md: 12px  --r-lg: 20px
 ```
 
-### Tipografia
-- Família: Inter, sans-serif — Base: 17px / line-height 1.65
-- Headings: `clamp()` para responsividade (ex: `clamp(32px, 4vw, 46px)`)
+Container 1120px, `.section` com 104px de padding vertical. Breakpoints em 900px e 600px.
 
-### Breakpoints
-- `@media (max-width: 900px)` — tablet
-- `@media (max-width: 600px)` — mobile
+**`css/style.css` é compartilhado com o blog.** As assinaturas `.container`, `.section`, `.section-title`, `.section-sub`, `.btn*`, `.label*`, `.navbar*`, `footer`, `.reveal` e `.faq__*` são contrato — mexer nelas mexe no blog inteiro.
 
-## Estrutura de Arquivos
+**`css/varejo.css` é a camada da home**, com o que não existe no compartilhado: `.trust-logos`, `.trad__*`, `.degraus__*`, `.mapa__*`, `.naofaz__*`, `.case-var__*`, `.quemfaz__*` e o estilo do `<select>`. Antes de criar classe nova aqui, procure no `style.css` — `.glass-card`, `.step__num`, `.step__title`, `.step__text`, `.step__tag`, `.dor__*` e os formulários já existem e são reaproveitados.
+
+> `style.css` ainda carrega as seções da home antiga (`#stats`, `#solucao`, `#comparativo`, `.case__cards`, `.spec__*`, `.pilares__*`, `.logo-marquee`). Está morto na home, mas parte disso o blog usa — não saia apagando sem conferir.
+
+## Estrutura
+
 ```
 /
-├── index.html              # Landing page principal (602+ linhas)
-├── css/style.css           # Todo o CSS (478+ linhas)
-├── js/main.js              # Navbar/footer injetados + formulários + animações
-├── images/                 # Fotos e logos
-│   ├── diego.png           # Foto do Diego (especialistas)
-│   ├── diego.stage.png     # Foto Diego palestrando (seção foto)
-│   ├── renner.png          # Logo Lojas Renner
-│   ├── dafiti.png          # Logo Dafiti
-│   ├── pluxee.png          # Logo Pluxee
-│   └── raia-drogasil.png   # Logo Raia Drogasil
-├── blog/                   # Posts do blog
-│   ├── index.html
-│   └── *.html              # Artigos individuais
-├── obrigado.html           # Página de agradecimento pós-formulário
-└── CNAME                   # celeretech.com.br
+├── index.html          # a landing (11 seções, listadas abaixo)
+├── obrigado.html       # pós-formulário, noindex
+├── css/style.css       # compartilhado com o blog
+├── css/varejo.css      # camada da home
+├── js/main.js          # navbar e rodapé injetados, formulários, animações
+├── images/logos/       # logos de clientes: branco com alfa (ver abaixo)
+├── images/             # fotos e assets antigos
+├── blog/               # 17 posts + index + _template.html
+├── scripts/            # build-sitemap, build-related, update-blog-heads, blog-topics.json
+└── CNAME, robots.txt, sitemap.xml, favicon.svg
 ```
 
-## Seções da Landing Page (em ordem)
-1. `#hero` — Hero com headline + formulário de lead + logos de clientes
-2. `#manifesto` — Posicionamento central ("Criamos o software para a sua empresa")
-3. `#apresentacao` — Foto institucional (Diego palestrando)
-4. `#stats` — 4 números-chave: 10+ anos, 300+ processos, R$2M+, 100% custom
-5. `#dor` — 3 pontos de dor do cliente (tools caras, treinamento, contratos)
-6. `#ferramentas` — Crítica às ferramentas genéricas (Jira, Salesforce, SAP, TOTVS, Monday, HubSpot)
-7. `#nova-era` — Nova era do software customizado (~60% mais barato, ≈0 gestão)
-8. `#solucao` — Metodologia 3 passos: Diagnóstico > Construção > Evolução
-9. `#diferencial` — 3 diferenciais: Consultoria de Processos, Design de Fluxo, Sistema Integrado
-10. `#cases` — Transformação Antes/Ação Célere/Depois de um case real
-11. `#comparativo` — Tabela vs. consultoria tradicional vs. SaaS vs. Célere
-12. `#especialistas` — Diego Caporusso
-13. `#faq` — 7 perguntas frequentes (accordion)
-14. `#cta-final` — Formulário de lead final (inline 4 colunas)
+### Seções da home, em ordem
 
-## Classes CSS Utilitárias Chave
-| Classe | Uso |
-|--------|-----|
-| `.container` | max-width 1120px, margin auto, padding 24px |
-| `.section` | padding 96px 0 |
-| `.section--dark` | background navy, texto branco |
-| `.section--light` | background off-white (#F1F5F9) |
-| `.section-title` | h2 responsivo 32-46px, bold, navy |
-| `.section-sub` | subtítulo 18px, slate-light |
-| `.btn--primary` | botão laranja (#EA580C) |
-| `.btn--lg` | variante grande (20px/44px) |
-| `.label.label--orange` | badge laranja uppercase 12px |
-| `.reveal` + `.reveal.active` | animação scroll (opacity + translateY) |
+`#hero` · `#dor` (os seis sintomas da segunda loja) · `#tese` (a ferramenta chegou, o processo não) · `#traducao` (o que desce do varejo grande e o que fica lá) · `#degraus` (os quatro degraus) · `#mapa` (o que o Mapa entrega) · `#naofazemos` · `#case` · `#quemfaz` · `#faq` · `#cta-final`
 
-## Componentes Injetados (main.js)
-- **Navbar** (`#navbar-placeholder`) — Fixa, dark navy, logo + link blog + CTA laranja
-- **Footer** (`#footer-placeholder`) — Temporariamente vazio (aguardando dados)
+A navbar e o rodapé linkam `#degraus`, `#mapa`, `#traducao`, `#quemfaz` e `#faq`. **Renomeou um id, atualize `js/main.js`** — as âncoras vêm de lá, não do HTML.
 
-## Interatividade (main.js)
-- `initScrollReveal()` — IntersectionObserver em `.reveal`, `.dor__item`, `.step`, etc.
-- `initLeadForm(id)` — Valida campos → dispara `gtag conversion` → abre WhatsApp
-- `toggleFaq(btn)` — Accordion de FAQ (fecha os demais ao abrir um)
+## A faixa de logos
+
+Os arquivos em `images/logos/` são a marca em **branco com canal alfa**, já recortada. Assentam direto no fundo escuro — sem chip, sem `filter: grayscale()`.
+
+Isso não é preferência estética: os PNGs originais em `images/` (`renner.png`, `dafiti.png`, `pluxee.png`, `raia-drogasil.png`) **não têm transparência nenhuma** — são retângulos opacos de fundo branco, cinza ou verde. A home antiga disfarçava isso com um chip claro atrás de cada um, que é o "quadrado" que aparecia. Nunca volte a usar os originais na faixa.
+
+A altura é **por marca**, em `varejo.css`, via `[data-marca="..."]`: um monograma quadrado e uma palavra de seis letras não têm a mesma massa óptica com a mesma altura. Logo novo = mais um `<img data-marca="x">` no HTML e mais uma linha de altura no CSS.
+
+## Caminhos relativos
+
+`caminhosDoSite()` em `js/main.js` calcula `rootPath` e `blogPath` contando a profundidade da URL. Não volte a testar `pathname.includes('/blog/')`: aquele booleano quebrava em qualquer pasta nova, e o `${rootPath}${blogPath}` que ele exigia dava 404 nos links de post do rodapé dentro do blog. `blogPath` já vem completo — use `${blogPath}post.html`, sem prefixo.
+
+## Formulários
+
+`initLeadForm(id)` valida pelo atributo `required` (não por lista fixa de campos), dispara a conversão do Ads e o `generate_lead` do GA4, e abre o WhatsApp com os dados. O `data-origem` do `<form>` vai junto no evento do GA4 — é como se separa a origem do lead nos relatórios.
+
+O campo `lojas` é opcional no código e obrigatório na home: é a qualificação ("tem mais de uma loja?") feita antes da conversa, não durante.
 
 ## Integrações
-- **WhatsApp Business:** +55 11 9 9147-6160
-- **Google Ads tag:** `AW-856467424` (real, em todas as páginas: index, obrigado e blog)
-  - Conversão lead form: `AW-856467424/lswwCIi-r6ccEODPspgD` (main.js)
-  - Conversão página obrigado: `AW-856467424/p2QlCKbMqKocEODPspgD`
-- **GA4:** property `250126879`, Measurement ID `G-LX9B0H8BF7` (em todas as páginas; lead form dispara `generate_lead`)
-- **AdSense:** `ca-pub-5027217286342270`
 
-## Posicionamento & Mensagem
-- **Tagline:** "Não adaptamos sua empresa ao software. Criamos o software para a sua empresa."
-- **Público-alvo:** PMEs com 5–200 colaboradores, operação dependente de planilhas/processos manuais
-- **Proposta de valor:** Consultoria de processos + construção de software customizado, resultados em 2–4 semanas
-- **Payback prometido:** < 6 meses em média
+- **WhatsApp:** +55 11 99147-6160
+- **Google Ads:** `AW-856467424` · conversão de lead `AW-856467424/lswwCIi-r6ccEODPspgD` · página obrigado `AW-856467424/p2QlCKbMqKocEODPspgD`
+- **GA4:** `G-LX9B0H8BF7` (property 250126879)
+- **AdSense:** `ca-pub-5027217286342270` — **só no blog e na obrigado.** Fora da home de propósito: anúncio de terceiro numa página de captação disputa o clique com o formulário e pode vender o visitante para um concorrente.
 
-## Founders
-- **Diego Caporusso** — Founder & CEO (10+ anos em Raia Drogasil, Lojas Renner, Sodexo, Dafiti)
+## Blog
+
+Um arquivo HTML por post, sem gerador. `scripts/blog-topics.json` é a fila de pautas (`published` / `pending`); a rotina de publicação consome a próxima `pending` e para em silêncio quando acabam. `build-sitemap.mjs` reconstrói o sitemap inteiro a partir dos posts — não edite `sitemap.xml` na mão.
+
+A fila foi replanejada para varejo em setembro de 2026 (estoque entre lojas, reposição, conciliação de cartão, lucro por loja). Os 12 posts já publicados são do posicionamento antigo e continuam no ar: trazem tráfego orgânico e reescrevê-los quebraria os links internos que o `build-related.mjs` já gerou.
+
+## Convenções
+
+- Português no código, nos comentários e na interface.
+- Comentário explica *por quê*, não *o quê*.
+- Ícone é sempre SVG inline, com traço, na grade de 24px. Nunca emoji.
