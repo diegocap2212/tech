@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estoque que não bate entre lojas: como achar a diferença e fechar a torneira | Blog Célere Tech</title>
+  <meta name="description" content="Estoque que não bate entre lojas quase nunca é erro de contagem. Veja as quatro origens mais comuns da diferença numa rede pequena e como corrigir cada uma." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="canonical" href="https://celeretech.com.br/blog/estoque-que-nao-bate-entre-lojas.html" />
+
+  <meta property="og:title" content="Estoque não bate entre as lojas? Onde a diferença nasce | Célere Tech" />
+  <meta property="og:description" content="O sistema diz uma coisa, a prateleira diz outra. Veja onde a diferença nasce e como fechar a torneira." />
+  <meta property="og:url" content="https://celeretech.com.br/blog/estoque-que-nao-bate-entre-lojas.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://celeretech.com.br/images/og-celere.jpg" />
+  <meta property="og:site_name" content="Célere Tech" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Estoque não bate entre as lojas? Onde a diferença nasce" />
+  <meta name="twitter:description" content="O sistema diz uma coisa, a prateleira diz outra. Veja onde a diferença nasce e como fechar a torneira." />
+  <meta name="twitter:image" content="https://celeretech.com.br/images/og-celere.jpg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Estoque que não bate entre lojas: como achar a diferença e fechar a torneira",
+    "description": "Estoque que não bate entre lojas quase nunca é erro de contagem. Veja as quatro origens mais comuns da diferença numa rede pequena e como corrigir cada uma.",
+    "author": {"@type": "Person", "name": "Diego Caporusso"},
+    "publisher": {"@type": "Organization", "name": "Célere Tech", "url": "https://celeretech.com.br"},
+    "datePublished": "2026-09-07",
+    "dateModified": "2026-09-07",
+    "url": "https://celeretech.com.br/blog/estoque-que-nao-bate-entre-lojas.html"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css?v=21" />
+
+  <style>
+    .article-hero { background: var(--navy); padding: 120px 24px 56px; }
+    .article-cat { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+    .article-hero h1 { font-size: clamp(26px, 4vw, 44px); font-weight: 900; color: #fff; line-height: 1.2; max-width: 760px; margin-bottom: 20px; }
+    .article-meta { font-size: 14px; color: rgba(255,255,255,0.4); }
+    .article-body { max-width: 760px; margin: 0 auto; padding: 64px 24px 80px; }
+    .article-body p { font-size: 18px; color: var(--slate); line-height: 1.8; margin-bottom: 24px; }
+    .article-body h2 { font-size: 28px; font-weight: 700; color: var(--navy); margin: 48px 0 16px; }
+    .article-body h3 { font-size: 20px; font-weight: 700; color: var(--navy); margin: 32px 0 12px; }
+    .article-body ul, .article-body ol { margin: 0 0 24px 24px; }
+    .article-body li { font-size: 18px; color: var(--slate); line-height: 1.75; margin-bottom: 12px; }
+    .callout { background: var(--off-white); border-left: 4px solid var(--orange); border-radius: 0 8px 8px 0; padding: 24px; margin: 32px 0; }
+    .stat-box { background: var(--navy); border-radius: 12px; padding: 32px; margin: 32px 0; display: flex; gap: 24px; align-items: center; color: #fff; }
+    .stat-num { font-size: 48px; font-weight: 900; color: var(--orange); line-height: 1; flex-shrink: 0; }
+    .cta-inline { background: var(--navy); border-radius: 12px; padding: 40px; margin: 48px 0; text-align: center; color: #fff; }
+    .cta-inline h3 { font-size: 24px; font-weight: 700; margin-bottom: 12px; }
+    .cta-inline p { color: rgba(255,255,255,0.6); margin-bottom: 24px; }
+    .internal-link { color: var(--orange); font-weight: 600; text-decoration: underline; }
+  </style>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5027217286342270"
+     crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-856467424"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-856467424');
+    gtag('config', 'G-LX9B0H8BF7'); // GA4 (property 250126879)
+  </script>
+
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<article>
+  <header class="article-hero">
+    <div class="container" style="max-width:760px;">
+      <p class="article-cat reveal">Estoque &amp; Reposição</p>
+      <h1 class="reveal">Estoque que não bate entre lojas: como achar a diferença e fechar a torneira</h1>
+      <p class="article-meta reveal">Por <strong>Diego Caporusso</strong> · Célere Tech · Setembro 2026 · 7 min de leitura</p>
+    </div>
+  </header>
+
+  <div class="article-body">
+    <p class="reveal">O sistema diz noventa unidades. A gerente da loja 2 garante que tem sessenta. O relatório consolidado da rede mostra oitenta e dois. Os três números existem ao mesmo tempo, nenhum está errado no contexto de quem o gerou — e a operação continua rodando em cima do que cada um acha que é verdade. Se essa cena é familiar, a diferença de estoque entre lojas já está custando dinheiro na sua rede, mesmo que ela ainda não apareça como um número no seu relatório.</p>
+
+    <div class="stat-box reveal">
+      <div class="stat-num">68%</div>
+      <p>dos pequenos varejistas brasileiros não sabem, com margem de dois dias, quantas unidades de um produto têm em cada loja — segundo levantamento do SEBRAE sobre gestão de estoque no varejo físico de pequeno porte.</p>
+    </div>
+
+    <h2 class="reveal">Por que o estoque não bate — e por que não é erro de contagem</h2>
+
+    <p class="reveal">A primeira reação de qualquer gestor diante da divergência é marcar um dia de inventário. A equipe fecha cedo, conta tudo, corrige o sistema. Três semanas depois, o número voltou a não bater. O inventário não errou: ele fotografou o problema num momento, mas não tocou na câmera que continua tirando fotos tortas.</p>
+
+    <p class="reveal">Divergência de estoque entre lojas quase nunca nasce de erro de contagem. Ela nasce de processo: uma movimentação que aconteceu no mundo físico mas não foi registrada no sistema, ou foi registrada de forma diferente da que o sistema esperava. Enquanto o processo não muda, o número vai continuar divergindo.</p>
+
+    <h3 class="reveal">O que a maioria trata como sintoma é a causa</h3>
+
+    <p class="reveal">Redes pequenas costumam tratar a diferença de estoque como ruído natural — algo que acontece e é corrigido no inventário periódico. Essa lógica tem um custo oculto: a mercadoria que o sistema mostra como disponível na loja 1 pode já ter ido para a loja 3, vendida ou perdida. A compra que o comprador vai fazer amanhã será calculada em cima de um número que não existe. A ruptura que o cliente vai encontrar na sexta-feira já está plantada hoje no dado que ninguém questiona.</p>
+
+    <h2 class="reveal">As quatro origens mais comuns da diferença</h2>
+
+    <p class="reveal">Numa rede de duas a dez lojas, a divergência de estoque costuma vir de quatro lugares. Identificar qual deles é o principal na sua operação já resolve mais da metade do problema — porque o remédio de cada um é diferente, e tentar resolver tudo de uma vez cria burocracia que a equipe vai ignorar.</p>
+
+    <h3 class="reveal">1. Transferência registrada fora do sistema</h3>
+
+    <p class="reveal">A loja 2 está sem o produto. A loja 3 tem em excesso. O gerente resolve por WhatsApp, a mercadoria sai numa mochila, e o sistema não sabe que ela saiu de um lugar e entrou em outro. Para o estoque, o produto sumiu da loja 3 e vai aparecer como venda na loja 2 quando ela vender — mas não quando recebeu. O sistema registra uma saída que ele não viu chegar.</p>
+
+    <p class="reveal"><a href="como-sair-do-whatsapp-como-ferramenta-de-gestao.html" class="internal-link">Operações que ainda dependem do WhatsApp para coordenar movimentações entre lojas</a> acumulam uma diferença que cresce silenciosamente a cada semana. É o mecanismo mais comum e o mais invisível porque não parece um erro — parece agilidade.</p>
+
+    <h3 class="reveal">2. Recebimento sem conferência de nota</h3>
+
+    <p class="reveal">O fornecedor entrega trinta caixas, o sistema atualiza para trinta unidades, mas a caixa 24 veio faltando dois itens. A funcionária que recebeu assinou a nota sem contar. A diferença não nasceu na venda — nasceu na entrada. E ninguém vai saber disso até que o número físico e o virtual sejam cruzados, produto por produto, num inventário futuro.</p>
+
+    <h3 class="reveal">3. Ajuste avulso sem protocolo</h3>
+
+    <p class="reveal">O PDV travou e a gerente ajustou o estoque manualmente para resolver a tela de erro. O produto foi lançado como "doação" porque era o único motivo de baixa disponível no sistema naquele momento. O resultado não foi perda — mas foi o campo errado, e agora a diferença aparece nos relatórios como uma doação que nunca aconteceu. Ajustes sem categoria e sem autor registrados são a segunda fonte mais comum de divergência que ninguém consegue rastrear.</p>
+
+    <h3 class="reveal">4. Perda não lançada no momento</h3>
+
+    <p class="reveal">Produto venceu, foi avariado na entrega ou sumiu. A equipe descartou, mas o lançamento no sistema ficou para depois — e depois nunca chegou. A unidade está no sistema como disponível, mas não está em lugar nenhum. Esse tipo de diferença costuma aparecer concentrado em certos produtos e em certas equipes, o que facilita a identificação quando se cruza histórico de perdas com divergência por loja.</p>
+
+    <h2 class="reveal">Como localizar de onde vem a diferença na sua rede</h2>
+
+    <p class="reveal">Antes de criar qualquer processo novo, é preciso saber qual das quatro origens responde pela maior parte da divergência na sua operação. O diagnóstico não exige inventário completo — exige confronto sistemático de um conjunto pequeno de produtos.</p>
+
+    <h3 class="reveal">O confronto entre movimentação e saldo</h3>
+
+    <p class="reveal">Pegue um produto com diferença conhecida e refaça a vida dele nos últimos 30 dias: estoque inicial + entradas registradas − saídas registradas = o que o sistema deveria ter. Compare com o físico. Se o físico for menor, alguma saída não foi registrada — transferência, perda, ajuste com motivo errado. Se o físico for maior, alguma entrada não entrou no sistema — recebimento sem lançamento, mercadoria que chegou sem nota associada.</p>
+
+    <p class="reveal">Fazer esse confronto para cinco a dez produtos já revela qual tipo de evento gera mais erro. Não é necessário auditar o catálogo inteiro para identificar a origem: os padrões se repetem, e o primeiro produto com divergência alta já aponta para o processo que precisa ser corrigido.</p>
+
+    <h3 class="reveal">O rastro de movimentação como pista</h3>
+
+    <p class="reveal">A maioria dos PDVs e ERPs guarda log de movimentações com data, hora e autor. Procure eventos do tipo "ajuste manual" ou "saída sem venda" fora do horário de pico — são candidatos naturais ao erro não intencional. Se o sistema não tem esse log com data e responsável, esse já é o problema central: sem rastreabilidade, a diferença nunca tem dono, e sem dono ela nunca para de crescer.</p>
+
+    <div class="callout reveal">
+      <p><strong>Benchmark de rede saudável:</strong> Em redes que controlam as quatro origens com processo, a diferença de estoque fica abaixo de 1% do volume movimentado por mês. Redes sem protocolo de transferência e sem conferência de recebimento costumam operar com 5% a 12% de divergência — o equivalente a uma loja fantasma que consome margem sem vender nada e sem aparecer em nenhum relatório de custo.</p>
+    </div>
+
+    <h2 class="reveal">Como fechar a torneira para cada origem</h2>
+
+    <p class="reveal">Cada origem tem um remédio diferente. O objetivo é o menor processo possível que registre a movimentação antes que ela se perca — não um manual de procedimentos que vai ficar na gaveta.</p>
+
+    <h3 class="reveal">Para transferências entre lojas</h3>
+
+    <p class="reveal">O registro precisa acontecer antes da mercadoria sair — não depois, não quando der. Um formulário de transferência com três campos (produto, quantidade e loja de destino) que o gerente preenche no celular e o sistema confirma quando a mercadoria chega resolve oito em cada dez casos. O critério operacional é simples: a mercadoria não sai sem o número de transferência gerado. Se o sistema não suporta esse fluxo, uma planilha compartilhada entre lojas com timestamp de saída e chegada resolve como etapa intermediária — imperfeita, mas imensamente melhor do que o WhatsApp sem registro.</p>
+
+    <h3 class="reveal">Para recebimentos e perdas</h3>
+
+    <p class="reveal">Recebimento exige conferência física antes da assinatura de nota — sem exceção documentada. Isso é garantido com uma regra operacional, não com tecnologia: a nota só é assinada depois que a contagem bater. Para perdas, o lançamento precisa acontecer no momento do descarte, não em retrospecto. Um campo de motivo padronizado (vencimento, avaria ou furto confirmado) com lançamento obrigatório no PDV é suficiente para a maioria das redes pequenas registrarem o que antes sumia silenciosamente.</p>
+
+    <h2 class="reveal">O caso da rede que fechou a diferença em duas semanas</h2>
+
+    <p class="reveal">Uma rede de quatro lojas de cama, mesa e banho chegou ao diagnóstico com 8% de divergência consolidada — o equivalente a quarenta dias de venda de determinadas SKUs simplesmente desaparecidos dos relatórios. O inventário bimestral corrigia o número, mas a diferença voltava antes do ciclo seguinte.</p>
+
+    <p class="reveal">O confronto de movimentação identificou que 70% da diferença vinha de transferências entre lojas combinadas por WhatsApp sem registro no sistema. A solução não foi trocar de sistema: o ERP que já usavam tinha o módulo de transferência inativo desde a implantação. Em duas semanas, o módulo foi ativado e a equipe recebeu uma regra única — a mercadoria não sai sem o número de transferência. Sem treinamento extenso, sem novo contrato de software.</p>
+
+    <p class="reveal">No ciclo seguinte de inventário, a divergência caiu para 1,8%. Os outros 1,8% foram mapeados como perdas não lançadas e resolvidos com uma régua de lançamento obrigatório no ponto de descarte. A diferença que consumia margem sem aparecer em relatório nenhum foi fechada com processo, não com tecnologia.</p>
+
+    <h2 class="reveal">Perguntas frequentes</h2>
+
+    <p class="reveal"><strong>O inventário cíclico resolve a diferença de estoque entre lojas?</strong></p>
+
+    <p class="reveal">O inventário cíclico melhora a frequência de detecção — você vai encontrar a diferença mais cedo, antes que ela acumule por meses. Mas ele não fecha a torneira: enquanto o processo que gera a divergência continua rodando, o inventário vai continuar encontrando diferença, só que a intervalos menores. O inventário cíclico é uma ferramenta de monitoramento útil depois que os processos de registro estão funcionando — não de correção.</p>
+
+    <p class="reveal"><strong>Preciso de um sistema novo para controlar isso?</strong></p>
+
+    <p class="reveal">Quase nunca. A maioria dos PDVs e ERPs já tem os campos necessários para registrar transferência, recebimento e perda com motivo e autor — muitas vezes esses campos estão inativos ou subutilizados porque nunca houve processo definindo o uso. Antes de avaliar qualquer troca de sistema, vale mapear o que o atual suporta e ativá-lo com processo. Trocar o sistema sem mudar o processo de registro garante que a diferença vai aparecer no sistema novo também, agora com custo de implantação embutido.</p>
+
+    <div class="cta-inline reveal">
+      <h3>Você sabe quanto a diferença de estoque custa na sua rede por mês?</h3>
+      <p>Em 30 minutos de diagnóstico gratuito, identificamos o principal gargalo da sua operação e o que é possível resolver rapidamente.</p>
+      <a href="https://wa.me/5511991476160?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20meu%20diagn%C3%B3stico%20gratuito" target="_blank" class="btn btn--primary btn--lg">Agendar diagnóstico gratuito →</a>
+    </div>
+
+    <!-- related:start -->
+    <style>
+      .article-body .related { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--border); }
+      .article-body .related__title { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate-light); margin-bottom: 20px; }
+      .article-body .related__list { list-style: none; margin: 0; padding: 0; }
+      .article-body .related__list li { margin: 0 0 18px; }
+      .article-body .related__cat { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); margin-bottom: 2px; }
+      .article-body .related__list a { font-size: 17px; font-weight: 600; line-height: 1.5; color: var(--navy); text-decoration: none; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+      .article-body .related__list a:hover { color: var(--orange); border-bottom-color: var(--orange); }
+    </style>
+    <nav class="related reveal" aria-label="Leia também">
+      <p class="related__title">Leia também</p>
+      <ul class="related__list">
+        <li><span class="related__cat">Crescimento</span><a href="como-escalar-operacao-sem-escalar-o-caos.html">Como escalar a operação sem escalar o caos: o guia para PMEs em crescimento</a></li>
+        <li><span class="related__cat">Tecnologia</span><a href="integracao-de-sistemas-para-pmes.html">Integração de sistemas para PMEs: quando compensa e por onde começar</a></li>
+        <li><span class="related__cat">Metodologia</span><a href="como-criar-sop-guia-pratico-pmes.html">Como criar um SOP em 3 horas: guia prático para PMEs</a></li>
+      </ul>
+    </nav>
+    <!-- related:end -->
+  </div>
+</article>
+
+<div id="footer-placeholder"></div>
+<script src="../js/main.js?v=21"></script>
+
+</body>
+</html>
