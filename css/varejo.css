@@ -351,7 +351,11 @@
 }
 .solucao-painel__descricao { display: flex; flex-direction: column; gap: 12px; }
 .solucao-painel__descricao p { font-size: 15px; line-height: 1.7; color: var(--text-mid); }
-.solucao-painel__descricao p:nth-last-child(2) { color: var(--text-hi); font-weight: 600; }
+/* 3º parágrafo é sempre o "Ele não substitui X" nos seis produtos — fixo por
+   posição, não por distância do fim, porque o 5º parágrafo (adaptação à
+   operação) que fecha a descrição faria :nth-last-child(2) mirar a frase
+   errada (mais longa, pior candidata a negrito) assim que outro fosse anexado. */
+.solucao-painel__descricao p:nth-child(3) { color: var(--text-hi); font-weight: 600; }
 
 .solucao-demo { min-width: 0; }
 .solucao-demo__frame {
@@ -379,8 +383,20 @@
 .solucao-demo__dots i:first-child { background: var(--orange); }
 .solucao-demo__live { justify-self: end; display: flex; align-items: center; gap: 7px; }
 .solucao-demo__live i { width: 6px; height: 6px; border-radius: 50%; background: #6EE7B7; box-shadow: 0 0 10px rgba(110, 231, 183, 0.65); }
-.solucao-demo__viewport { position: relative; aspect-ratio: 16 / 10; background: #f4f0e9; }
-.solucao-demo__viewport iframe { width: 100%; height: 100%; border: 0; }
+/* O iframe roda no tamanho real de um desktop (1440x900, a mesma proporção
+   16:10 da moldura) e é encolhido por transform: scale. Se ficasse em 100%/100%
+   do box pequeno, o navegador tratava aquilo como a viewport de verdade — os
+   breakpoints mobile do protótipo entravam em ação e a tela aparecia cortada,
+   não reduzida. A variável é escrita via JS (ajustarEscalaDemo, em solucoes.js)
+   a cada troca de aba e a cada resize; o valor aqui é só o fallback antes disso rodar. */
+.solucao-demo__viewport { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #f4f0e9; }
+.solucao-demo__viewport iframe {
+  position: absolute; top: 0; left: 0;
+  width: 1440px; height: 900px;
+  border: 0;
+  transform-origin: top left;
+  transform: scale(var(--solucao-demo-escala, 0.32));
+}
 .solucao-demo__shield { position: absolute; inset: 0; }
 .solucao-demo__actions { display: flex; align-items: center; gap: 20px; margin-top: 20px; }
 .solucao-demo__actions .btn { padding: 14px 22px; font-size: 14px; }
