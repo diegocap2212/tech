@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>Célere Flow — Demo</title>
+<style>
+:root{
+  --bg:#f5f7fb; --surface:#ffffff; --surface-2:#f9fafc; --border:#e6eaf0;
+  --text:#17212b; --muted:#6f7a86; --primary:#2563eb; --primary-2:#1d4ed8;
+  --green:#16a34a; --amber:#f59e0b; --red:#ef4444; --purple:#7c3aed; --cyan:#0891b2;
+  --sidebar:#111827; --sidebar-2:#182233; --shadow:0 8px 28px rgba(30,41,59,.08);
+  --r:14px; --sidebar-w:244px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:var(--bg)}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.app{min-height:100vh}
+.sidebar{
+  position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-w);background:linear-gradient(180deg,var(--sidebar),#0f172a);
+  color:#d8dee9;border-right:1px solid rgba(255,255,255,.05);z-index:30;display:flex;flex-direction:column
+}
+.brand{height:72px;display:flex;align-items:center;padding:0 20px;border-bottom:1px solid rgba(255,255,255,.06)}
+.logo{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,#2563eb,#6ea8ff);display:grid;place-items:center;color:white;font-weight:900;margin-right:11px;box-shadow:0 8px 18px rgba(37,99,235,.3)}
+.brand strong{font-size:18px;color:#fff}.brand span{display:block;font-size:11px;color:#8fa2bc;margin-top:2px}
+.project{margin:14px 12px 8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);padding:10px 12px;border-radius:12px;display:flex;align-items:center;gap:10px}
+.project-icon{width:30px;height:30px;border-radius:9px;background:#24344d;display:grid;place-items:center;color:#9ec0ff;font-size:13px}
+.project strong{font-size:13px;color:#fff;display:block}.project small{font-size:10px;color:#8ea0b7}
+.nav{padding:4px 10px;display:flex;flex-direction:column;gap:2px;overflow:auto}
+.nav .group{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#64748b;padding:14px 10px 6px}
+.nav button{border:0;background:transparent;color:#c7d0dd;display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:10px;text-align:left;width:100%;font-weight:650;font-size:13px}
+.nav button:hover{background:rgba(255,255,255,.05);color:white}.nav button.active{background:#23324a;color:white;box-shadow:inset 3px 0 0 #4f8cff}
+.nav .ico{width:21px;text-align:center;color:#8ea5c7}
+.profile{margin-top:auto;padding:12px;border-top:1px solid rgba(255,255,255,.06)}
+.profile-card{display:flex;align-items:center;gap:10px;padding:9px;border-radius:10px}
+.avatar{width:34px;height:34px;border-radius:50%;background:#dbeafe;color:#1d4ed8;display:grid;place-items:center;font-weight:900}
+.profile-card strong{font-size:12px;color:#fff;display:block}.profile-card small{font-size:10px;color:#8191a7}
+
+.main{margin-left:var(--sidebar-w);min-height:100vh}
+.header{height:72px;position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 24px;gap:14px}
+.breadcrumb{min-width:250px}.breadcrumb strong{display:block;font-size:14px}.breadcrumb small{color:var(--muted);font-size:11px}
+.search{flex:1;max-width:580px;position:relative}.search:before{content:"⌕";position:absolute;left:13px;top:7px;color:#94a3b8;font-size:22px}
+.search input{width:100%;padding:10px 14px 10px 40px;border:1px solid var(--border);border-radius:10px;background:#f8fafc;outline:none}
+.header-actions{margin-left:auto;display:flex;align-items:center;gap:8px}
+.btn{border:1px solid var(--border);background:white;color:var(--text);padding:9px 12px;border-radius:9px;font-weight:700;font-size:12px}
+.btn:hover{background:#f8fafc}.btn.primary{background:var(--primary);border-color:var(--primary);color:white}.btn.primary:hover{background:var(--primary-2)}
+.btn.icon{width:38px;height:38px;padding:0;display:grid;place-items:center}
+.content{padding:24px 26px 42px}
+.page{display:none}.page.active{display:block;animation:fade .18s ease}
+@keyframes fade{from{opacity:.3;transform:translateY(3px)}to{opacity:1;transform:none}}
+.page-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px}
+.page-head h1{font-size:24px;letter-spacing:-.4px;margin:0 0 5px}.page-head p{margin:0;color:var(--muted);font-size:13px}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--border);margin-bottom:18px}.tabs button{border:0;background:transparent;padding:10px 13px;color:var(--muted);font-weight:700;font-size:12px;border-bottom:2px solid transparent}.tabs button.active{color:var(--primary);border-bottom-color:var(--primary)}
+
+.grid{display:grid;gap:14px}.kpis{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:14px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow)}
+.kpi{padding:16px}.kpi .label{color:var(--muted);font-size:11px;font-weight:700}.kpi .value{font-size:23px;font-weight:850;margin:6px 0 2px}.trend{font-size:11px;color:var(--green)}
+.two{grid-template-columns:1.4fr .8fr}.three{grid-template-columns:repeat(3,1fr)}
+.panel{padding:16px}.panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}.panel-head h3{font-size:14px;margin:0}.panel-head small{font-size:10px;color:var(--muted)}
+.stat-list{display:flex;flex-direction:column;gap:10px}.stat-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:12px}.stat-row:last-child{border-bottom:0}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:4px 7px;border-radius:999px;font-size:10px;font-weight:800;background:#eef2f7;color:#5f6b77}.badge.blue{background:#e8f0ff;color:#1d4ed8}.badge.green{background:#eaf7ee;color:#15803d}.badge.amber{background:#fff4db;color:#b45309}.badge.red{background:#feecec;color:#dc2626}.badge.purple{background:#f2eafd;color:#6d28d9}
+.progress{height:7px;border-radius:999px;background:#eef1f5;overflow:hidden}.progress i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#2563eb,#60a5fa)}
+.activity{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}.activity:last-child{border-bottom:0}.activity .dot{width:8px;height:8px;border-radius:50%;background:#60a5fa;margin-top:5px}.activity strong{font-size:11px}.activity p{font-size:11px;color:var(--muted);margin:3px 0 0}
+
+.board-toolbar,.list-toolbar{display:flex;gap:8px;align-items:center;margin-bottom:14px}.select{border:1px solid var(--border);background:white;padding:8px 10px;border-radius:9px;font-size:11px}
+.board{display:grid;grid-template-columns:repeat(4,minmax(250px,1fr));gap:12px;overflow-x:auto;padding-bottom:8px}
+.column{background:#eef2f7;border:1px solid #e2e8f0;border-radius:12px;min-height:560px;padding:10px}
+.col-head{display:flex;align-items:center;justify-content:space-between;padding:4px 3px 10px}.col-head strong{font-size:11px;text-transform:uppercase;letter-spacing:.04em}.count{font-size:10px;background:white;border:1px solid var(--border);padding:2px 7px;border-radius:99px}
+.issue{background:white;border:1px solid var(--border);border-radius:10px;padding:11px;margin-bottom:9px;box-shadow:0 3px 10px rgba(15,23,42,.04);cursor:pointer}.issue:hover{border-color:#cbd5e1;transform:translateY(-1px)}
+.issue-key{font-size:10px;color:#64748b;font-weight:800}.issue h4{font-size:12px;margin:5px 0 8px;line-height:1.35}.issue-meta{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.type{width:20px;height:20px;border-radius:6px;display:grid;place-items:center;font-size:10px;color:white}.story{background:#16a34a}.task{background:#2563eb}.bug{background:#ef4444}.epic{background:#7c3aed}
+.assignee{width:23px;height:23px;border-radius:50%;background:#e2e8f0;display:grid;place-items:center;font-size:9px;font-weight:800}
+
+.backlog{display:grid;grid-template-columns:1fr 300px;gap:14px}.sprint{background:white;border:1px solid var(--border);border-radius:12px;margin-bottom:12px;overflow:hidden}.sprint-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#fbfcfe;border-bottom:1px solid var(--border)}.sprint-title{display:flex;align-items:center;gap:10px}.sprint-title strong{font-size:12px}.sprint-title small{font-size:10px;color:var(--muted)}
+.backlog-row{display:grid;grid-template-columns:26px 80px 1fr 110px 90px 38px;align-items:center;gap:9px;padding:9px 12px;border-top:1px solid var(--border);font-size:11px}.backlog-row:hover{background:#fafcff}
+.table-card{overflow:hidden}.table-head{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--border)}
+table{width:100%;border-collapse:collapse}th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#718096;padding:10px 12px;background:#f8fafc}td{font-size:11px;padding:10px 12px;border-top:1px solid var(--border)}tr:hover td{background:#fbfdff}
+
+.timeline{position:relative;overflow:auto}.months{display:grid;grid-template-columns:220px repeat(6,160px);border-bottom:1px solid var(--border);background:#fbfcfe}.months div{padding:9px 10px;font-size:10px;color:var(--muted);border-right:1px solid var(--border)}
+.tline-row{display:grid;grid-template-columns:220px 960px;min-height:58px;border-bottom:1px solid var(--border)}.tline-name{padding:14px 12px;font-size:11px;border-right:1px solid var(--border)}.track{position:relative;background:repeating-linear-gradient(90deg,transparent 0 159px,#edf0f4 159px 160px)}.bar{position:absolute;top:14px;height:28px;border-radius:8px;background:#dbeafe;border:1px solid #93c5fd;color:#1d4ed8;font-size:10px;font-weight:800;display:flex;align-items:center;padding:0 10px}
+.chart{height:220px;display:flex;align-items:end;gap:14px;padding:18px 8px 22px;border-bottom:1px solid var(--border)}.chart .c{flex:1;text-align:center;font-size:9px;color:var(--muted)}.chart .b{width:70%;margin:0 auto 7px;background:linear-gradient(180deg,#60a5fa,#2563eb);border-radius:7px 7px 2px 2px;position:relative}.chart .b span{position:absolute;top:-17px;left:50%;transform:translateX(-50%);font-size:9px;color:#334155;font-weight:800}
+
+.wiki-layout{display:grid;grid-template-columns:250px 1fr;gap:14px}.wiki-tree{padding:10px}.wiki-tree button{width:100%;border:0;background:transparent;padding:8px 9px;text-align:left;border-radius:8px;font-size:11px;color:#475569}.wiki-tree button.active,.wiki-tree button:hover{background:#eef4ff;color:#1d4ed8}.doc{padding:28px 34px;min-height:600px}.doc h2{font-size:26px;margin:0 0 10px}.doc p,.doc li{font-size:13px;line-height:1.65;color:#475569}
+
+.apps{grid-template-columns:repeat(4,1fr)}.app-card{padding:17px;min-height:170px}.app-icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:#eef4ff;color:#2563eb;font-size:18px;margin-bottom:14px}.app-card h3{font-size:14px;margin:0 0 5px}.app-card p{font-size:11px;color:var(--muted);line-height:1.5;margin:0 0 14px}
+
+.settings-grid{grid-template-columns:220px 1fr}.settings-menu{padding:9px}.settings-menu button{width:100%;border:0;background:transparent;text-align:left;padding:9px 10px;border-radius:8px;font-size:11px;color:#475569}.settings-menu button.active{background:#eef4ff;color:#1d4ed8;font-weight:800}.form{padding:18px}.field{margin-bottom:14px}.field label{display:block;font-size:11px;font-weight:800;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--border);border-radius:9px;padding:9px 10px;background:white;outline:none;font-size:11px}.field textarea{min-height:90px;resize:vertical}
+
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:100;place-items:center;backdrop-filter:blur(3px)}.modal-bg.show{display:grid}.modal{width:min(720px,92vw);background:white;border-radius:16px;box-shadow:0 30px 80px rgba(15,23,42,.3);overflow:hidden}.modal-head{padding:16px 18px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}.modal-body{padding:18px}.modal-foot{padding:13px 18px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px}
+.drawer-bg{display:none;position:fixed;inset:0;background:rgba(15,23,42,.3);z-index:90}.drawer-bg.show{display:block}.drawer{position:absolute;right:0;top:0;bottom:0;width:min(560px,92vw);background:white;box-shadow:-20px 0 60px rgba(15,23,42,.18);padding:18px;overflow:auto}
+.drawer h2{font-size:18px;margin:2px 0 6px}.drawer .meta{font-size:11px;color:var(--muted);margin-bottom:16px}.history{border-left:2px solid #e5e7eb;margin-left:8px;padding-left:14px}.hist{position:relative;padding:0 0 14px}.hist:before{content:"";position:absolute;left:-20px;top:3px;width:10px;height:10px;background:#93c5fd;border:2px solid white;border-radius:50%;box-shadow:0 0 0 1px #bfdbfe}.hist strong{font-size:11px}.hist p{font-size:11px;color:var(--muted);margin:3px 0 0}
+.toast{position:fixed;right:20px;bottom:20px;background:#111827;color:white;padding:11px 15px;border-radius:10px;font-size:12px;opacity:0;transform:translateY(10px);transition:.2s;z-index:130}.toast.show{opacity:1;transform:none}
+
+@media(max-width:1100px){.kpis{grid-template-columns:repeat(2,1fr)}.two,.settings-grid,.wiki-layout{grid-template-columns:1fr}.apps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){:root{--sidebar-w:74px}.brand strong,.brand span,.project div:not(.project-icon),.nav .group,.nav .label,.profile-card div:last-child{display:none}.brand{padding:0 20px}.project{padding:8px;justify-content:center}.nav button{justify-content:center}.main{margin-left:74px}.header{padding:0 12px}.breadcrumb{display:none}.content{padding:18px 12px}.kpis,.apps{grid-template-columns:1fr}.backlog{grid-template-columns:1fr}.board{grid-template-columns:repeat(4,270px)}}
+/* Abaixo de 600px a sidebar já é só ícones (regra de 760px acima); aqui só
+   protegemos tabelas, timeline e o aviso fixo contra corte, sem mudar dados
+   ou interação. */
+@media(max-width:600px){
+  .search{max-width:none}
+  .table-card{overflow-x:auto}
+  table{min-width:640px}
+  .timeline{overflow-x:auto}
+  .tline-row{min-width:1180px}
+  .drawer{width:100vw}
+  .flow-proto-notice{left:10px;right:10px;max-width:none;text-align:center}
+}
+.flow-proto-notice{position:fixed;right:16px;bottom:14px;z-index:140;max-width:340px;padding:7px 10px;
+  border:1px solid var(--border);border-radius:10px;background:rgba(17,24,39,.92);
+  color:#cbd5e1;font-size:10px;line-height:1.4;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">CF</div><div><strong>Celere Flow</strong><span>Work management</span></div></div>
+  <div class="project"><div class="project-icon">SCR</div><div><strong>Produto Digital</strong><small>Scrum · CEL</small></div></div>
+  <div class="nav">
+    <div class="group">Projeto</div>
+    <button class="active" data-page="overview"><span class="ico">⌂</span><span class="label">Visão Geral</span></button>
+    <button data-page="backlog"><span class="ico">☷</span><span class="label">Backlog</span></button>
+    <button data-page="board"><span class="ico">▦</span><span class="label">Quadro</span></button>
+    <button data-page="list"><span class="ico">≣</span><span class="label">Lista de Tarefas</span></button>
+    <button data-page="timeline"><span class="ico">↔</span><span class="label">Timeline</span></button>
+    <button data-page="dashboard"><span class="ico">▥</span><span class="label">Dashboard</span></button>
+    <button data-page="wiki"><span class="ico">▤</span><span class="label">Wiki</span></button>
+    <button data-page="team"><span class="ico">◉</span><span class="label">Equipe</span></button>
+    <div class="group">Ferramentas</div>
+    <button data-page="apps"><span class="ico">◇</span><span class="label">Apps</span></button>
+  </div>
+  <div class="profile">
+    <div class="profile-card"><div class="avatar">MO</div><div><strong>Marina Oliveira</strong><small>Org Admin</small></div></div>
+  </div>
+</aside>
+
+<main class="main">
+<header class="header">
+  <div class="breadcrumb"><strong id="crumb">Visão Geral</strong><small>Produto Digital / Celere Flow</small></div>
+  <div class="search"><input id="search" placeholder="Buscar cards, pessoas, páginas..."/></div>
+  <div class="header-actions">
+    <button class="btn primary" id="createBtn">+ Criar</button>
+    <button class="btn icon" title="Notificações">◔</button>
+    <button class="btn" id="settingsBtn">Configurações</button>
+    <button class="btn" id="orgBtn">Org Admin</button>
+  </div>
+</header>
+
+<div class="content">
+
+<section class="page active" id="page-overview">
+  <div class="page-head"><div><h1>Visão Geral</h1><p>Resumo da sprint ativa e do trabalho que precisa de atenção hoje.</p></div><div><button class="btn">Compartilhar</button></div></div>
+  <div class="grid kpis">
+    <div class="card kpi"><div class="label">Progresso da Sprint</div><div class="value">62%</div><div class="progress"><i style="width:62%"></i></div></div>
+    <div class="card kpi"><div class="label">Itens concluídos</div><div class="value">18 / 29</div><div class="trend">+6 desde ontem</div></div>
+    <div class="card kpi"><div class="label">Story Points</div><div class="value">41 / 67</div><div class="trend">61% entregues</div></div>
+    <div class="card kpi"><div class="label">Bloqueios</div><div class="value">2</div><div style="font-size:11px;color:var(--red)">Requer atenção</div></div>
+  </div>
+  <div class="grid two">
+    <div class="grid">
+      <div class="card panel">
+        <div class="panel-head"><div><h3>Trabalho da Sprint</h3><small>Sprint 24 · 9 dias restantes</small></div><button class="btn">Ver sprint</button></div>
+        <div class="grid three">
+          <div><small style="color:var(--muted)">A fazer</small><div style="font-size:26px;font-weight:850;margin:6px 0">7</div><div class="progress"><i style="width:24%;background:#94a3b8"></i></div></div>
+          <div><small style="color:var(--muted)">Em andamento</small><div style="font-size:26px;font-weight:850;margin:6px 0">4</div><div class="progress"><i style="width:14%;background:#f59e0b"></i></div></div>
+          <div><small style="color:var(--muted)">Concluído</small><div style="font-size:26px;font-weight:850;margin:6px 0">18</div><div class="progress"><i style="width:62%;background:#16a34a"></i></div></div>
+        </div>
+      </div>
+      <div class="card panel">
+        <div class="panel-head"><div><h3>Prioridades para hoje</h3><small>Ordenado por impacto</small></div></div>
+        <div class="stat-list">
+          <div class="stat-row"><span><span class="badge red">Blocker</span> CEL-184 · Falha no webhook de pagamento</span><b>Alta</b></div>
+          <div class="stat-row"><span><span class="badge amber">Bug</span> CEL-192 · Divergência no cálculo de burndown</span><b>Alta</b></div>
+          <div class="stat-row"><span><span class="badge blue">História</span> CEL-173 · Novo fluxo de aprovações</span><b>Média</b></div>
+          <div class="stat-row"><span><span class="badge purple">Épico</span> CEL-160 · Portal do Cliente</span><b>72%</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="card panel">
+        <div class="panel-head"><div><h3>Atividade recente</h3><small>Últimas 24 horas</small></div></div>
+        <div class="activity"><div class="dot"></div><div><strong>Tiago moveu CEL-183 para Em andamento</strong><p>há 12 min</p></div></div>
+        <div class="activity"><div class="dot" style="background:#16a34a"></div><div><strong>Giorgia concluiu CEL-179</strong><p>há 31 min</p></div></div>
+        <div class="activity"><div class="dot" style="background:#f59e0b"></div><div><strong>Marina alterou a estimativa de CEL-173</strong><p>há 1h</p></div></div>
+        <div class="activity"><div class="dot" style="background:#7c3aed"></div><div><strong>Novo documento criado na Wiki</strong><p>há 2h</p></div></div>
+      </div>
+      <div class="card panel">
+        <div class="panel-head"><h3>Saúde da Sprint</h3><span class="badge green">Boa</span></div>
+        <div class="stat-row"><span>Escopo alterado</span><b>+5 pts</b></div>
+        <div class="stat-row"><span>Velocidade projetada</span><b>72 pts</b></div>
+        <div class="stat-row"><span>Itens sem responsável</span><b>1</b></div>
+        <div class="stat-row"><span>Itens bloqueados</span><b style="color:var(--red)">2</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="page-backlog">
+  <div class="page-head"><div><h1>Backlog</h1><p>Organize backlog, sprints e prioridades do projeto.</p></div><button class="btn primary" onclick="openCreate()">+ Criar</button></div>
+  <div class="board-toolbar"><button class="btn">Filtros</button><select class="select"><option>Todos os responsáveis</option></select><select class="select"><option>Todos os tipos</option></select></div>
+  <div class="backlog">
+    <div>
+      <div class="sprint">
+        <div class="sprint-head"><div class="sprint-title"><span>⌄</span><div><strong>Sprint 24</strong><small>18 concluídos · 4 em andamento · 7 a fazer</small></div></div><div><button class="btn">•••</button> <button class="btn">Concluir sprint</button></div></div>
+        <div class="backlog-row" onclick="openIssue('CEL-184')"><span class="type bug">!</span><b>CEL-184</b><span>Falha no webhook de pagamento</span><span class="badge red">Alta</span><span>5 pts</span><span class="assignee">TM</span></div>
+        <div class="backlog-row" onclick="openIssue('CEL-173')"><span class="type story">S</span><b>CEL-173</b><span>Novo fluxo de aprovações</span><span class="badge amber">Média</span><span>8 pts</span><span class="assignee">MO</span></div>
+        <div class="backlog-row" onclick="openIssue('CEL-181')"><span class="type task">T</span><b>CEL-181</b><span>Refatorar componentes do dashboard</span><span class="badge blue">Normal</span><span>3 pts</span><span class="assignee">RA</span></div>
+        <div class="backlog-row" onclick="openIssue('CEL-192')"><span class="type bug">!</span><b>CEL-192</b><span>Divergência no cálculo de burndown</span><span class="badge red">Alta</span><span>5 pts</span><span class="assignee">LS</span></div>
+      </div>
+      <div class="sprint">
+        <div class="sprint-head"><div class="sprint-title"><span>⌄</span><div><strong>Próxima Sprint</strong><small>6 itens · 21 pts</small></div></div><button class="btn">Iniciar sprint</button></div>
+        <div class="backlog-row"><span class="type story">S</span><b>CEL-205</b><span>Permissões por aplicativo</span><span class="badge amber">Média</span><span>5 pts</span><span class="assignee">MO</span></div>
+        <div class="backlog-row"><span class="type task">T</span><b>CEL-211</b><span>Melhoria no histórico de atividades</span><span class="badge blue">Normal</span><span>3 pts</span><span class="assignee">TM</span></div>
+      </div>
+    </div>
+    <div class="card panel">
+      <div class="panel-head"><h3>Resumo do backlog</h3></div>
+      <div class="stat-row"><span>Itens totais</span><b>42</b></div><div class="stat-row"><span>Sem estimativa</span><b>7</b></div><div class="stat-row"><span>Sem responsável</span><b>4</b></div><div class="stat-row"><span>Alta prioridade</span><b>9</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="page-board">
+  <div class="page-head"><div><h1>Quadro</h1><p>Acompanhe o fluxo de trabalho da Sprint 24.</p></div><button class="btn">Configurar quadro</button></div>
+  <div class="board-toolbar"><button class="btn">Filtros</button><select class="select"><option>História, Tarefa e Bug</option></select><button class="btn">Somente meus itens</button><span style="margin-left:auto" class="badge red">2 bloqueios</span></div>
+  <div class="board">
+    <div class="column"><div class="col-head"><strong>A fazer</strong><span class="count">7</span></div>
+      <div class="issue" onclick="openIssue('CEL-184')"><span class="issue-key">CEL-184</span><h4>Falha no webhook de pagamento</h4><div class="issue-meta"><span class="type bug">!</span><span class="badge red">Alta</span><span class="assignee">TM</span></div></div>
+      <div class="issue" onclick="openIssue('CEL-173')"><span class="issue-key">CEL-173</span><h4>Novo fluxo de aprovações</h4><div class="issue-meta"><span class="type story">S</span><span class="badge amber">Média</span><span class="assignee">MO</span></div></div>
+    </div>
+    <div class="column"><div class="col-head"><strong>Em andamento</strong><span class="count">4</span></div>
+      <div class="issue" onclick="openIssue('CEL-181')"><span class="issue-key">CEL-181</span><h4>Refatorar componentes do dashboard</h4><div class="issue-meta"><span class="type task">T</span><span class="badge blue">Normal</span><span class="assignee">RA</span></div></div>
+      <div class="issue"><span class="issue-key">CEL-187</span><h4>Nova experiência do perfil</h4><div class="issue-meta"><span class="type story">S</span><span class="badge amber">Média</span><span class="assignee">LS</span></div></div>
+    </div>
+    <div class="column"><div class="col-head"><strong>Code Review</strong><span class="count">2</span></div>
+      <div class="issue"><span class="issue-key">CEL-176</span><h4>Permissões do menu Relatórios</h4><div class="issue-meta"><span class="type task">T</span><span class="badge blue">Normal</span><span class="assignee">MO</span></div></div>
+    </div>
+    <div class="column"><div class="col-head"><strong>Concluído</strong><span class="count">18</span></div>
+      <div class="issue"><span class="issue-key">CEL-179</span><h4>Novo layout da Visão Geral</h4><div class="issue-meta"><span class="type story">S</span><span class="badge green">Feito</span><span class="assignee">MO</span></div></div>
+      <div class="issue"><span class="issue-key">CEL-166</span><h4>Timeline com drag and drop</h4><div class="issue-meta"><span class="type story">S</span><span class="badge green">Feito</span><span class="assignee">TM</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="page-list">
+  <div class="page-head"><div><h1>Lista de Tarefas</h1><p>Visão tabular para ordenar, filtrar e revisar o trabalho.</p></div><button class="btn primary" onclick="openCreate()">+ Criar item</button></div>
+  <div class="card table-card">
+    <div class="table-head"><button class="btn">Filtros</button><select class="select"><option>Todos os status</option></select><select class="select"><option>Todos os responsáveis</option></select></div>
+    <table><thead><tr><th>Tipo</th><th>Chave</th><th>Resumo</th><th>Status</th><th>Prioridade</th><th>Responsável</th><th>Pts</th></tr></thead>
+    <tbody>
+      <tr onclick="openIssue('CEL-184')"><td><span class="type bug">!</span></td><td>CEL-184</td><td>Falha no webhook de pagamento</td><td>A fazer</td><td><span class="badge red">Alta</span></td><td>Tiago M.</td><td>5</td></tr>
+      <tr onclick="openIssue('CEL-181')"><td><span class="type task">T</span></td><td>CEL-181</td><td>Refatorar componentes do dashboard</td><td>Em andamento</td><td><span class="badge blue">Normal</span></td><td>Rafael A.</td><td>3</td></tr>
+      <tr><td><span class="type story">S</span></td><td>CEL-179</td><td>Novo layout da Visão Geral</td><td>Concluído</td><td><span class="badge amber">Média</span></td><td>Marina O.</td><td>8</td></tr>
+      <tr><td><span class="type story">S</span></td><td>CEL-173</td><td>Novo fluxo de aprovações</td><td>A fazer</td><td><span class="badge amber">Média</span></td><td>Marina O.</td><td>8</td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<section class="page" id="page-timeline">
+  <div class="page-head"><div><h1>Timeline</h1><p>Planejamento visual dos épicos e principais entregas.</p></div><div><button class="btn">Hoje</button> <button class="btn">-</button> <button class="btn">+</button></div></div>
+  <div class="card timeline">
+    <div class="months"><div>Épico</div><div>Mai</div><div>Jun</div><div>Jul</div><div>Ago</div><div>Set</div><div>Out</div></div>
+    <div class="tline-row"><div class="tline-name"><b>CEL-160</b><br>Portal do Cliente</div><div class="track"><div class="bar" style="left:65px;width:370px;background:#ede9fe;border-color:#c4b5fd;color:#6d28d9">Portal do Cliente · 72%</div></div></div>
+    <div class="tline-row"><div class="tline-name"><b>CEL-151</b><br>Service Desk</div><div class="track"><div class="bar" style="left:0px;width:520px">Service Desk · 86%</div></div></div>
+    <div class="tline-row"><div class="tline-name"><b>CEL-205</b><br>Apps & Timesheet</div><div class="track"><div class="bar" style="left:420px;width:350px;background:#dcfce7;border-color:#86efac;color:#15803d">Apps & Timesheet · 24%</div></div></div>
+    <div class="tline-row"><div class="tline-name"><b>CEL-231</b><br>IA Operacional</div><div class="track"><div class="bar" style="left:650px;width:260px;background:#fff7ed;border-color:#fdba74;color:#c2410c">IA Operacional · 10%</div></div></div>
+  </div>
+</section>
+
+<section class="page" id="page-dashboard">
+  <div class="page-head"><div><h1>Dashboard</h1><p>Métricas da Sprint 24 e desempenho recente do time.</p></div><div><select class="select"><option>Sprint 24</option><option>Sprint 23</option></select></div></div>
+  <div class="grid kpis">
+    <div class="card kpi"><div class="label">Velocidade</div><div class="value">67 pts</div><div class="trend">+8% vs média</div></div>
+    <div class="card kpi"><div class="label">Cycle Time</div><div class="value">3,8 dias</div><div class="trend">-0,6 dia</div></div>
+    <div class="card kpi"><div class="label">Lead Time</div><div class="value">6,2 dias</div><div class="trend">-11%</div></div>
+    <div class="card kpi"><div class="label">Throughput</div><div class="value">18 itens</div><div class="trend">Sprint atual</div></div>
+  </div>
+  <div class="grid two">
+    <div class="card panel"><div class="panel-head"><h3>Burndown</h3><small>Story Points restantes</small></div><div style="height:260px;position:relative;padding:15px"><svg viewBox="0 0 800 220" width="100%" height="100%"><polyline fill="none" stroke="#cbd5e1" stroke-width="3" stroke-dasharray="8 8" points="15,20 780,200"/><polyline fill="none" stroke="#2563eb" stroke-width="4" points="15,20 90,38 165,50 240,74 315,80 390,112 465,125 540,145 615,156 690,180 780,192"/></svg></div></div>
+    <div class="card panel"><div class="panel-head"><h3>Distribuição por status</h3></div><div class="chart">
+      <div class="c"><div class="b" style="height:35%"><span>7</span></div>A fazer</div><div class="c"><div class="b" style="height:22%;background:#f59e0b"><span>4</span></div>Andamento</div><div class="c"><div class="b" style="height:12%;background:#7c3aed"><span>2</span></div>Code Review</div><div class="c"><div class="b" style="height:88%;background:#16a34a"><span>18</span></div>Concluído</div>
+    </div></div>
+  </div>
+</section>
+
+<section class="page" id="page-wiki">
+  <div class="page-head"><div><h1>Wiki</h1><p>Conhecimento do projeto organizado em páginas.</p></div><button class="btn primary" onclick="toast('Nova página criada na demonstração')">+ Nova página</button></div>
+  <div class="wiki-layout">
+    <div class="card wiki-tree"><button class="active">📄 Visão do Produto</button><button>📄 Arquitetura</button><button>📄 APIs</button><button>📄 Convenções de Código</button><button>📄 Definition of Done</button><button>📁 Decisões Técnicas</button></div>
+    <div class="card doc"><span class="badge blue">Atualizado hoje</span><h2>Visão do Produto</h2><p>O Celere Flow centraliza o planejamento, execução e acompanhamento do trabalho dos times em um único ambiente.</p><h3>Objetivos</h3><ul><li>Reduzir fricção operacional entre planejamento e entrega.</li><li>Dar visibilidade de ponta a ponta sobre trabalho, métricas e bloqueios.</li><li>Manter uma experiência consistente entre Scrum, Kanban e Service Desk.</li></ul><h3>Princípios</h3><p>Interfaces objetivas, poucos cliques, foco em contexto e rastreabilidade. A ferramenta deve facilitar o trabalho do usuário, não exigir que ele aprenda a ferramenta.</p></div>
+  </div>
+</section>
+
+<section class="page" id="page-team">
+  <div class="page-head"><div><h1>Equipe</h1><p>Gerencie pessoas, perfis e convites do projeto.</p></div><button class="btn primary" onclick="toast('Convite criado na demonstração')">+ Convidar pessoa</button></div>
+  <div class="card table-card">
+    <table><thead><tr><th>Pessoa</th><th>E-mail</th><th>Perfil</th><th>Status</th><th>Acesso a relatórios</th><th></th></tr></thead>
+    <tbody>
+      <tr><td><b>Marina Oliveira</b></td><td>marina.oliveira@celere.com</td><td>Org Admin</td><td><span class="badge green">Ativo</span></td><td>Sim</td><td>•••</td></tr>
+      <tr><td><b>Tiago Martins</b></td><td>tiago@celere.com</td><td>Project Admin</td><td><span class="badge green">Ativo</span></td><td>Sim</td><td>•••</td></tr>
+      <tr><td><b>Marina Costa</b></td><td>marina@celere.com</td><td>Gestor</td><td><span class="badge green">Ativo</span></td><td>Sim</td><td>•••</td></tr>
+      <tr><td><b>Rafael Almeida</b></td><td>rafael@celere.com</td><td>Membro</td><td><span class="badge green">Ativo</span></td><td>Não</td><td>•••</td></tr>
+      <tr><td><b>Laura Souza</b></td><td>laura@celere.com</td><td>Leitor</td><td><span class="badge amber">Pendente</span></td><td>Não</td><td>•••</td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<section class="page" id="page-apps">
+  <div class="page-head"><div><h1>Apps</h1><p>Ferramentas complementares para o dia a dia do time.</p></div></div>
+  <div class="grid apps">
+    <div class="card app-card"><div class="app-icon">✓</div><h3>To‑Do List</h3><p>Lista pessoal de tarefas rápidas que não precisam virar cards do projeto.</p><span class="badge green">Ativado</span></div>
+    <div class="card app-card"><div class="app-icon">☀</div><h3>Daily</h3><p>Registro rápido da daily com foco no que foi feito, próximo passo e impedimentos.</p><span class="badge green">Ativado</span></div>
+    <div class="card app-card"><div class="app-icon">↺</div><h3>Retrospectiva</h3><p>Quadro de retrospectiva para conduzir cerimônias e registrar ações.</p><span class="badge amber">Desativado</span></div>
+    <div class="card app-card"><div class="app-icon">◷</div><h3>Timesheets</h3><p>Lançamento de horas integrado aos issuetypes e fluxo de aprovação.</p><span class="badge blue">Em preview</span></div>
+  </div>
+</section>
+
+<section class="page" id="page-settings">
+  <div class="page-head"><div><h1>Configurações</h1><p>Configurações do projeto Produto Digital.</p></div></div>
+  <div class="grid settings-grid">
+    <div class="card settings-menu"><button class="active">Geral</button><button>Tipos de item</button><button>Workflows</button><button>Colunas e status</button><button>Permissões</button><button>Apps</button><button>Integrações</button></div>
+    <div class="card form">
+      <div class="field"><label>Nome do projeto</label><input value="Produto Digital"/></div>
+      <div class="field"><label>Identificador</label><input value="CEL"/></div>
+      <div class="field"><label>Modelo</label><select><option>Scrum</option><option>Kanban</option></select></div>
+      <div class="field"><label>Responsável</label><select><option>Marina Oliveira</option></select></div>
+      <div class="field"><label>Descrição</label><textarea>Projeto responsável pela evolução do Celere Flow.</textarea></div>
+      <button class="btn primary" onclick="toast('Configurações salvas')">Salvar alterações</button>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="page-org">
+  <div class="page-head"><div><h1>Org Admin</h1><p>Administração da organização e dos projetos.</p></div><button class="btn primary" onclick="toast('Fluxo de criação de projeto iniciado')">+ Novo projeto</button></div>
+  <div class="grid kpis">
+    <div class="card kpi"><div class="label">Projetos ativos</div><div class="value">8</div></div><div class="card kpi"><div class="label">Usuários</div><div class="value">46</div></div><div class="card kpi"><div class="label">Armazenamento</div><div class="value">18,4 GB</div><div class="progress"><i style="width:37%"></i></div></div><div class="card kpi"><div class="label">Plano</div><div class="value">Business</div></div>
+  </div>
+  <div class="card table-card"><table><thead><tr><th>Projeto</th><th>Identificador</th><th>Modelo</th><th>Responsável</th><th>Membros</th><th>Status</th></tr></thead><tbody>
+    <tr><td>Produto Digital</td><td>CEL</td><td>Scrum</td><td>Marina Oliveira</td><td>14</td><td><span class="badge green">Ativo</span></td></tr>
+    <tr><td>Operações</td><td>OPS</td><td>Kanban</td><td>Marina Costa</td><td>9</td><td><span class="badge green">Ativo</span></td></tr>
+    <tr><td>Service Desk</td><td>SD</td><td>Service</td><td>Tiago Martins</td><td>21</td><td><span class="badge green">Ativo</span></td></tr>
+  </tbody></table></div>
+</section>
+
+</div>
+</main>
+</div>
+
+<div class="modal-bg" id="createModal">
+  <div class="modal">
+    <div class="modal-head"><div><b>Criar item</b><div style="font-size:10px;color:var(--muted)">Produto Digital</div></div><button class="btn icon" onclick="closeCreate()">×</button></div>
+    <div class="modal-body">
+      <div class="grid two">
+        <div class="field"><label>Tipo</label><select><option>História</option><option>Tarefa</option><option>Bug</option><option>Épico</option></select></div>
+        <div class="field"><label>Responsável</label><select><option>Marina Oliveira</option><option>Tiago Martins</option></select></div>
+      </div>
+      <div class="field"><label>Título</label><input value="Nova melhoria no fluxo de trabalho"/></div>
+      <div class="field"><label>Descrição</label><textarea>Descreva o contexto, objetivo e critérios de aceite.</textarea></div>
+      <div class="grid two"><div class="field"><label>Prioridade</label><select><option>Média</option><option>Alta</option><option>Baixa</option></select></div><div class="field"><label>Story Points</label><input value="5"/></div></div>
+    </div>
+    <div class="modal-foot"><button class="btn" onclick="closeCreate()">Cancelar</button><button class="btn primary" onclick="createMock()">Criar</button></div>
+  </div>
+</div>
+
+<div class="drawer-bg" id="issueDrawer" onclick="if(event.target===this) closeIssue()">
+  <aside class="drawer">
+    <div style="display:flex;justify-content:space-between;align-items:center"><span class="badge blue" id="issueKey">CEL-184</span><button class="btn icon" onclick="closeIssue()">×</button></div>
+    <h2 id="issueTitle">Falha no webhook de pagamento</h2>
+    <div class="meta">Bug · Alta prioridade · Sprint 24</div>
+    <div class="grid two">
+      <div class="field"><label>Status</label><select><option>A fazer</option><option>Em andamento</option><option>Code Review</option><option>Concluído</option></select></div>
+      <div class="field"><label>Responsável</label><select><option>Tiago Martins</option><option>Marina Oliveira</option></select></div>
+    </div>
+    <div class="field"><label>Descrição</label><textarea>O webhook apresenta falha intermitente e precisa de correção antes do fechamento da sprint.</textarea></div>
+    <div class="field"><label>Critérios de aceite</label><textarea>- Reprocessamento idempotente
+- Logs de erro
+- Teste automatizado
+- Code Review obrigatório</textarea></div>
+    <div class="panel-head" style="margin-top:14px"><h3>Resumo por IA</h3><span class="badge purple">Beta</span></div>
+    <div style="background:#f5f3ff;border:1px solid #ede9fe;padding:11px;border-radius:10px;font-size:11px;line-height:1.5;color:#5b21b6">O item está aberto há 3 dias, teve uma alteração de prioridade e possui impacto no fluxo de pagamentos. Próxima ação recomendada: concluir a correção e enviar para Code Review.</div>
+    <div class="panel-head" style="margin-top:18px"><h3>Histórico</h3></div>
+    <div class="history">
+      <div class="hist"><strong>Tiago alterou o status</strong><p>A fazer → Em andamento · há 26 min</p></div>
+      <div class="hist"><strong>Giorgia alterou a prioridade</strong><p>Média → Alta · há 1h</p></div>
+      <div class="hist"><strong>Marina adicionou comentário</strong><p>“Erro também reproduzido em homologação.” · há 2h</p></div>
+      <div class="hist"><strong>Item criado</strong><p>por Tiago Martins · há 3 dias</p></div>
+    </div>
+  </aside>
+</div>
+<div class="toast" id="toast"></div>
+<div class="flow-proto-notice">Cenário demonstrativo — projeto de exemplo (Produto Digital). Pessoas e dados são fictícios; o mesmo quadro serve para a abertura de uma loja, uma reforma ou o backlog do time administrativo.</div>
+
+<script>
+const names={
+ overview:'Visão Geral',backlog:'Backlog',board:'Quadro',list:'Lista de Tarefas',timeline:'Timeline',
+ dashboard:'Dashboard',wiki:'Wiki',team:'Equipe',apps:'Apps',settings:'Configurações',org:'Org Admin'
+};
+function goTo(page){
+ document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-'+page));
+ document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));
+ document.getElementById('crumb').textContent=names[page]||'Celere Flow';
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>goTo(b.dataset.page));
+document.getElementById('settingsBtn').onclick=()=>goTo('settings');
+document.getElementById('orgBtn').onclick=()=>goTo('org');
+document.getElementById('createBtn').onclick=openCreate;
+
+function openCreate(){document.getElementById('createModal').classList.add('show')}
+function closeCreate(){document.getElementById('createModal').classList.remove('show')}
+function createMock(){closeCreate();toast('CEL-247 criado com sucesso')}
+
+const issues={
+ 'CEL-184':'Falha no webhook de pagamento',
+ 'CEL-173':'Novo fluxo de aprovações',
+ 'CEL-181':'Refatorar componentes do dashboard',
+ 'CEL-192':'Divergência no cálculo de burndown'
+};
+function openIssue(key){
+ document.getElementById('issueKey').textContent=key;
+ document.getElementById('issueTitle').textContent=issues[key]||'Item do projeto';
+ document.getElementById('issueDrawer').classList.add('show');
+}
+function closeIssue(){document.getElementById('issueDrawer').classList.remove('show')}
+function toast(msg){
+ const t=document.getElementById('toast'); t.textContent=msg;t.classList.add('show');
+ clearTimeout(window._to);window._to=setTimeout(()=>t.classList.remove('show'),2300)
+}
+document.getElementById('search').addEventListener('keydown',e=>{
+ if(e.key==='Enter'){
+  const q=e.target.value.toLowerCase();
+  if(q.includes('cel-184')||q.includes('webhook')) openIssue('CEL-184');
+  else if(q.includes('backlog')) goTo('backlog');
+  else if(q.includes('wiki')) goTo('wiki');
+  else toast('Busca simulada: tente “CEL-184”, “backlog” ou “wiki”.');
+ }
+});
+</script>
+</body>
+</html>
