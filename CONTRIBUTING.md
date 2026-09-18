@@ -54,7 +54,15 @@ Sem instalar nada, sem cache. Confira em 1440 e em 390 de largura antes de aprov
 
 `feat/` funcionalidade · `fix/` correção · `content/` texto e pautas do blog · `chore/` infraestrutura e configuração
 
-O script gera `feat/` por padrão; para os outros, renomeie o branch depois de criar.
+O script entende o tipo direto no nome:
+
+```bash
+node scripts/worktree.mjs nova cases            # feat/cases
+node scripts/worktree.mjs nova content/cases    # content/cases
+node scripts/worktree.mjs nova fix/logo-torto   # fix/logo-torto
+```
+
+Sem tipo, ele assume `feat/`. A pasta se chama pelo nome, sem o tipo — `../tech-cases` nos três casos.
 
 ## O que nunca se edita à mão
 
